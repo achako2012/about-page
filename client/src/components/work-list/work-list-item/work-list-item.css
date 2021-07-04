@@ -1,0 +1,14 @@
+.app-list-item {
+    font-size: 1.25rem;
+}
+
+.app-list-item-label {
+    display: block;
+    line-height: 35px;
+    cursor: pointer;
+    user-select: none;
+    transition: 0.5s all;
+    font-size: 1rem;
+}
+
+
