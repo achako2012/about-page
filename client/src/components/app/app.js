@@ -1,18 +1,17 @@
 import React, {Component} from 'react'
 import './app.css'
-import LeftSide from "../left-side";
-import RightSide from "../right-side";
+import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {AboutPage} from "../../pages";
 
 export default class App extends Component {
 
     render() {
         return (
-            <div className='app'>
-                <div className='app-content'>
-                    <LeftSide/>
-                    <RightSide/>
+            <Router>
+                <div className='app'>
+                    <Route path='/' component={AboutPage}/>
                 </div>
-            </div>
+            </Router>
         )
     }
 }
