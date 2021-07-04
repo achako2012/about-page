@@ -1,0 +1,10 @@
+.app-right{
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    width: 65%;
+}
+
+h2 {
+    font-size: 1.8em;
+}
