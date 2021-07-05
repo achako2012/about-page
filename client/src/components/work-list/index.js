@@ -1,3 +1,3 @@
-import WorkList from "./work_list";
+import WorkList from "./work-list";
 
 export default WorkList;

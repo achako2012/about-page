@@ -3,7 +3,7 @@ import pkg from 'mongoose';
 const {Schema, model} = pkg;
 
 const schema = new Schema({
-    title: {
+    company: {
         type: String,
         required: true
     },
@@ -11,16 +11,12 @@ const schema = new Schema({
         type: String,
         required: true
     },
-    dateStart: {
+    date: {
         type: String,
-        required: false
-    },
-    dateFinish: {
-        type: String,
-        required: false
+        required: true
     },
     obligations: {
-        type: [String],
+        type: String,
         required: true
     }
 })

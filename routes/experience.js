@@ -3,10 +3,10 @@ import {getAll, create, deleteWorkById} from "../controllers/experience-api-cont
 
 const router = Router()
 
-router.get('/experience-api/work-list', getAll)
+router.get('/work-list-api/work-list', getAll)
 
-router.post('/experience-api/work-list', create)
+router.post('/work-list-api/work-list', create)
 
-router.delete('/experience-api/work-list', deleteWorkById)
+router.delete('/work-list-api/work-list', deleteWorkById)
 
 export default router

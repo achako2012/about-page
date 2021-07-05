@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 
 import WorkListItem from './work-list-item'
-// import './work-list.css'
 import Spinner from "../spinner";
 
 
@@ -13,17 +12,17 @@ export default class WorkList extends Component {
 
     componentDidMount() {
         const {getData} = this.props
-        this.itemList = getData;
-        this.setState({
-            itemList: this.itemList
-        });
+        getData()
+            .then(itemList => {
+                this.setState({itemList})
+            })
     }
 
     renderItems(arr) {
         return arr.map((item) => {
-            const {id, ...work} = item
+            const {_id, ...work} = item
             return (
-                <li key={id} className="list-group-item">
+                <li key={_id} className="list-group-item">
                     <WorkListItem {...work}/>
                 </li>
             )

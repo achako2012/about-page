@@ -32,7 +32,7 @@ module.exports = {
         }
     ],
 
-    "objective": 'QA Automation Engineer with Java and JS programming experience in Product or Outsource company with possibilities to improve QA Automation Engineer skills',
+    "objective": 'QA Automation Engineer with Java and JS programming work-list in Product or Outsource company with possibilities to improve QA Automation Engineer skills',
 
     "education": {
         university: 'Pryazovkiy State Technical University',

@@ -12,13 +12,12 @@ export const getAll = async (req, res) => {
 }
 
 export const create = async (req, res) => {
-    const {title, position, dateStart, dateFinish, obligations} = req.body
+    const {company, position, date, obligations} = req.body
 
     const work = {
-        title: title,
+        company: company,
         position: position,
-        dateStart: dateStart,
-        dateFinish: dateFinish,
+        date: date,
         obligations: obligations
     }
 
@@ -26,7 +25,7 @@ export const create = async (req, res) => {
 
         if (err) console.log(err)
 
-        console.log("Object experience is saved", doc)
+        console.log("Object work-list is saved", doc)
     })
 
     res.status(201).json(req.body)
@@ -42,5 +41,5 @@ export const deleteWorkById = async (req, res) => {
         console.log(result)
     })
 
-    res.status(200).json({"message": "works"})
+    res.status(200).json({"message": "work-list"})
 }
