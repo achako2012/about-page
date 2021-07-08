@@ -1,7 +1,7 @@
 import React, {Component} from "react";
-import GetHooks from "../hooks/getHooks";
-import Spinner from "../components/spinner";
-import WorkList from "../components/work-list";
+import GetHooks from "../../hooks/getHooks";
+import Spinner from "../spinner";
+import WorkList from "../work-list";
 
 export default class ExperiencePage extends Component {
 

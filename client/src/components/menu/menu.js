@@ -1,15 +1,18 @@
 import React from "react";
+import { FaTelegram } from 'react-icons/fa';
+import { SiGithub,SiLinkedin } from 'react-icons/si';
 
-import './left-side.css'
 
-const LeftSide = () => {
+import './menu.css'
+
+const Menu = () => {
 
     return (
-        <div className='app-left'>
+        <aside className='about-menu'>
             <div className='person-wrapper'>
                 <div className='person-title'>
-                    <h1 id='hello'>hello,</h1>
-                    <p id='name'>I'm Alexander Chako</p>
+                    <h1 id='title'>hello,</h1>
+                    <p id='name'>my name Alexander!</p>
                 </div>
                 <div className='person-position'>
                     <p>I'm AQA Engineer in <span>KindGeek</span></p>
@@ -40,21 +43,25 @@ const LeftSide = () => {
                 <div className='contacts-title'>
                     <h1>Contacts</h1>
                 </div>
-                <div className='contacts-user-info'>
-                    <p id='phone'>phone: </p>
-                    <p>+380982829279</p>
-                    <p id='email'>email: </p>
-                    <p>a.chako2012@gmal.com</p>
+                <div className='contacts-info'>
+                    <div className='phone-container'>
+                        <p>phone:</p>
+                        <p>+380982829279</p>
+                    </div>
+                    <div className='email-container'>
+                        <p>email:</p>
+                        <p>a.chako2012@gmal.com</p>
+                    </div>
                 </div>
                 <div className='contacts-links'>
-                    <p id = 'gitHub'>GitHub Icon</p>
-                    <p id = 'linkedIn'>Linkedin Icon</p>
-                    <p id = 'telegram'>Telegram Icon</p>
+                    <SiGithub/>
+                    <SiLinkedin/>
+                    <FaTelegram/>
                 </div>
             </div>
-        </div>
+        </aside>
     )
 
 }
 
-export default LeftSide;
+export default Menu;

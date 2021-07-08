@@ -3,6 +3,25 @@
     display: flex;
 }
 
+.about-container {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 40px auto;
+}
+
+.about-menu {
+    grid-column: span 3;
+    grid-row: span 2;
+}
+
+.about-nav {
+    grid-column: span 9;
+}
+
+.about-contnet {
+    grid-column: span 9;
+}
+
 .app-content {
     display: flex;
 }

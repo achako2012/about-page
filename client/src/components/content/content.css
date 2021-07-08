@@ -1,8 +1,7 @@
-.app-right{
+.about-contnet {
     display: flex;
     flex-direction: column;
-    margin-left: 10px;
-    width: 65%;
+    padding-left: 10px;
 }
 
 h2 {
