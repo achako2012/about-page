@@ -12,13 +12,10 @@ const Menu = () => {
             <div className='person-wrapper'>
                 <div className='person-title'>
                     <h1 id='title'>hello,</h1>
-                    <p id='name'>my name Alexander!</p>
+                    <p id='name'>I'm Alex!</p>
                 </div>
                 <div className='person-position'>
-                    <p>I'm AQA Engineer in <span>KindGeek</span></p>
-                </div>
-                <div className='person-blog'>
-                    <p>my blog here!</p>
+                    <p>Automation QA Engineer</p>
                 </div>
             </div>
             <div className='summary-wrapper'>

@@ -1,0 +1,13 @@
+.title-section{
+    background-color: #4d6d9a;
+}
+.title-main{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    margin:0 10px;
+}
+
+.additional-title p{
+    text-align: center;
+}

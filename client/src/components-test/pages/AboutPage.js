@@ -1,18 +1,18 @@
+import Menu from "../menu";
+import Content from "../content";
 import React, {Component} from "react";
 import NavBar from "../nav-bar";
-import {Title, About} from '../about-content'
-
-
 
 
 export default class AboutPage extends Component {
     render() {
         return (
             <>
+                <Menu/>
                 <NavBar/>
-                <Title/>
-                <About/>
+                <Content/>
             </>
+
         )
     }
 }
