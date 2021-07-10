@@ -1,0 +1,12 @@
+.about{
+    display:flex;
+}
+
+.about-photo{
+    width: 250px;
+    background-color: pink;
+}
+
+.about-info{
+    margin-left: 20px
+}
