@@ -31,7 +31,7 @@ const About = () => {
             <div className='row'>
                 <div className='about'>
                     <div className='about-photo'>
-                        <h1>Photo</h1>
+                        <img src={process.env.PUBLIC_URL + '/img/photo.jpg'} alt='myPhotoAbout'/>
                     </div>
                     <div className='about-info'>
                         <h1 className='about-title'>about me</h1>

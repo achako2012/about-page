@@ -1,12 +1,19 @@
-.about{
-    display:flex;
+.about {
+    display: flex;
+    justify-content: center;
 }
 
-.about-photo{
+.about-photo {
     width: 250px;
-    background-color: pink;
+   
 }
 
-.about-info{
-    margin-left: 20px
+.about-info {
+
+}
+
+.about-photo img {
+    border-radius: 50%;
+    border: 10px solid pink;
+    max-width: 100%;
 }
