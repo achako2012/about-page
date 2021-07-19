@@ -1,0 +1,14 @@
+.skills-section {
+    background-color: #4d6d9a;
+    margin: 0 auto;
+}
+
+.skills-title {
+    text-align: center;
+    margin: 0 auto;
+}
+
+.skills {
+    display: flex;
+    flex-direction: row;
+}

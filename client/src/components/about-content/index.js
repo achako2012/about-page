@@ -1,6 +1,7 @@
-import {Title, About} from './content.js'
+import {Title, About, Skills} from './content.js'
 
 export {
     Title,
     About,
+    Skills
 }
