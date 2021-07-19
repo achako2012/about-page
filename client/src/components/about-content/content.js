@@ -34,14 +34,16 @@ const About = () => {
                         <img src={process.env.PUBLIC_URL + '/img/photo.jpg'} alt='myPhotoAbout'/>
                     </div>
                     <div className='about-info'>
-                        <h1 className='about-title'>about me</h1>
-                        <p className='about-article'>Knowledgeable, self-driven, and certified
+                        <h1 className='info-header'>about me</h1>
+                        <p className='info-title'>I'am AQA Enegineer in <span>Kind Geek</span></p>
+                        <p className='info-article'>Knowledgeable, self-driven, and certified
                             Automation
                             Test
                             Engineer skilled at developing new
                             tests and test plans, participating in all facets of project development, and performing
                             risk
                             analysis</p>
+                        <button>DOWNLOAD RESUME</button>
                     </div>
                 </div>
             </div>
