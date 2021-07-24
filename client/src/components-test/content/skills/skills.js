@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './skills.css'
+import './services.css'
 
 //Main class to render any list of elements
 export default class Skills extends Component {

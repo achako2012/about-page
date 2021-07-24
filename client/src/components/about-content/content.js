@@ -1,7 +1,8 @@
 import React from 'react';
-import {Button, Card, CardText, CardTitle, Col, Row} from 'reactstrap';
+import {Button, Card, CardText, CardTitle, Col, Progress, Row} from 'reactstrap';
 import './title.css'
 import './about.css'
+import './services.css'
 import './skills.css'
 import {BsGear, GoBrowser, MdDeveloperBoard} from "react-icons/all";
 import {IconContext} from "react-icons";
@@ -57,12 +58,12 @@ const About = () => {
     )
 }
 
-const Skills = () => {
+const Services = () => {
     return (
-        <section className='skills-section'>
+        <section className='services-section'>
             <div className='row'>
-                <div className='skills'>
-                    <div className='skills-title'>
+                <div className='services'>
+                    <div className='services-title'>
                         <h1>What things I'm doing...</h1>
                     </div>
                     <Row>
@@ -111,4 +112,42 @@ const Skills = () => {
     )
 }
 
-export {Title, About, Skills}
+const Skills = () => {
+    return (
+        <section className='skills-section'>
+            <div className='row'>
+                <div className='skills'>
+                    <div className='skills-title'>
+                        <h1>My skills</h1>
+                    </div>
+                    <div className='skills-container'>
+                        <div className='core-skills'>
+                            <div className='skills-progress'>
+                                <div className="text-center">JavaScript/TypeScript</div>
+                                <Progress value="6" max="10" color='warning'/>
+                                <div className="text-center">Automation Frameworks</div>
+                                <Progress value="7" max="10" color='warning'/>
+                                <div className="text-center">Node JS</div>
+                                <Progress value="4" max="10" color='danger'/>
+                                <div className="text-center">CI/CD</div>
+                                <Progress value="3" max="10" color='danger'/>
+                            </div>
+                        </div>
+                        <div className='soft-skills'>
+                            <div className="text-center">Test strategy</div>
+                            <Progress value="7" max="10" color='warning'/>
+                            <div className="text-center">Test documentation</div>
+                            <Progress value="9" max="10" color='success'/>
+                            <div className="text-center">Manual testing</div>
+                            <Progress value="8" max="10" color='success'/>
+                            <div className="text-center">Test performance</div>
+                            <Progress value="6" max="10" color='success'/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    )
+}
+
+export {Title, About, Services, Skills}

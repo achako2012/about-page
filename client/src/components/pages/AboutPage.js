@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import NavBar from "../nav-bar";
-import {Title, About, Skills} from '../about-content'
+import {Title, About, Services,Skills} from '../about-content'
 
 
 
@@ -12,6 +12,7 @@ export default class AboutPage extends Component {
                 <NavBar/>
                 <Title/>
                 <About/>
+                <Services/>
                 <Skills/>
             </>
         )

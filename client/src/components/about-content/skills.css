@@ -8,23 +8,12 @@
     padding-bottom: 25px;
 }
 
-.skills-title h1 {
-    margin: 0 auto;
-}
-
-.card{
-    height: 280px;
-    max-height: 300px;
-}
-
-.card-body {
+.skills-container{
     display: flex;
-    align-items: center;
+    justify-content: space-evenly;
+    text-align: left;
 }
 
-.react-icons {
-    margin: 0 auto;
-    margin-bottom: .5rem;
-    height: 4em;
-    width: 4em;
+.progress{
+    width: 25rem;
 }
