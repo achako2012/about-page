@@ -1,9 +1,5 @@
-.about-section {
-    margin: 0 auto;
-}
-
 .about {
-    padding: 15px 0;
+    padding: 60px 30px;
     display: flex;
     justify-content: space-evenly;
 }

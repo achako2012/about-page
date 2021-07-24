@@ -1,12 +1,8 @@
-.title-section{
-    background-color: #4d6d9a;
-    margin: 0 auto;
-}
-
 .main{
     display:flex;
     flex-direction: column;
     align-items: center;
+    padding: 15px 0;
 }
 
 .title-main{
