@@ -77,7 +77,6 @@ const Skills = () => {
                             <li>Proficient with test matrix</li>
                             <li>web, api, backend</li>
                             <li>writing checklists</li>
-                            <li>I can force the developer to do what he doesn't want</li>
                         </ul>
                     </div>
                     <div className='Web Development'>

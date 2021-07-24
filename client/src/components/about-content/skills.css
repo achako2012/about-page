@@ -11,4 +11,9 @@
 .skills {
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
+}
+
+.skills div{
+    max-width:33%;
 }
