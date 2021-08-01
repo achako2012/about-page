@@ -2,7 +2,8 @@ import express from 'express'
 import mongoose from 'mongoose'
 import bodyParser from "body-parser";
 import middlewares from './middlewares.js'
-import experienceRoutes from './routes/experience.js'
+import workRoutes from './routes/work.js'
+import aboutRoutes from './routes/about.js'
 
 
 const PORT = process.env.PORT ?? 4300
@@ -14,7 +15,8 @@ app.use(bodyParser.json());
 app.use(middlewares.requestTime)
 app.use(middlewares.logger)
 
-app.use('/about-page-service',experienceRoutes)
+app.use('/about-page-service', workRoutes)
+app.use('/about-page-service', aboutRoutes)
 
 async function start() {
     try {

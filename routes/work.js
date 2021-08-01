@@ -1,5 +1,5 @@
 import {Router} from 'express'
-import {getAll, create, deleteWorkById} from "../controllers/experience-api-controller.js";
+import {getAll, create, deleteWorkById} from "../controllers/work-api-controller.js";
 
 const router = Router()
 

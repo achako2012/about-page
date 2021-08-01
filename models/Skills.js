@@ -3,14 +3,15 @@ import pkg from 'mongoose';
 const {Schema, model} = pkg;
 
 const schema = new Schema({
+
     title: {
         type: String,
         required: true
     },
-    article: {
+    value: {
         type: String,
         required: true
     }
 })
 
-export default model('Experience', schema)
+export default model('Skills', schema)

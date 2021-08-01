@@ -1,7 +1,7 @@
-import Experience from "../models/Experience.js";
+import Work from "../models/Work.js";
 
 export const getAll = async (req, res) => {
-    const works = await Experience.find({}, (err, doc) => {
+    const works = await Work.find({}, (err, doc) => {
 
         if (err) console.log(err)
 
@@ -21,7 +21,7 @@ export const create = async (req, res) => {
         obligations: obligations
     }
 
-    await Experience.create(work, (err, doc) => {
+    await Work.create(work, (err, doc) => {
 
         if (err) console.log(err)
 
@@ -34,7 +34,7 @@ export const create = async (req, res) => {
 export const deleteWorkById = async (req, res) => {
     const workId = req.body.id
 
-    await Experience.findOneAndDelete({_id: workId}, (err, result) => {
+    await Work.findOneAndDelete({_id: workId}, (err, result) => {
 
         if (err) console.log(err)
 
