@@ -1,4 +1,5 @@
 {
+  "homepage": "http://achako2012.github.io/about_server",
   "name": "about_server",
   "version": "1.0.0",
   "description": "",
@@ -17,6 +18,7 @@
   "dependencies": {
     "colors": "^1.4.0",
     "express": "^4.17.1",
+    "gh-pages": "^3.2.3",
     "mongodb": "^3.6.8",
     "mongoose": "^5.12.15",
     "node-fetch": "^2.6.1"
