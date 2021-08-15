@@ -5,8 +5,8 @@
   "description": "",
   "type": "module",
   "scripts": {
-    "predeploy": "npm run client",
-    "depoloy": "gh-pages -d client",
+    "predeploy": "npm run start",
+    "depoloy": "gh-pages -d start",
     "start": "node app.js",
     "server": "nodemon app.js",
     "client": "npm run start --prefix client",
