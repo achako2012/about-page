@@ -4,6 +4,7 @@
   "description": "",
   "type": "module",
   "scripts": {
+    "predeploy": "npm run client",
     "depoloy": "gh-pages -d client",
     "start": "node app.js",
     "server": "nodemon app.js",
