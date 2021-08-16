@@ -1,9 +1,0 @@
-.about-contnet {
-    display: flex;
-    flex-direction: column;
-    padding-left: 10px;
-}
-
-h2 {
-    font-size: 1.8em;
-}

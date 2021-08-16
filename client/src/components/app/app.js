@@ -10,7 +10,7 @@ export default class App extends Component {
             <Router>
                 <div className='app'>
                     <div className='about-container'>
-                        <Route path='/about' component={AboutPage}/>
+                        <Route path='' component={AboutPage}/>
                     </div>
                 </div>
             </Router>
