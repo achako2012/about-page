@@ -6,7 +6,7 @@ import workRoutes from './routes/work.js'
 import aboutRoutes from './routes/about.js'
 
 
-const PORT = process.env.PORT || 80
+const PORT = process.env.PORT || '8080'
 const app = express()
 const uri = 'mongodb+srv://alex:chako2012@cluster0.t6ctu.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
 
