@@ -6,7 +6,7 @@ import workRoutes from './routes/work.js'
 import aboutRoutes from './routes/about.js'
 
 const app = express()
-const PORT = process.env.PORT || '8080'
+const PORT = process.env.PORT || '5000'
 
 const uri = process.env.MONGODB_URI || 'mongodb+srv://alex:chako2012@cluster0.t6ctu.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 
@@ -14,10 +14,6 @@ await mongoose.connect(uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
-
-mongoose.connection.on('connected', () => {
-    console.log('Mongoose is connected!!!!');
-});
 
 // Data parsing
 app.use(bodyParser.urlencoded({extended: false}));
