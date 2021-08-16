@@ -15,8 +15,8 @@ app.use(bodyParser.json());
 app.use(middlewares.requestTime)
 app.use(middlewares.logger)
 
-app.use('/about-page-service', workRoutes)
-app.use('/about-page-service', aboutRoutes)
+// app.use('/about-page-service', workRoutes)
+// app.use('/about-page-service', aboutRoutes)
 
 async function start() {
     try {
@@ -24,6 +24,9 @@ async function start() {
             useNewUrlParser: true,
             useUnifiedTopology: true
         })
+
+        app.use('/about-page-service', workRoutes)
+        app.use('/about-page-service', aboutRoutes)
 
         if(process.env.NODE_ENV === 'production'){
              app.use(express.static('client/build'))
