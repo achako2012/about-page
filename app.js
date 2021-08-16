@@ -25,6 +25,10 @@ async function start() {
             useUnifiedTopology: true
         })
 
+        if(process.env.NODE_ENV === 'production'){
+             app.use(express.static('client/build'))
+        }
+
         app.listen(PORT, () => console.log(`App has been started on port ${PORT}...`))
 
     } catch (e) {
@@ -34,9 +38,4 @@ async function start() {
 }
 
 start()
-
-// process.on("SIGINT", () => {
-//     mongoose.close();
-//     process.exit();
-// });
 
