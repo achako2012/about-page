@@ -1,6 +1,8 @@
 import Work from "../models/Work.js";
+import {CustomRequest} from "../types.js";
+import {Response} from "express";
 
-export const getAll = async (req, res) => {
+export const getAll = async (req:CustomRequest, res:Response) => {
     const works = await Work.find({}, (err, doc) => {
 
         if (err) console.log(err)
@@ -11,7 +13,7 @@ export const getAll = async (req, res) => {
     res.status(200).json(works)
 }
 
-export const create = async (req, res) => {
+export const create = async (req:CustomRequest, res:Response) => {
     const {company, position, date, obligations} = req.body
 
     const work = {
@@ -31,10 +33,10 @@ export const create = async (req, res) => {
     res.status(201).json(req.body)
 }
 
-export const deleteWorkById = async (req, res) => {
+export const deleteWorkById = async (req:CustomRequest, res:Response) => {
     const workId = req.body.id
 
-    await Work.findOneAndDelete({_id: workId}, (err, result) => {
+    await Work.findOneAndDelete({_id: workId}, undefined,(err:any, result:any) => {
 
         if (err) console.log(err)
 
