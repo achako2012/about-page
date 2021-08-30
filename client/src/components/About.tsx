@@ -1,5 +1,5 @@
 import React from 'react'
-import './app.css'
+import '../app.css'
 import {Button, Card, CardText, CardTitle, Col, Row} from "reactstrap";
 import {IconContext} from "react-icons";
 import {BsGear, GoBrowser, MdDeveloperBoard} from "react-icons/all";

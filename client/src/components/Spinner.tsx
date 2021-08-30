@@ -1,5 +1,5 @@
 import React from "react";
-import './app.css'
+import '../app.css'
 
 export const Spinner:React.FC = () => {
     return(
