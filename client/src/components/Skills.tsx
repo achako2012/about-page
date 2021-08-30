@@ -2,7 +2,7 @@ import {Progress} from "reactstrap";
 import './app.css'
 import React, {Component} from "react";
 import {Spinner} from "./Spinner";
-import GetHooks from "../hooks/getHooks";
+import GetHooks from "../api/getHooks";
 
 type SkillsProps = {
     getSkills: any

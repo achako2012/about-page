@@ -2,12 +2,9 @@ import React from "react";
 import {Navbar} from "../Navbar"
 import {Title, About, Services} from '../About'
 import Skills from '../Skills'
-import GetHooks from "../../hooks/getHooks";
+import {api} from "../../global-hooks";
 
 export const AboutPage: React.FC = () => {
-
-    const getHooks = new GetHooks()
-
 
     return (
         <>
@@ -15,7 +12,7 @@ export const AboutPage: React.FC = () => {
             <Title/>
             <About/>
             <Services/>
-            <Skills getSkills={getHooks.getSkillList()}/>
+            <Skills getSkills={api.skillsService.getSkillsList()}/>
         </>
     )
 
