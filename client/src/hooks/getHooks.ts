@@ -1,3 +1,5 @@
+import {SkillsList} from "../types";
+
 class GetHooks {
 
     readonly _apiBase: string;
@@ -21,7 +23,7 @@ class GetHooks {
         return this.getResource(`/work-list-api/work-list`);
     }
 
-    async getSkillList():Promise<any> {
+    async getSkillList():Promise<SkillsList[]> {
         return this.getResource(`/customer-api/skills`);
     }
 }

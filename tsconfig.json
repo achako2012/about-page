@@ -16,9 +16,6 @@
     "noImplicitAny": true,
     "moduleResolution": "node",
     "sourceMap": true,
-    "outDir": "dist",
-    "include": [
-      "server"
-    ]
+    "outDir": "dist"
   }
 }

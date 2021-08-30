@@ -1,0 +1,11 @@
+import { CustomRequest } from "../types.js";
+import { Response } from "express";
+export declare const getAbout: (req: CustomRequest, res: Response) => Promise<void>;
+export declare const getExperience: (req: CustomRequest, res: Response) => Promise<void>;
+export declare const getSkills: (req: CustomRequest, res: Response) => Promise<void>;
+export declare const addAbout: (req: CustomRequest, res: Response) => Promise<void>;
+export declare const addExperience: (req: CustomRequest, res: Response) => Promise<void>;
+export declare const addSkill: (req: CustomRequest, res: Response) => Promise<void>;
+export declare const deleteAboutById: (req: CustomRequest, res: Response) => Promise<void>;
+export declare const deleteExperienceById: (req: CustomRequest, res: Response) => Promise<void>;
+export declare const deleteSkillById: (req: CustomRequest, res: Response) => Promise<void>;
