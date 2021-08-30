@@ -1,23 +1,34 @@
-import {Component} from "react";
-import Spinner from "../../components/spinner";
-import './skills.css'
 import {Progress} from "reactstrap";
+import './app.css'
+import React, {Component} from "react";
+import {Spinner} from "./Spinner";
+import GetHooks from "../hooks/getHooks";
 
-export default class Skills extends Component {
+type SkillsProps = {
+    getSkills: any
+}
+
+export default class Skills extends Component<SkillsProps> {
+
+    constructor(props: SkillsProps) {
+        super(props);
+    }
 
     state = {
         skillsList: null
     }
 
+    getHooks = new GetHooks()
+
     componentDidMount() {
-        const {getData} = this.props
-        getData()
-            .then(skillsList => {
-                this.setState({skillsList})
-            })
+        this.getHooks.getSkillList().then(skillsList=>{
+            this.setState({skillsList})
+        })
+
     }
 
-    getColor(value) {
+
+    getColor(value:any) {
         if (value > 7 && value < 11) {
             return 'success'
         } else if (value > 4 && value < 8) {
@@ -27,8 +38,8 @@ export default class Skills extends Component {
         }
     }
 
-    renderItems(arr) {
-        return arr.map((item) => {
+    renderItems(arr:any) {
+        return arr.map((item:any) => {
             const {_id, ...skills} = item
             const color = this.getColor(skills.value)
             return (

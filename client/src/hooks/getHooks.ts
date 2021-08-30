@@ -1,10 +1,14 @@
-export default class GetHooks {
+import {SkillsList} from "../types";
+
+class GetHooks {
+
+    readonly _apiBase: string;
 
     constructor() {
         this._apiBase = '/about-page-service';
     }
 
-    getResource = async (url) => {
+    async getResource(url: string):Promise<any> {
         const res = await fetch(`${this._apiBase}${url}`);
         console.log(`${this._apiBase}${url}`)
 
@@ -15,12 +19,13 @@ export default class GetHooks {
         return await res.json();
     }
 
-    getWorkList = async () => {
+    async getWorkList():Promise<any> {
         return this.getResource(`/work-list-api/work-list`);
     }
 
-    getSkillList = async () => {
+    async getSkillList():Promise<SkillsList[]> {
         return this.getResource(`/customer-api/skills`);
     }
-
 }
+
+export default GetHooks;
