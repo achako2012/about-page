@@ -1,12 +1,10 @@
-import React from 'react';
-import {Button, Card, CardText, CardTitle, Col, Row} from 'reactstrap';
-import './title.css'
-import './about.css'
-import './services.css'
-import {BsGear, GoBrowser, MdDeveloperBoard} from "react-icons/all";
+import React from 'react'
+import './app.css'
+import {Button, Card, CardText, CardTitle, Col, Row} from "reactstrap";
 import {IconContext} from "react-icons";
+import {BsGear, GoBrowser, MdDeveloperBoard} from "react-icons/all";
 
-const Title = () => {
+export const Title: React.FC = () => {
     return (
         <section className='title-section'>
             <div className='row'>
@@ -30,7 +28,7 @@ const Title = () => {
     )
 }
 
-const About = () => {
+export const About: React.FC = () => {
     return (
         <section className='about-section'>
             <div className='row'>
@@ -39,7 +37,7 @@ const About = () => {
                         <img src={process.env.PUBLIC_URL + '/img/photo.jpg'} alt='myPhotoAbout'/>
                     </div>
                     <div className='about-info'>
-                        <h1 className='info-header'>about me11</h1>
+                        <h1 className='info-header'>about me22</h1>
                         <p className='info-title'>Automation QA Enegineer</p>
                         <p className='info-article'>I'am <span>Alexander Chako</span> Knowledgeable, self-driven, and certified
                             Automation
@@ -56,7 +54,7 @@ const About = () => {
     )
 }
 
-const Services = () => {
+export const Services: React.FC = () => {
     return (
         <section className='services-section'>
             <div className='row'>
@@ -109,43 +107,3 @@ const Services = () => {
         </section>
     )
 }
-
-// const Skills = () => {
-//     return (
-//         <section className='skills-section'>
-//             <div className='row'>
-//                 <div className='skills'>
-//                     <div className='skills-title'>
-//                         <h1>My skills</h1>
-//                     </div>
-//                     <div className='skills-container'>
-//                         <div className='core-skills'>
-//                             <div className='skills-progress'>
-//                                 <div className="text-center">JavaScript/TypeScript</div>
-//                                 <Progress value="6" max="10" color='warning'/>
-//                                 <div className="text-center">Automation Frameworks</div>
-//                                 <Progress value="7" max="10" color='warning'/>
-//                                 <div className="text-center">Node JS</div>
-//                                 <Progress value="4" max="10" color='danger'/>
-//                                 <div className="text-center">CI/CD</div>
-//                                 <Progress value="3" max="10" color='danger'/>
-//                             </div>
-//                         </div>
-//                         <div className='soft-skills'>
-//                             <div className="text-center">Test strategy</div>
-//                             <Progress value="7" max="10" color='warning'/>
-//                             <div className="text-center">Test documentation</div>
-//                             <Progress value="9" max="10" color='success'/>
-//                             <div className="text-center">Manual testing</div>
-//                             <Progress value="8" max="10" color='success'/>
-//                             <div className="text-center">Test performance</div>
-//                             <Progress value="6" max="10" color='success'/>
-//                         </div>
-//                     </div>
-//                 </div>
-//             </div>
-//         </section>
-//     )
-// }
-
-export {Title, About, Services}

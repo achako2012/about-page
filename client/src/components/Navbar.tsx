@@ -1,11 +1,10 @@
-import React from "react";
-import './nav-bar.css'
-import {Link} from "react-router-dom";
+import React from 'react'
+import './app.css'
+import {Link} from 'react-router-dom';
 import {SiGithub, SiLinkedin} from "react-icons/si";
 import {FaTelegram} from "react-icons/fa";
 
-const NavBar = () => {
-
+export const Navbar: React.FC = () => {
     return (
         <header>
             <div className='row'>
@@ -24,7 +23,4 @@ const NavBar = () => {
             </div>
         </header>
     )
-
 }
-
-export default NavBar;
