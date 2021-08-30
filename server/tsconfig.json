@@ -16,10 +16,6 @@
     "noImplicitAny": true,
     "moduleResolution": "node",
     "sourceMap": true,
-    "outDir": "dist",
-  },
-
-  "include": [
-    "src"
-  ]
+    "outDir": "shared"
+  }
 }
