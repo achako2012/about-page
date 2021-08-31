@@ -1,0 +1,13 @@
+{
+  "name": "about_page",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "scripts": {
+    "heroku-postbuild": "npm install --prefix server && npm install --prefix client && npm run build --prefix client",
+    "start": "node server/shared/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
