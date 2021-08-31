@@ -10,7 +10,6 @@ const httpClient = axios.create({
     headers: {
         [Header.ContentType]: 'application/json',
         [Header.Accept]: '*/*',
-        [Header.AccessControl]:'Accept'
     }
 });
 

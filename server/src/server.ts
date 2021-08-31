@@ -1,9 +1,10 @@
-import express from 'express'
-import mongoose from 'mongoose'
+import express from 'express';
+import cors from 'cors'
+import mongoose from 'mongoose';
 import bodyParser from "body-parser";
-import middlewares from './middlewares.js'
-import workRoutes from './routes/work.js'
-import aboutRoutes from './routes/about.js'
+import middlewares from './middlewares.js';
+import workRoutes from './routes/work.js';
+import aboutRoutes from './routes/about.js';
 
 const server = express()
 const PORT = process.env.PORT || '5000'
@@ -16,10 +17,13 @@ await mongoose.connect(uri, {
     useUnifiedTopology: true
 })
 
-server.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-})
+const allowedOrigins = ['http://localhost:3000', 'https://aboutalexapp.herokuapp.com'];
+
+const options: cors.CorsOptions = {
+    origin: allowedOrigins
+};
+
+server.use(cors(options))
 
 // Data parsing
 server.use(bodyParser.urlencoded({extended: false}));

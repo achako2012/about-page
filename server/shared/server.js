@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 import mongoose from 'mongoose';
 import bodyParser from "body-parser";
 import middlewares from './middlewares.js';
@@ -11,10 +12,11 @@ await mongoose.connect(uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
-server.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-});
+const allowedOrigins = ['http://localhost:3000', 'https://aboutalexapp.herokuapp.com'];
+const options = {
+    origin: allowedOrigins
+};
+server.use(cors(options));
 // Data parsing
 server.use(bodyParser.urlencoded({ extended: false }));
 server.use(bodyParser.json());
