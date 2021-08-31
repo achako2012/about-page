@@ -1,5 +1,5 @@
 import React from 'react'
-import './app.css'
+import '../app.css'
 import {Link} from 'react-router-dom';
 import {SiGithub, SiLinkedin} from "react-icons/si";
 import {FaTelegram} from "react-icons/fa";

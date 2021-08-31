@@ -1,5 +1,5 @@
 import React from 'react'
-import './app.css'
+import '../app.css'
 import {Button, Card, CardText, CardTitle, Col, Row} from "reactstrap";
 import {IconContext} from "react-icons";
 import {BsGear, GoBrowser, MdDeveloperBoard} from "react-icons/all";
@@ -37,16 +37,19 @@ export const About: React.FC = () => {
                         <img src={process.env.PUBLIC_URL + '/img/photo.jpg'} alt='myPhotoAbout'/>
                     </div>
                     <div className='about-info'>
-                        <h1 className='info-header'>about me22</h1>
+                        <h1 className='info-header'>about me</h1>
                         <p className='info-title'>Automation QA Enegineer</p>
-                        <p className='info-article'>I'am <span>Alexander Chako</span> Knowledgeable, self-driven, and certified
+                        <p className='info-article'>I'am <span>Alexander Chako</span> Knowledgeable, self-driven, and
+                            certified
                             Automation
                             Test
                             Engineer skilled at developing new
                             tests and test plans, participating in all facets of project development, and performing
                             risk
                             analysis</p>
-                        <Button color="primary" size="lg">DOWNLOAD RESUME</Button>
+                        <a href={process.env.PUBLIC_URL + '/Alexander_Chako_CV.pdf'} download>
+                            <Button color="primary" size="lg">DOWNLOAD RESUME</Button>
+                        </a>
                     </div>
                 </div>
             </div>
