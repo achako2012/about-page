@@ -4,7 +4,8 @@
   "description": "",
   "type": "module",
   "scripts": {
-    "postinstall": "npm install --prefix server && npm install --prefix client"
+    "postinsta22ll": "npm install --prefix server && npm install --prefix client",
+    "heroku-postbuild": "npm install --prefix server && npm install --prefix client && npm run build --prefix client"
   },
   "keywords": [],
   "author": "",
