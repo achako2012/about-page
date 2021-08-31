@@ -5,8 +5,10 @@
   "type": "module",
   "scripts": {
     "compile": "tsc -p .",
-    "build": "cd ../client && npm run build",
-    "install-client": "cd ../client && npm install",
+    "build22": "cd ../client && npm run build",
+    "install-client22": "cd ../client && npm install",
+    "build": "npm run build --prefix ../client",
+    "install-client": "npm install --prefix ../client",
     "heroku-postbuild": "npm run install-client && npm run build",
     "start": "node shared/server.js",
     "client": "npm run start --prefix ../client",
