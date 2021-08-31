@@ -1,0 +1,12 @@
+{
+  "name": "about_page",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "scripts": {
+    "postinstall": "npm install --prefix server && npm install --prefix client"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
