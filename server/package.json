@@ -5,12 +5,7 @@
   "type": "module",
   "scripts": {
     "compile": "tsc -p .",
-    "build": "cd ../client && npm run build",
-    "install-client": "cd ../client && npm install",
-    "heroku-postbuild": "npm run install-client && npm run build",
-    "start": "node shared/server.js",
-    "client": "npm run start --prefix ../client",
-    "dev": "../node_modules/.bin/concurrently \\\"npm run server\\\" \\\"npm run client\\\""
+    "start": "node shared/server.js"
   },
   "keywords": [],
   "author": "",
