@@ -16,8 +16,6 @@ const httpClient = axios.create({
 const onRequest = (request: AxiosRequestConfig) => {
     const {method, url, data} = request;
 
-    console.log(request)
-
     logger.info(`--> ${method?.toUpperCase()} ${url} ${data ? `Body: ${JSON.stringify(data)}` : ''}`);
 
     return request;

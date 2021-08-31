@@ -4,9 +4,9 @@ import {Title, About, Services} from '../components/About'
 import Skills from '../components/Skills'
 import SkillsService from "../api/services/skills-service";
 
-export const AboutPage: React.FC = () => {
+export const AboutPage:React.FC = () => {
 
-    const skillService = SkillsService.create()
+   const skillsService = SkillsService.create()
 
     return (
         <>
@@ -14,7 +14,7 @@ export const AboutPage: React.FC = () => {
             <Title/>
             <About/>
             <Services/>
-            <Skills getSkills={skillService.getSkills()}/>
+            <Skills getSkills={skillsService.getSkills()}/>
         </>
     )
 
