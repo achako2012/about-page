@@ -15,9 +15,15 @@ export const Navbar: React.FC = () => {
                     <Link to="/blog">blog</Link>
                     <Link to="/blog">contact</Link>
                     <div className='contacts-links'>
-                        <SiGithub/>
-                        <SiLinkedin/>
-                        <FaTelegram/>
+                        <a href="https://github.com/achako2012?tab=repositories">
+                            <SiGithub/>
+                        </a>
+                        <a href="https://www.linkedin.com/in/alexander-chako-907624154/">
+                            <SiLinkedin/>
+                        </a>
+                        <a href="https://t.me/AleksandrChako">
+                            <FaTelegram/>
+                        </a>
                     </div>
                 </nav>
             </div>
