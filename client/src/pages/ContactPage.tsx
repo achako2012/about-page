@@ -4,7 +4,6 @@ import {EMAIL_CONFIGURATION} from "../confg";
 
 export const ContactPage: React.FC = () => {
 
-
     return (
         <>
             <Social/>
