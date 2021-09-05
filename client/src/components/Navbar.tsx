@@ -13,7 +13,7 @@ export const Navbar: React.FC = () => {
                     <Link to="/about">about</Link>
                     <Link to="/experience">experience</Link>
                     <Link to="/blog">blog</Link>
-                    <Link to="/blog">contact</Link>
+                    <Link to="/contact">contact</Link>
                     <div className='contacts-links'>
                         <a href="https://github.com/achako2012?tab=repositories">
                             <SiGithub/>

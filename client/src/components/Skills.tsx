@@ -3,9 +3,10 @@ import '../app.css'
 import React, {Component} from "react";
 import {Spinner} from "./Spinner";
 import GetHooks from "../hooks/getHooks";
+import {log} from "util";
 
 type SkillsProps = {
-    getSkills: any
+    skillsService: any
 }
 
 export default class Skills extends Component<SkillsProps> {
@@ -18,15 +19,12 @@ export default class Skills extends Component<SkillsProps> {
         skillsList: null
     }
 
-    getHooks = new GetHooks()
 
-    componentDidMount() {
-        this.getHooks.getSkillList().then(skillsList=>{
-            this.setState({skillsList})
-        })
-
+    //skillsService.getSkills()
+    async componentDidMount() {
+        const skillsList = await this.props.skillsService.getSkills()
+        await this.setState({skillsList})
     }
-
 
     getColor(value:any) {
         if (value > 7 && value < 11) {
