@@ -62,8 +62,8 @@ export const ContactForm: React.FC<ContactFormProps> = props => {
                 <Form className='contact-wrapper' onSubmit={sendEmail}>
                     <Input type="text" name="name" id="nameInput" placeholder="name"/>
                     <Input type="email" name="email" id="emailInput" placeholder="email"/>
-                    <Input type="textarea" name="text" id="textInput" placeholder="your message"/>
-                    <Button type="submit" id="submitButton">Submit</Button>
+                    <Input type="textarea" name="message" id="textInput" placeholder="your message"/>
+                    <Button type="submit" id="submitButton" color="secondary" size="sm">Submit</Button>
                 </Form>
             </div>
         </section>
