@@ -14,7 +14,7 @@ export const AboutPage:React.FC = () => {
             <Title/>
             <About/>
             <Services/>
-            <Skills getSkills={skillsService.getSkills()}/>
+            <Skills skillsService={skillsService}/>
         </>
     )
 
