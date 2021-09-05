@@ -10,7 +10,6 @@ export const AboutPage:React.FC = () => {
 
     return (
         <>
-            <Navbar/>
             <Title/>
             <About/>
             <Services/>

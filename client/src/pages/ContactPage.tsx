@@ -1,14 +1,14 @@
 import React from "react";
-import {Navbar} from "../components/Navbar";
-import {ContactForm} from "../components/ContactForm";
+import {ContactForm, Social} from "../components/ContactForm";
+import {EMAIL_CONFIGURATION} from "../confg";
 
 export const ContactPage: React.FC = () => {
 
 
     return (
         <>
-            <Navbar/>
-            <ContactForm/>
+            <Social/>
+            <ContactForm config={EMAIL_CONFIGURATION}/>
         </>
     )
 }

@@ -1,49 +1,71 @@
 import React from "react";
 import emailjs from 'emailjs-com'
-import {Button, Form, FormGroup, Label, Input, FormText} from 'reactstrap';
+import {Button, Form, Input, Label} from 'reactstrap';
+import {SiLinkedin} from "react-icons/si";
+import {FaTelegram} from "react-icons/fa";
 
-export const ContactForm: React.FC = () => {
-    console.log('hi')
+interface ContactFormProps {
+    config: {
+        serviceID: string,
+        templateID: string,
+        userID: string
+    }
+}
+
+export const Social: React.FC = () => {
+
+    return (
+        <section className='social-section'>
+            <div className='row'>
+                <div className='main'>
+                    <div className='social-title'>
+                        <h1>Contact me in social</h1>
+                    </div>
+                    <div className='social-links'>
+                        <a href="https://www.linkedin.com/in/alexander-chako-907624154/" id='linkedin'>
+                            <SiLinkedin/>
+                        </a>
+                        <a href="https://t.me/AleksandrChako" id='telegram'>
+                            <FaTelegram/>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    )
+}
 
 
-    const sendEmail = (e: any) => {
-        e.preventDefault();
+export const ContactForm: React.FC<ContactFormProps> = props => {
 
-        console.log('hi')
+    const {serviceID, templateID, userID} = props.config
 
-        emailjs.sendForm('service_uskhq3s', 'template_tld4aao', e.target, 'user_eTylOZ3BOiTo0iwssTpNN')
+    const sendEmail = (event: React.ChangeEvent<HTMLFormElement>) => {
+        event.preventDefault();
+
+        emailjs.sendForm(serviceID, templateID, event.target, userID)
             .then((result) => {
                 console.log(result.text);
             }, (error) => {
                 console.log(error.text);
             });
-        e.target.reset()
+
+        event.target.reset()
     }
 
     return (
-        <Form className='contact-wrapper' onSubmit={sendEmail}>
-
-            {/*<Label for="exampleEmail">Name</Label>*/}
-            <Input type="text" name="name" id="nameInput" placeholder="name"/>
-
-            {/*<Label for="exampleEmail">Email</Label>*/}
-            <Input type="email" name="email" id="emailInput" placeholder="email"/>
-
-            {/*<Label for="exampleEmail">Message</Label>*/}
-            <Input type="textarea" name="text" id="textInput" placeholder="your message"/>
-
-            <Button type="submit" id="submitButton">Submit</Button>
-        </Form>
-
-        // <form className="contact-form" onSubmit={sendEmail}>
-        //     <input type="hidden" name="contact_number"/>
-        //     <label>Name</label>
-        //     <input type="text" name="user_name"/>
-        //     <label>Email</label>
-        //     <input type="email" name="user_email"/>
-        //     <label>Message</label>
-        //     <textarea name="message"/>
-        //     <input type="submit" value="Send"/>
-        // </form>
+        <section className='contact-section'>
+            <div className='row'>
+                <div className='contact-title'>
+                    <h1>... or send me an email</h1>
+                </div>
+                <Form className='contact-wrapper' onSubmit={sendEmail}>
+                    <Input type="text" name="name" id="nameInput" placeholder="name"/>
+                    <Input type="email" name="email" id="emailInput" placeholder="email"/>
+                    <Input type="textarea" name="text" id="textInput" placeholder="your message"/>
+                    <Button type="submit" id="submitButton">Submit</Button>
+                </Form>
+            </div>
+        </section>
     )
 }

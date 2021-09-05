@@ -54,13 +54,13 @@ header {
     text-align: center;
 }
 
-a {
+.about-nav a {
     margin: 0 15px;
     color: #FFF;
     text-decoration: none;
 }
 
-a:hover {
+.about-nav a:hover {
     color: #FFF;
 }
 
@@ -287,32 +287,64 @@ svg {
 
 /*CONTACT FORM*/
 
-.contact-wrapper{
-    display:grid;
+.social-section{
+    padding: 20px 0;
+}
+
+.social-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.social-links a {
+    font-size: 4em;
+}
+
+.social-links #linkedin {
+    color: #0a66c2;
+}
+
+.social-links #telegram {
+    color: #0088cc;
+}
+
+.contact-section{
+    padding: 40px 0;
+}
+
+.contact-title{
+ text-align: center;
+}
+
+.contact-wrapper {
+    display: grid;
     grid-template-areas:
     "nameInput textInput"
     "emailInput textInput"
     ". submitButton";
     grid-template-rows: 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr;
-    grid-gap: 2vw;
+    grid-gap: 1vw;
+    padding: 30px 0;
 }
 
-#nameInput{
-    grid-area:nameInput;
+#nameInput {
+    grid-area: nameInput;
 }
 
-#emailInput{
-    grid-area:emailInput;
+#emailInput {
+    grid-area: emailInput;
 }
 
-#textInput{
-    grid-area:textInput;
+#textInput {
+    grid-area: textInput;
 }
 
-#submitButton{
+#submitButton {
     width: 50%;
-    grid-area:submitButton;
+    grid-area: submitButton;
     justify-self: end;
 }
 
