@@ -9,8 +9,8 @@ export const Navbar: React.FC = () => {
         <header>
             <div className='row'>
                 <nav className='about-nav'>
-                    <Link to="/home">alex</Link>
-                    <Link to="/about">about</Link>
+                    <Link to="/">alex</Link>
+                    <Link to="/">about</Link>
                     <Link to="/experience">experience</Link>
                     <Link to="/blog">blog</Link>
                     <Link to="/contact">contact</Link>

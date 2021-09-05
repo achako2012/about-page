@@ -2,8 +2,6 @@ import {Progress} from "reactstrap";
 import '../app.css'
 import React, {Component} from "react";
 import {Spinner} from "./Spinner";
-import GetHooks from "../hooks/getHooks";
-import {log} from "util";
 
 type SkillsProps = {
     skillsService: any
@@ -11,16 +9,10 @@ type SkillsProps = {
 
 export default class Skills extends Component<SkillsProps> {
 
-    constructor(props: SkillsProps) {
-        super(props);
-    }
-
     state = {
         skillsList: null
     }
 
-
-    //skillsService.getSkills()
     async componentDidMount() {
         const skillsList = await this.props.skillsService.getSkills()
         await this.setState({skillsList})
@@ -58,7 +50,6 @@ export default class Skills extends Component<SkillsProps> {
         }
 
         const items = this.renderItems(skillsList)
-
 
         return (
             <section className='skills-section'>

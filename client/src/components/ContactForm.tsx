@@ -1,6 +1,6 @@
 import React from "react";
 import emailjs from 'emailjs-com'
-import {Button, Form, Input, Label} from 'reactstrap';
+import {Button, Form, Input} from 'reactstrap';
 import {SiLinkedin} from "react-icons/si";
 import {FaTelegram} from "react-icons/fa";
 
