@@ -1,0 +1,48 @@
+$background_color: #5f6366;
+$text_color: #FFF;
+
+@mixin margin{
+  margin: 0 15px;
+}
+
+@mixin display_flex{
+  display: flex;
+  justify-content: center;
+}
+
+header {
+  font-size: 20px;
+  background-color: $background_color;
+  padding: 17px 0;
+}
+
+.about-nav {
+  @include display_flex;
+  align-items: center;
+  text-align: center;
+
+  a {
+    @include margin;
+    color: $text_color;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: $text_color;
+  }
+
+  a:nth-child(1) {
+    margin-right: auto;
+  }
+}
+
+.contacts-links {
+  margin-left: 20px;
+  color: $text_color;
+  @include display_flex;
+  font-size: 1.6em;
+}
+
+svg {
+  @include margin;
+}

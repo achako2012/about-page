@@ -2,6 +2,7 @@ import {Progress} from "reactstrap";
 import '../app.css'
 import React, {Component} from "react";
 import {Spinner} from "./Spinner";
+import '../styles/Skills.css'
 
 type SkillsProps = {
     skillsService: any

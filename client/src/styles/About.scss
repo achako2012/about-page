@@ -1,0 +1,98 @@
+@mixin text_align {
+  text-align: center;
+}
+
+.title-section {
+
+  .main {
+    padding: 15px 0;
+
+    .title-main {
+      @include text_align;
+      padding: 0 10px;
+    }
+
+    .additional-title p {
+      @include text_align;
+    }
+
+  }
+
+}
+
+.about-section {
+
+  .about {
+    padding: 60px 30px;
+    display: flex;
+    justify-content: space-evenly;
+
+    .about-photo {
+      max-width: 20%;
+
+      img {
+        border-radius: 50%;
+        border: 2px solid;
+        max-width: 100%;
+      }
+
+    }
+
+    .about-info {
+      max-width: 60%
+    }
+
+    .info-title {
+      font-weight: bold;
+    }
+
+    .info-article {
+
+      span {
+        text-decoration: underline;
+      }
+
+    }
+
+  }
+
+}
+
+.services-section {
+
+  .services {
+    padding: 30px 30px;
+
+    .services-title {
+      text-align: center;
+      padding-top: 15px;
+      padding-bottom: 25px;
+
+      h1 {
+        margin: 0 auto;
+      }
+
+    }
+
+    .card {
+      height: 280px;
+      max-height: 300px;
+    }
+
+    .card-body {
+      display: flex;
+      align-items: center;
+
+    }
+
+    .react-icons {
+      margin: 0 auto;
+      margin-bottom: .5rem;
+      height: 4em;
+      width: 4em;
+    }
+
+  }
+
+}
+
