@@ -1,0 +1,61 @@
+.title-section .main {
+  padding: 15px 0;
+}
+.title-section .main .title-main {
+  text-align: center;
+  padding: 0 10px;
+}
+.title-section .main .additional-title p {
+  text-align: center;
+}
+
+.about-section .about {
+  padding: 60px 30px;
+  display: flex;
+  justify-content: space-evenly;
+}
+.about-section .about .about-photo {
+  max-width: 20%;
+}
+.about-section .about .about-photo img {
+  border-radius: 50%;
+  border: 2px solid;
+  max-width: 100%;
+}
+.about-section .about .about-info {
+  max-width: 60%;
+}
+.about-section .about .info-title {
+  font-weight: bold;
+}
+.about-section .about .info-article span {
+  text-decoration: underline;
+}
+
+.services-section .services {
+  padding: 30px 30px;
+}
+.services-section .services .services-title {
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 25px;
+}
+.services-section .services .services-title h1 {
+  margin: 0 auto;
+}
+.services-section .services .card {
+  height: 280px;
+  max-height: 300px;
+}
+.services-section .services .card-body {
+  display: flex;
+  align-items: center;
+}
+.services-section .services .react-icons {
+  margin: 0 auto;
+  margin-bottom: 0.5rem;
+  height: 4em;
+  width: 4em;
+}
+
+/*# sourceMappingURL=About.css.map */

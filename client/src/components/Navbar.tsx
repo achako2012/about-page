@@ -3,6 +3,7 @@ import '../app.css'
 import {Link} from 'react-router-dom';
 import {SiGithub, SiLinkedin} from "react-icons/si";
 import {FaTelegram} from "react-icons/fa";
+import "../styles/Navbar.css"
 
 export const Navbar: React.FC = () => {
     return (
