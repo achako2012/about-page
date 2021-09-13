@@ -29,7 +29,8 @@ export default class Skills extends Component<SkillsProps> {
         }
     }
 
-    renderItems(arr:any) {
+    //TODO Create types for articles array
+    renderSkills(arr:any) {
         return arr.map((item:any) => {
             const {_id, ...skills} = item
             const color = this.getColor(skills.value)
@@ -50,8 +51,9 @@ export default class Skills extends Component<SkillsProps> {
             return <Spinner/>
         }
 
-        const items = this.renderItems(skillsList)
+        const items = this.renderSkills(skillsList)
 
+        //TODO Create function for list rendering
         return (
             <section className='skills-section'>
                 <div className='row'>

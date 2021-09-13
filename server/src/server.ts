@@ -5,6 +5,7 @@ import bodyParser from "body-parser";
 import middlewares from './middlewares.js';
 import workRoutes from './routes/work.js';
 import aboutRoutes from './routes/about.js';
+import articlesRoutes from './routes/articles.js';
 
 const server = express()
 const PORT = process.env.PORT || '5000'
@@ -40,6 +41,7 @@ server.use(middlewares.requestTime)
 server.use(middlewares.logger)
 server.use('/about-page-service', workRoutes)
 server.use('/about-page-service', aboutRoutes)
+server.use('/about-page-service', articlesRoutes)
 
 server.listen(PORT, () => console.log(`App has been started on port ${PORT}...`))
 
