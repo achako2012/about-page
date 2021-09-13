@@ -12,8 +12,7 @@ export const Navbar: React.FC = () => {
                 <nav className='about-nav'>
                     <Link to="/">alex</Link>
                     <Link to="/">about</Link>
-                    <Link to="/experience">experience</Link>
-                    <Link to="/blog">blog</Link>
+                    <Link to="/articles">articles</Link>
                     <Link to="/contact">contact</Link>
                     <div className='contacts-links'>
                         <a href="https://github.com/achako2012?tab=repositories">
