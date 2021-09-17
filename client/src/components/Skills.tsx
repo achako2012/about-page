@@ -4,6 +4,7 @@ import React, {Component} from "react";
 import {Spinner} from "./Spinner";
 import '../styles/Skills.css'
 
+//TODO add type
 type SkillsProps = {
     skillsService: any
 }

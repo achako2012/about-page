@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import {Spinner} from "./Spinner";
+import MyEditor from "./Editor";
 
 type ArticlesProps = {
     articlesService: any
@@ -45,10 +46,7 @@ export default class Articles extends Component<ArticlesProps> {
         return (
             <section>
                 <article>
-                    {items}
-                </article>
-                <article>
-                    {items[0]}
+                    <MyEditor articlesService={this.props.articlesService}/>
                 </article>
             </section>
 

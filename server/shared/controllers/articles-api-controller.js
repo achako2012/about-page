@@ -8,12 +8,13 @@ export const getArticles = async (req, res) => {
     res.status(200).json(articles);
 };
 export const createArticle = async (req, res) => {
-    const { title, article } = req.body;
+    const { title, article, html } = req.body;
     const date = Date.now();
     const newArticle = {
         title: title,
         article: article,
         date: date,
+        html: html
     };
     await Articles.create(newArticle, (err, doc) => {
         if (err)

@@ -10,7 +10,11 @@ const schema = new Schema({
         required: true
     },
     article: {
-        type: String,
+        type: JSON,
+        required: true
+    },
+    html: {
+        type: JSON,
         required: true
     }
 });

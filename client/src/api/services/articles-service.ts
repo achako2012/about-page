@@ -1,4 +1,6 @@
 import AboutService from './about-service';
+import {Header} from "../confg";
+import {EditorState} from "draft-js";
 
 interface getArticlesResponse {
     title: string;
@@ -10,11 +12,26 @@ class ArticlesService extends AboutService {
     /** Returns articles list */
     async getArticles(): Promise<getArticlesResponse[]> {
         const response = await this.httpClient.request<getArticlesResponse[]>({
-            url: `${this.baseUrl}/about-page-service/articles-api/articles-list`,
-            method: 'GET'
+            method: 'GET',
+            url: `${this.baseUrl}/about-page-service/articles-api/articles-list`
         });
 
         return response.data;
+    }
+
+    async postArticles(title: string, article: EditorState, html: string): Promise<void> {
+        return this.httpClient.request({
+            method: "POST",
+            url: `${this.baseUrl}/about-page-service/articles-api/articles-list`,
+            headers: {
+                [Header.ContentType]: 'application/json'
+            },
+            data: {
+                title: title,
+                article: article,
+                html: html
+            }
+        })
     }
 
 }

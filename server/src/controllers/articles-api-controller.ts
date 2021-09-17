@@ -2,7 +2,7 @@ import {CustomRequest} from "../types.js";
 import {Response} from "express";
 import Articles from "../models/Articles.js";
 
-export const getArticles = async (req:CustomRequest, res:Response) => {
+export const getArticles = async (req: CustomRequest, res: Response) => {
     const articles = await Articles.find({}, (err, doc) => {
 
         if (err) console.log(err)
@@ -13,14 +13,15 @@ export const getArticles = async (req:CustomRequest, res:Response) => {
     res.status(200).json(articles)
 }
 
-export const createArticle = async (req:CustomRequest, res:Response) => {
-    const {title, article} = req.body
+export const createArticle = async (req: CustomRequest, res: Response) => {
+    const {title, article, html} = req.body
     const date = Date.now()
 
     const newArticle = {
         title: title,
         article: article,
         date: date,
+        html: html
     }
 
     await Articles.create(newArticle, (err, doc) => {
@@ -33,10 +34,10 @@ export const createArticle = async (req:CustomRequest, res:Response) => {
     res.status(201).json(req.body)
 }
 
-export const deleteArticle = async (req:CustomRequest, res:Response) => {
+export const deleteArticle = async (req: CustomRequest, res: Response) => {
     const articleId = req.body.id
 
-    await Articles.findOneAndDelete({_id: articleId}, undefined,(err:any, result:any) => {
+    await Articles.findOneAndDelete({_id: articleId}, undefined, (err: any, result: any) => {
 
         if (err) console.log(err)
 
