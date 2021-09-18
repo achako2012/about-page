@@ -1,5 +1,5 @@
 import React from 'react'
-import {ContentState, convertFromRaw, convertToRaw, Editor, EditorState, RichUtils} from 'draft-js'
+import {convertToRaw, Editor, EditorState, RichUtils} from 'draft-js'
 import {stateToHTML} from "draft-js-export-html";
 
 type Props = {
@@ -24,22 +24,29 @@ export default class MyEditor extends React.Component<Props, State> {
         this.setState({
             editorState
         });
-
         console.log(stateToHTML(editorState.getCurrentContent()));
     }
 
     async onSaveClick() {
-        console.log('save button')
         const editorState = this.state.editorState
         const article = convertToRaw(editorState.getCurrentContent())
         const html = stateToHTML(editorState.getCurrentContent())
         await this.props.articlesService.postArticles('lol', JSON.stringify(article), html)
     }
 
-    render() {
+    onBoldClick() {
+        this.onChange(RichUtils.toggleInlineStyle(this.state.editorState, 'BOLD'));
+    }
 
+    onCodeClick() {
+        this.onChange(RichUtils.toggleInlineStyle(this.state.editorState, 'CODE'));
+    }
+
+    render() {
         return (
             <>
+                <button onClick={this.onBoldClick.bind(this)}>Bold</button>
+                <button onClick={this.onCodeClick.bind(this)}>Code</button>
                 <button onClick={this.onSaveClick.bind(this)}>Save</button>
                 <Editor
                     editorState={this.state.editorState}
