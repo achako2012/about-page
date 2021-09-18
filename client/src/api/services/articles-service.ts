@@ -34,6 +34,19 @@ class ArticlesService extends AboutService {
         })
     }
 
+    async deleteArticle(id:string):Promise<void>{
+        return this.httpClient.request({
+            method:'DELETE',
+            url: `${this.baseUrl}/about-page-service/articles-api/articles-list`,
+            headers:{
+                [Header.ContentType]: 'application/json'
+            },
+            data: {
+                id: id
+            }
+        })
+    }
+
 }
 
 export default ArticlesService;

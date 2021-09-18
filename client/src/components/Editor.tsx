@@ -33,7 +33,7 @@ export default class MyEditor extends React.Component<Props, State> {
         const editorState = this.state.editorState
         const article = convertToRaw(editorState.getCurrentContent())
         const html = stateToHTML(editorState.getCurrentContent())
-        await this.props.articlesService.postArticles('lol', JSON.stringify(article), JSON.stringify(html))
+        await this.props.articlesService.postArticles('lol', JSON.stringify(article), html)
     }
 
     render() {
