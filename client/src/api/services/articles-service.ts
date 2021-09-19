@@ -1,8 +1,7 @@
 import AboutService from './about-service';
 import {Header} from "../confg";
-import {EditorState} from "draft-js";
 
-export interface getArticlesResponse {
+export interface Article {
     _id: string;
     title: string;
     article: string;
@@ -10,11 +9,12 @@ export interface getArticlesResponse {
     html: string;
 }
 
+
 class ArticlesService extends AboutService {
 
     /** Returns articles list */
-    async getArticles(): Promise<getArticlesResponse[]> {
-        const response = await this.httpClient.request<getArticlesResponse[]>({
+    async getArticles(): Promise<Article[]> {
+        const response = await this.httpClient.request<Article[]>({
             method: 'GET',
             url: `${this.baseUrl}/about-page-service/articles-api/articles-list`
         });
@@ -22,7 +22,7 @@ class ArticlesService extends AboutService {
         return response.data;
     }
 
-    async postArticles(title: string, article: string, html: string): Promise<void> {
+    async postArticles(title: string, article: string, html: string): Promise<Article> {
         const response = await this.httpClient.request({
             method: "POST",
             url: `${this.baseUrl}/about-page-service/articles-api/articles-list`,

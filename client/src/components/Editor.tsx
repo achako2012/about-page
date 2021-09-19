@@ -1,10 +1,9 @@
 import React from 'react'
-import {convertToRaw, Editor, EditorState, RawDraftContentState, RichUtils} from 'draft-js'
-import {stateToHTML} from "draft-js-export-html";
+import {Editor, EditorState, RichUtils} from 'draft-js'
 
 type Props = {
     updateArticles(article: any): void
-    articlesService: any
+    articlesService?: any
 }
 
 type State = {
@@ -29,10 +28,8 @@ export default class MyEditor extends React.Component<Props, State> {
 
     async onSaveClick() {
         const editorState = await this.state.editorState
-        const articleEntity = convertToRaw(editorState.getCurrentContent())
-        const html = stateToHTML(editorState.getCurrentContent())
-        const article = await this.props.articlesService.postArticles('lol', JSON.stringify(articleEntity), html)
-        this.props.updateArticles(article)
+
+        this.props.updateArticles(editorState)
     }
 
     onBoldClick() {

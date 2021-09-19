@@ -1,15 +1,15 @@
 import React from "react";
-import ArticlesService, {getArticlesResponse} from "../api/services/articles-service";
+import ArticlesService, {Article} from "../api/services/articles-service";
 import MyEditor from "../components/Editor";
 import parse from "html-react-parser";
 import {Spinner} from "../components/Spinner";
-import {convertToRaw, EditorState, RawDraftContentState} from "draft-js";
+import {convertToRaw, EditorState} from "draft-js";
 import {stateToHTML} from "draft-js-export-html";
 
 type ArticlePageProps = {}
 
 interface ArticlePageState {
-    articlesList: getArticlesResponse[]
+    articlesList: Article[]
 }
 
 export class ArticlePage extends React.Component<ArticlePageProps, ArticlePageState> {
@@ -38,7 +38,7 @@ export class ArticlePage extends React.Component<ArticlePageProps, ArticlePageSt
         await this.setState({articlesList: newArticlesList})
     }
 
-    renderArticles(arr: getArticlesResponse[]) {
+    renderArticles(arr: Article[]) {
         return arr.map((item: any) => {
             const {_id, title, html} = item
             return (
@@ -51,11 +51,20 @@ export class ArticlePage extends React.Component<ArticlePageProps, ArticlePageSt
         })
     }
 
-    async updateArticles(article: any) {
+    async updateArticles(editorState: EditorState) {
+
+        const articleEntity = convertToRaw(editorState.getCurrentContent())
+       
+        const html = stateToHTML(editorState.getCurrentContent())
+
+        const response = await this.articlesService.postArticles('lol', JSON.stringify(articleEntity), html)
 
         const {articlesList} = this.state
-        articlesList.push(article)
+
+        articlesList.push(response)
         await this.setState({articlesList})
+
+
     }
 
     render() {
