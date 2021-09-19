@@ -2,9 +2,12 @@ import AboutService from './about-service';
 import {Header} from "../confg";
 import {EditorState} from "draft-js";
 
-interface getArticlesResponse {
+export interface getArticlesResponse {
+    _id: string;
     title: string;
-    article: string
+    article: string;
+    date: string;
+    html: string;
 }
 
 class ArticlesService extends AboutService {
@@ -34,11 +37,11 @@ class ArticlesService extends AboutService {
         })
     }
 
-    async deleteArticle(id:string):Promise<void>{
+    async deleteArticle(id: string): Promise<void> {
         return this.httpClient.request({
-            method:'DELETE',
+            method: 'DELETE',
             url: `${this.baseUrl}/about-page-service/articles-api/articles-list`,
-            headers:{
+            headers: {
                 [Header.ContentType]: 'application/json'
             },
             data: {

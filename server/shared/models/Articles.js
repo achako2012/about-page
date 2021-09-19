@@ -19,4 +19,4 @@ const schema = new Schema({
     }
 });
 export default model('Articles', schema);
-//# sourceMappingURL=Articles.js.map
+//# sourceMappingURL=Article.js.map
