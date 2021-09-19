@@ -22,8 +22,8 @@ class ArticlesService extends AboutService {
         return response.data;
     }
 
-    async postArticles(title: string, article: EditorState, html: string): Promise<void> {
-        return this.httpClient.request({
+    async postArticles(title: string, article: string, html: string): Promise<void> {
+        const response = await this.httpClient.request({
             method: "POST",
             url: `${this.baseUrl}/about-page-service/articles-api/articles-list`,
             headers: {
@@ -34,7 +34,9 @@ class ArticlesService extends AboutService {
                 article: article,
                 html: html
             }
-        })
+        });
+
+        return response.data;
     }
 
     async deleteArticle(id: string): Promise<void> {

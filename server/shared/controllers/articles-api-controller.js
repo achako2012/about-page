@@ -16,12 +16,16 @@ export const createArticle = async (req, res) => {
         date: date,
         html: html
     };
-    await Articles.create(newArticle, (err, doc) => {
-        if (err)
-            console.log(err);
-        console.log("Object ARTICLE is saved", doc);
-    });
-    res.status(201).json(req.body);
+    // //TODO solve this
+    const foo = await Articles.create(newArticle);
+    // Articles.create(newArticle, (err, doc) => {
+    //
+    //     if (err)
+    //         console.log(err);
+    //
+    //     console.log("Object ARTICLE is saved", doc);
+    // })
+    res.status(201).json(foo);
 };
 export const deleteArticle = async (req, res) => {
     const articleId = req.body.id;

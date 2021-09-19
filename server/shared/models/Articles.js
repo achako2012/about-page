@@ -18,5 +18,5 @@ const schema = new Schema({
         required: true
     }
 });
-export default model('Articles', schema);
-//# sourceMappingURL=Article.js.map
+export default model('Article', schema);
+//# sourceMappingURL=Articles.js.map

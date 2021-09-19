@@ -3,6 +3,8 @@ import ArticlesService, {getArticlesResponse} from "../api/services/articles-ser
 import MyEditor from "../components/Editor";
 import parse from "html-react-parser";
 import {Spinner} from "../components/Spinner";
+import {convertToRaw, EditorState, RawDraftContentState} from "draft-js";
+import {stateToHTML} from "draft-js-export-html";
 
 type ArticlePageProps = {}
 
@@ -19,6 +21,7 @@ export class ArticlePage extends React.Component<ArticlePageProps, ArticlePageSt
         this.state = {
             articlesList: []
         }
+        this.updateArticles = this.updateArticles.bind(this)
     }
 
     async componentDidMount() {
@@ -48,6 +51,13 @@ export class ArticlePage extends React.Component<ArticlePageProps, ArticlePageSt
         })
     }
 
+    async updateArticles(article: any) {
+
+        const {articlesList} = this.state
+        articlesList.push(article)
+        await this.setState({articlesList})
+    }
+
     render() {
         const {articlesList} = this.state
 
@@ -61,7 +71,7 @@ export class ArticlePage extends React.Component<ArticlePageProps, ArticlePageSt
                 </div>
                 <div className='editor-wrapper'>
                     <section>
-                        <MyEditor articlesService={this.articlesService}/>
+                        <MyEditor updateArticles={this.updateArticles} articlesService={this.articlesService}/>
                     </section>
                 </div>
             </>
