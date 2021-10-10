@@ -4,6 +4,7 @@ import parse from "html-react-parser";
 import {Spinner} from "../components/Spinner";
 import {Button} from "reactstrap";
 import {Link} from "react-router-dom";
+import "../styles/Articles.css"
 
 type ArticlePageProps = {}
 
@@ -40,10 +41,10 @@ export class ArticlePage extends React.Component<ArticlePageProps, ArticlePageSt
         return arr.map((item: any) => {
             const {_id, title, html} = item
             return (
-                <article key={_id}>
-                    <button onClick={() => this.onDeleteClick(_id)}>Delete</button>
+                <article key={_id} className='form-control'>
                     <p>{title}</p>
                     {parse(html)}
+                    <Button outline onClick={() => this.onDeleteClick(_id)}>Delete</Button>
                 </article>
             )
         })
@@ -56,10 +57,8 @@ export class ArticlePage extends React.Component<ArticlePageProps, ArticlePageSt
 
         return (
             <>
-                <div className='articles-wrapper'>
-                    <h1>Articles!</h1>
-                    {articles}
-                </div>
+                <h1>Articles!</h1>
+                {articles}
                 <div className='new-article'>
                     <Link to="/sandbox/new">
                         <Button color="primary">create new article</Button>

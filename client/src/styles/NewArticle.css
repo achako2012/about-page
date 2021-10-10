@@ -1,0 +1,12 @@
+.new-article {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+#save-article-btn {
+  margin-top: 10px;
+}
+
+/*# sourceMappingURL=NewArticle.css.map */

@@ -1,5 +1,9 @@
-.article-wrapper p {
-  margin-bottom: 0;
+.articles-wrapper h1 {
+  margin: 10px 10px;
 }
 
-/*# sourceMappingURL=Article.css.map */
+.new-article {
+  margin: 10px 10px;
+}
+
+/*# sourceMappingURL=Articles.css.map */

@@ -1,5 +1,6 @@
 import React from 'react'
 import {Editor, EditorState, RichUtils} from 'draft-js'
+import {Button} from "reactstrap";
 
 type Props = {
     updateArticles(article: any): void
@@ -43,14 +44,14 @@ export default class MyEditor extends React.Component<Props, State> {
     render() {
         return (
             <>
-                <div>
-                    <button onClick={this.onBoldClick.bind(this)}>Bold</button>
-                    <button onClick={this.onCodeClick.bind(this)}>Code</button>
-                    <button onClick={this.onSaveClick.bind(this)}>Save</button>
+                <div className="form-control">
+                    <Button outline color="secondary" onClick={this.onBoldClick.bind(this)}>Bold</Button>
+                    <Button outline color="secondary" onClick={this.onCodeClick.bind(this)}>Code</Button>
                     <Editor
                         editorState={this.state.editorState}
                         onChange={this.onChange}/>
                 </div>
+                <Button id="save-article-btn" color="primary" onClick={this.onSaveClick.bind(this)}>save the article</Button>
             </>
         );
     }

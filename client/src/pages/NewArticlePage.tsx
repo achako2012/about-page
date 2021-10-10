@@ -3,11 +3,12 @@ import MyEditor from "../components/Editor";
 import {convertToRaw, EditorState} from "draft-js";
 import {stateToHTML} from "draft-js-export-html";
 import ArticlesService from "../api/services/articles-service";
+import "../styles/NewArticle.css"
 
 type NewArticlePageProps = {}
 
 type NewArticlePageState = {
-    title?: any
+    title: string
 };
 
 export class NewArticlePage extends React.Component<NewArticlePageProps, NewArticlePageState> {
@@ -23,8 +24,7 @@ export class NewArticlePage extends React.Component<NewArticlePageProps, NewArti
         this.updateArticles = this.updateArticles.bind(this)
     }
 
-    handleChange(event: any) {
-        console.log(typeof event)
+    handleChange(event: React.ChangeEvent<HTMLInputElement>) {
         const value = event.target.value
         this.setState({title: value});
     }
@@ -43,13 +43,16 @@ export class NewArticlePage extends React.Component<NewArticlePageProps, NewArti
     render() {
         return (
             <>
-                <h1>It's new article page</h1>
-                <input type="text" placeholder="Title" value={this.state.title} onChange={this.handleChange}/>
-                <div className='editor-wrapper'>
-                    <section>
+                <section className="new-article">
+                    <h1>It's new article page</h1>
+                    <div className="new-article-title">
+                        <input className='form-control' type="text" placeholder="Title" value={this.state.title}
+                               onChange={this.handleChange}/>
+                    </div>
+                    <div className='editor-wrapper'>
                         <MyEditor updateArticles={this.updateArticles} articlesService={this.articlesService}/>
-                    </section>
-                </div>
+                    </div>
+                </section>
             </>
         )
     }
