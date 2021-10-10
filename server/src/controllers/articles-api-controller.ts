@@ -13,6 +13,19 @@ export const getArticles = async (req: CustomRequest, res: Response) => {
     res.status(200).json(articles)
 }
 
+export const getArticleById = async (req: CustomRequest, res: Response) => {
+    const articleId = req.params.uid
+
+    const article = await Articles.findOne({_id: articleId}, undefined, undefined, (err: any, result: any) => {
+
+        if (err) console.log(err)
+
+        console.log(result)
+    })
+
+    res.status(200).json(article)
+}
+
 export const createArticle = async (req: CustomRequest, res: Response) => {
     const {title, article, html} = req.body
     const date = Date.now()
@@ -37,7 +50,7 @@ export const createArticle = async (req: CustomRequest, res: Response) => {
     res.status(201).json(foo)
 }
 
-export const deleteArticle = async (req: CustomRequest, res: Response) => {
+export const deleteArticleById = async (req: CustomRequest, res: Response) => {
     const articleId = req.body.id
 
     await Articles.findOneAndDelete({_id: articleId}, undefined, (err: any, result: any) => {

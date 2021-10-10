@@ -1,14 +1,6 @@
 import AboutService from './about-service';
 import {Header} from "../confg";
-
-export interface Article {
-    _id: string;
-    title: string;
-    article: string;
-    date: string;
-    html: string;
-}
-
+import {Article} from "../../types";
 
 class ArticlesService extends AboutService {
 
@@ -17,6 +9,16 @@ class ArticlesService extends AboutService {
         const response = await this.httpClient.request<Article[]>({
             method: 'GET',
             url: `${this.baseUrl}/about-page-service/articles-api/articles-list`
+        });
+
+        return response.data;
+    }
+
+    /** Returns article by Id */
+    async getArticleById(id:string):Promise<Article>{
+        const response = await this.httpClient.request<Article>({
+            method:'GET',
+            url: `${this.baseUrl}/about-page-service/articles-api/article/${id}`
         });
 
         return response.data;

@@ -1,10 +1,11 @@
 import React from "react";
-import ArticlesService, {Article} from "../api/services/articles-service";
+import ArticlesService  from "../api/services/articles-service";
 import parse from "html-react-parser";
 import {Spinner} from "../components/Spinner";
 import {Button} from "reactstrap";
 import {Link} from "react-router-dom";
 import "../styles/Articles.css"
+import {Article} from "../types";
 
 type ArticlePageProps = {}
 
@@ -40,11 +41,15 @@ export class ArticlePage extends React.Component<ArticlePageProps, ArticlePageSt
     renderArticles(arr: Article[]) {
         return arr.map((item: any) => {
             const {_id, title, html} = item
+            console.log(html)
             return (
-                <article key={_id} className='form-control'>
+                <article key={_id} id={_id} className='form-control'>
                     <p>{title}</p>
                     {parse(html)}
                     <Button outline onClick={() => this.onDeleteClick(_id)}>Delete</Button>
+                    <Link to={`/articles/${_id}`}>
+                        Open
+                    </Link>
                 </article>
             )
         })
@@ -60,7 +65,7 @@ export class ArticlePage extends React.Component<ArticlePageProps, ArticlePageSt
                 <h1>Articles!</h1>
                 {articles}
                 <div className='new-article'>
-                    <Link to="/sandbox/new">
+                    <Link to="/articles/new">
                         <Button color="primary">create new article</Button>
                     </Link>
                 </div>

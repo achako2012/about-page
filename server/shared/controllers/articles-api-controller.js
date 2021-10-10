@@ -7,6 +7,15 @@ export const getArticles = async (req, res) => {
     });
     res.status(200).json(articles);
 };
+export const getArticleById = async (req, res) => {
+    const articleId = req.params.uid;
+    const article = await Articles.findOne({ _id: articleId }, undefined, undefined, (err, result) => {
+        if (err)
+            console.log(err);
+        console.log(result);
+    });
+    res.status(200).json(article);
+};
 export const createArticle = async (req, res) => {
     const { title, article, html } = req.body;
     const date = Date.now();
@@ -27,7 +36,7 @@ export const createArticle = async (req, res) => {
     // })
     res.status(201).json(foo);
 };
-export const deleteArticle = async (req, res) => {
+export const deleteArticleById = async (req, res) => {
     const articleId = req.body.id;
     await Articles.findOneAndDelete({ _id: articleId }, undefined, (err, result) => {
         if (err)

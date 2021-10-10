@@ -30,7 +30,7 @@ export default class Skills extends Component<SkillsProps> {
         }
     }
 
-    //TODO Create types for articles array
+    //TODO Create types.ts for articles array
     renderSkills(arr:any) {
         return arr.map((item:any) => {
             const {_id, ...skills} = item
