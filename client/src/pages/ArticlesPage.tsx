@@ -1,10 +1,9 @@
 import React from "react";
 import ArticlesService, {Article} from "../api/services/articles-service";
-import MyEditor from "../components/Editor";
 import parse from "html-react-parser";
 import {Spinner} from "../components/Spinner";
-import {convertToRaw, EditorState} from "draft-js";
-import {stateToHTML} from "draft-js-export-html";
+import {Button} from "reactstrap";
+import {Link} from "react-router-dom";
 
 type ArticlePageProps = {}
 
@@ -21,7 +20,6 @@ export class ArticlePage extends React.Component<ArticlePageProps, ArticlePageSt
         this.state = {
             articlesList: []
         }
-        this.updateArticles = this.updateArticles.bind(this)
     }
 
     async componentDidMount() {
@@ -51,22 +49,6 @@ export class ArticlePage extends React.Component<ArticlePageProps, ArticlePageSt
         })
     }
 
-    async updateArticles(editorState: EditorState) {
-
-        const articleEntity = convertToRaw(editorState.getCurrentContent())
-       
-        const html = stateToHTML(editorState.getCurrentContent())
-
-        const response = await this.articlesService.postArticles('lol', JSON.stringify(articleEntity), html)
-
-        const {articlesList} = this.state
-
-        articlesList.push(response)
-        await this.setState({articlesList})
-
-
-    }
-
     render() {
         const {articlesList} = this.state
 
@@ -78,10 +60,10 @@ export class ArticlePage extends React.Component<ArticlePageProps, ArticlePageSt
                     <h1>Articles!</h1>
                     {articles}
                 </div>
-                <div className='editor-wrapper'>
-                    <section>
-                        <MyEditor updateArticles={this.updateArticles} articlesService={this.articlesService}/>
-                    </section>
+                <div className='new-article'>
+                    <Link to="/sandbox/new">
+                        <Button color="primary">create new article</Button>
+                    </Link>
                 </div>
             </>
         )

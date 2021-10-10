@@ -5,16 +5,18 @@ import {AboutPage} from "./pages/AboutPage";
 import {ContactPage} from "./pages/ContactPage";
 import {Navbar} from "./components/Navbar";
 import {ArticlePage} from "./pages/ArticlesPage";
+import {NewArticlePage} from "./pages/NewArticlePage";
 
-const App:React.FC = () => {
+const App: React.FC = () => {
 
     return (
         <Router>
             <div className='app'>
                 <Navbar/>
-                    <Route path="/" exact component={AboutPage}/>
-                    <Route path='/contact' component={ContactPage}/>
+                <Route path="/" exact component={AboutPage}/>
+                <Route path='/contact' component={ContactPage}/>
                 <Route path='/articles' component={ArticlePage}/>
+                <Route path='/sandbox/new' component={NewArticlePage}/>
             </div>
         </Router>
     )

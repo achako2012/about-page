@@ -8,7 +8,6 @@ type Props = {
 
 type State = {
     editorState?: any
-    articles?: any
 };
 
 export default class MyEditor extends React.Component<Props, State> {
@@ -18,6 +17,7 @@ export default class MyEditor extends React.Component<Props, State> {
         this.state = {
             editorState: EditorState.createEmpty()
         }
+
     }
 
     onChange = (editorState: EditorState) => {
@@ -27,7 +27,7 @@ export default class MyEditor extends React.Component<Props, State> {
     }
 
     async onSaveClick() {
-        const editorState = await this.state.editorState
+        const {editorState} = await this.state
 
         this.props.updateArticles(editorState)
     }
@@ -43,12 +43,14 @@ export default class MyEditor extends React.Component<Props, State> {
     render() {
         return (
             <>
-                <button onClick={this.onBoldClick.bind(this)}>Bold</button>
-                <button onClick={this.onCodeClick.bind(this)}>Code</button>
-                <button onClick={this.onSaveClick.bind(this)}>Save</button>
-                <Editor
-                    editorState={this.state.editorState}
-                    onChange={this.onChange}/>
+                <div>
+                    <button onClick={this.onBoldClick.bind(this)}>Bold</button>
+                    <button onClick={this.onCodeClick.bind(this)}>Code</button>
+                    <button onClick={this.onSaveClick.bind(this)}>Save</button>
+                    <Editor
+                        editorState={this.state.editorState}
+                        onChange={this.onChange}/>
+                </div>
             </>
         );
     }
