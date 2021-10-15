@@ -27,11 +27,13 @@ export const getArticleById = async (req: CustomRequest, res: Response) => {
 }
 
 export const createArticle = async (req: CustomRequest, res: Response) => {
-    const {title, article, html} = req.body
+    const {title, subTitle, formData, article, html} = req.body
     const date = Date.now()
 
     const newArticle = {
         title: title,
+        subTitle: subTitle,
+        formData: formData,
         article: article,
         date: date,
         html: html

@@ -22,6 +22,7 @@ export class OneArticle extends React.Component<ArticleProps, ArticleState> {
             article: {
                 _id: '',
                 title: '',
+                subTitle: '',
                 article: '',
                 html: ''
             }
@@ -37,7 +38,7 @@ export class OneArticle extends React.Component<ArticleProps, ArticleState> {
     }
 
     renderArticle(article: Article) {
-        const {_id, title, html} = article
+        const {_id, title, subTitle, html} = article
         return (
             <article key={_id} id={_id} className='form-control'>
                 <p>{title}</p>

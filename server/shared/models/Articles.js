@@ -5,6 +5,14 @@ const schema = new Schema({
         type: String,
         required: true
     },
+    subTitle: {
+        type: String,
+        required: true
+    },
+    formData: {
+        type: Object,
+        required: true
+    },
     date: {
         type: Date,
         required: true

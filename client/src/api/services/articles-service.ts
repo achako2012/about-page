@@ -15,16 +15,18 @@ class ArticlesService extends AboutService {
     }
 
     /** Returns article by Id */
-    async getArticleById(id:string):Promise<Article>{
+    async getArticleById(id: string): Promise<Article> {
         const response = await this.httpClient.request<Article>({
-            method:'GET',
+            method: 'GET',
             url: `${this.baseUrl}/about-page-service/articles-api/article/${id}`
         });
 
         return response.data;
     }
 
-    async postArticles(title: string, article: string, html: string): Promise<Article> {
+    async postArticles(title: string, subTitle: string, formData: FormData, article: string, html: string): Promise<Article> {
+        console.log(formData)
+
         const response = await this.httpClient.request({
             method: "POST",
             url: `${this.baseUrl}/about-page-service/articles-api/articles-list`,
@@ -33,6 +35,8 @@ class ArticlesService extends AboutService {
             },
             data: {
                 title: title,
+                subTitle: subTitle,
+                formData: formData,
                 article: article,
                 html: html
             }
