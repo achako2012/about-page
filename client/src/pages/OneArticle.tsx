@@ -23,6 +23,7 @@ export class OneArticle extends React.Component<ArticleProps, ArticleState> {
                 _id: '',
                 title: '',
                 subTitle: '',
+                thumbnail:'',
                 article: '',
                 html: ''
             }

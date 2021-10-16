@@ -17,12 +17,12 @@ export const getArticleById = async (req, res) => {
     res.status(200).json(article);
 };
 export const createArticle = async (req, res) => {
-    const { title, subTitle, formData, article, html } = req.body;
+    const { title, subTitle, thumbnail, article, html } = req.body;
     const date = Date.now();
     const newArticle = {
         title: title,
         subTitle: subTitle,
-        formData: formData,
+        thumbnail: thumbnail,
         article: article,
         date: date,
         html: html

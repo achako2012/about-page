@@ -29,8 +29,9 @@ export const ArticleView: React.FC<ArticleViewProps> = props => {
                     </Link>
                 </div>
             </div>
-            <div id='tumbnail'>
-                <img src={process.env.PUBLIC_URL + '/img/free-icon-saturn.png'} alt='myPhotoAbout'/>
+            <div id='thumbnail'>
+                {/*<img src={process.env.PUBLIC_URL + '/img/free-icon-saturn.png'} alt='myPhotoAbout'/>*/}
+                <img src={article.thumbnail} alt='myPhotoAbout'/>
             </div>
 
         </article>

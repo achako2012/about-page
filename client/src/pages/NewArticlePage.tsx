@@ -4,15 +4,14 @@ import {convertToRaw, EditorState} from "draft-js";
 import {stateToHTML} from "draft-js-export-html";
 import ArticlesService from "../api/services/articles-service";
 import "../styles/NewArticle.css"
-import {appendFile} from "fs";
-import {log} from "util";
+import {utils} from "../hooks/utils";
 
 type NewArticlePageProps = {}
 
 type NewArticlePageState = {
     title: string,
     subTitle: string,
-    selectedFile?: any
+    thumbnail?: any
 };
 
 export class NewArticlePage extends React.Component<NewArticlePageProps, NewArticlePageState> {
@@ -24,7 +23,7 @@ export class NewArticlePage extends React.Component<NewArticlePageProps, NewArti
         this.state = {
             title: '',
             subTitle: '',
-            selectedFile: null
+            thumbnail: null
         }
         this.handleChange = this.handleChange.bind(this);
         this.updateArticles = this.updateArticles.bind(this);
@@ -37,37 +36,23 @@ export class NewArticlePage extends React.Component<NewArticlePageProps, NewArti
     }
 
     async onFileChange(event: React.ChangeEvent<HTMLInputElement>) {
-
-        // @ts-ignore
-        this.setState({selectedFile: event.target.files[0],})
-
-        // if (event.target.files) {
-        //     const file = await event.target.files[0]
-        //     this.setState({
-        //         selectedFile: file
-        //     })
-        //
-        //     console.log('file uploaded')
-        // } else {
-        //     console.log("file wasn't uploaded")
-        // }
+        if (event.target.files) {
+            const file = event.target.files[0]
+            const base64 = await utils.convertBase64File(file)
+            this.setState({thumbnail: base64})
+        } else{
+            console.log('something went wrong')
+        }
     };
-
 
     async updateArticles(editorState: EditorState) {
         const articleEntity = convertToRaw(editorState.getCurrentContent())
 
         const html = stateToHTML(editorState.getCurrentContent())
 
-        const formData = new FormData()
+        const {title, subTitle, thumbnail} = await this.state
 
-        const {title, subTitle, selectedFile} = await this.state
-
-        formData.append('image', selectedFile)
-        console.log(selectedFile)
-
-
-        await this.articlesService.postArticles(title, subTitle, formData, JSON.stringify(articleEntity), html)
+        await this.articlesService.postArticles(title, subTitle, thumbnail, JSON.stringify(articleEntity), html)
     }
 
     render() {
@@ -87,6 +72,7 @@ export class NewArticlePage extends React.Component<NewArticlePageProps, NewArti
                     </div>
                     <div>
                         <input type="file" onChange={this.onFileChange}/>
+                        <img src={this.state.thumbnail} height="50px"/>
                     </div>
                     <div className='editor-wrapper'>
                         <MyEditor updateArticles={this.updateArticles} articlesService={this.articlesService}/>

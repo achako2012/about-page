@@ -12,9 +12,10 @@ const schema = new Schema({
         type: String,
         required: true
     },
-    formData: {
-        type: Object,
-        required: true
+    thumbnail: {
+        type: String,
+        required: true,
+        path:'image'
     },
     date: {
         type: Date,
