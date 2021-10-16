@@ -17,12 +17,13 @@ export const getArticleById = async (req, res) => {
     res.status(200).json(article);
 };
 export const createArticle = async (req, res) => {
-    const { title, subTitle, thumbnail, article, html } = req.body;
+    const { title, subTitle, thumbnail, color, article, html } = req.body;
     const date = Date.now();
     const newArticle = {
         title: title,
         subTitle: subTitle,
         thumbnail: thumbnail,
+        color: color,
         article: article,
         date: date,
         html: html

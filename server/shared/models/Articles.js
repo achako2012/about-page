@@ -14,6 +14,10 @@ const schema = new Schema({
         required: true,
         path: 'image'
     },
+    color: {
+        type: String,
+        required: true,
+    },
     date: {
         type: Date,
         required: true

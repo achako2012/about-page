@@ -40,13 +40,12 @@ article {
     padding: 0px 50px 25px;
   }
 
-  .buttons button{
+  .buttons button {
     margin-right: 10px;
   }
 
   #thumbnail {
     height: inherit;
-    background-color: red;
     margin: 0;
     min-width: 320px;
     display: flex;
@@ -61,3 +60,69 @@ article {
     }
   }
 }
+
+
+//// ThumbnailPreview
+
+.preview {
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap:30px;
+
+  p{
+    margin:0;
+  }
+
+  input[type="file"]{
+    max-width: 280px;
+  }
+
+  .color-picker {
+
+    display: inline-flex;
+    align-items: center;
+    width:150px;
+    max-width: 150px;
+    padding: 4px 12px;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+
+    input[type="color"] {
+      border: none;
+      background: none;
+      height: 14px;
+      width: 14px;
+      padding: 0;
+    }
+
+    input[type="text"] {
+      border: none;
+      width: 100%;
+    }
+
+    input[type="text"]:focus{
+      outline: none;
+    }
+  }
+
+  .thumbnail-preview {
+    //background-color: red;
+    margin: 0;
+    height: 60px;
+    min-width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+
+    img {
+      max-width: 40px;
+      max-height: 40px;
+    }
+  }
+}
+
+

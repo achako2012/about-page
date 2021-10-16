@@ -24,7 +24,7 @@ class ArticlesService extends AboutService {
         return response.data;
     }
 
-    async postArticles(title: string, subTitle: string, thumbnail: string, article: string, html: string): Promise<Article> {
+    async postArticles(title: string, subTitle: string, thumbnail: string, color: string, article: string, html: string): Promise<Article> {
         const response = await this.httpClient.request({
             method: "POST",
             url: `${this.baseUrl}/about-page-service/articles-api/articles-list`,
@@ -35,6 +35,7 @@ class ArticlesService extends AboutService {
                 title: title,
                 subTitle: subTitle,
                 thumbnail: thumbnail,
+                color: color,
                 article: article,
                 html: html
             }

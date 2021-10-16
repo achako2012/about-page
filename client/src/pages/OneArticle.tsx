@@ -24,6 +24,7 @@ export class OneArticle extends React.Component<ArticleProps, ArticleState> {
                 title: '',
                 subTitle: '',
                 thumbnail:'',
+                color:'',
                 article: '',
                 html: ''
             }

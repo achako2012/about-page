@@ -15,7 +15,11 @@ const schema = new Schema({
     thumbnail: {
         type: String,
         required: true,
-        path:'image'
+        path: 'image'
+    },
+    color: {
+        type: String,
+        required: true,
     },
     date: {
         type: Date,

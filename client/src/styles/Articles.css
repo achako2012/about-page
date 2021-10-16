@@ -38,7 +38,6 @@ article {
 }
 .article-view #thumbnail {
   height: inherit;
-  background-color: red;
   margin: 0;
   min-width: 320px;
   display: flex;
@@ -50,6 +49,56 @@ article {
 .article-view #thumbnail img {
   max-width: 120px;
   max-height: 120px;
+}
+
+.preview {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 30px;
+}
+.preview p {
+  margin: 0;
+}
+.preview input[type=file] {
+  max-width: 280px;
+}
+.preview .color-picker {
+  display: inline-flex;
+  align-items: center;
+  width: 150px;
+  max-width: 150px;
+  padding: 4px 12px;
+  background-color: #fff;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+}
+.preview .color-picker input[type=color] {
+  border: none;
+  background: none;
+  height: 14px;
+  width: 14px;
+  padding: 0;
+}
+.preview .color-picker input[type=text] {
+  border: none;
+  width: 100%;
+}
+.preview .color-picker input[type=text]:focus {
+  outline: none;
+}
+.preview .thumbnail-preview {
+  margin: 0;
+  height: 60px;
+  min-width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+}
+.preview .thumbnail-preview img {
+  max-width: 40px;
+  max-height: 40px;
 }
 
 /*# sourceMappingURL=Articles.css.map */

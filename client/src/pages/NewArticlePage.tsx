@@ -5,13 +5,15 @@ import {stateToHTML} from "draft-js-export-html";
 import ArticlesService from "../api/services/articles-service";
 import "../styles/NewArticle.css"
 import {utils} from "../hooks/utils";
+import {ThumbnailPreview} from "../components/ThumbnailPreview";
 
 type NewArticlePageProps = {}
 
 type NewArticlePageState = {
     title: string,
     subTitle: string,
-    thumbnail?: any
+    thumbnail?: any,
+    color: string
 };
 
 export class NewArticlePage extends React.Component<NewArticlePageProps, NewArticlePageState> {
@@ -23,11 +25,13 @@ export class NewArticlePage extends React.Component<NewArticlePageProps, NewArti
         this.state = {
             title: '',
             subTitle: '',
-            thumbnail: null
+            thumbnail: null,
+            color: '#000000'
         }
         this.handleChange = this.handleChange.bind(this);
         this.updateArticles = this.updateArticles.bind(this);
         this.onFileChange = this.onFileChange.bind(this);
+        this.onColorChange = this.onColorChange.bind(this);
     }
 
     handleChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -35,24 +39,22 @@ export class NewArticlePage extends React.Component<NewArticlePageProps, NewArti
         event.target.id === 'title' ? this.setState({title: value}) : this.setState({subTitle: value})
     }
 
-    async onFileChange(event: React.ChangeEvent<HTMLInputElement>) {
-        if (event.target.files) {
-            const file = event.target.files[0]
-            const base64 = await utils.convertBase64File(file)
-            this.setState({thumbnail: base64})
-        } else{
-            console.log('something went wrong')
-        }
+    async onFileChange(value: string) {
+        this.setState({thumbnail: value})
     };
+
+    async onColorChange(value: string) {
+        this.setState({color: value})
+    }
 
     async updateArticles(editorState: EditorState) {
         const articleEntity = convertToRaw(editorState.getCurrentContent())
 
         const html = stateToHTML(editorState.getCurrentContent())
 
-        const {title, subTitle, thumbnail} = await this.state
+        const {title, subTitle, thumbnail,color} = await this.state
 
-        await this.articlesService.postArticles(title, subTitle, thumbnail, JSON.stringify(articleEntity), html)
+        await this.articlesService.postArticles(title, subTitle, thumbnail,color, JSON.stringify(articleEntity), html)
     }
 
     render() {
@@ -70,10 +72,10 @@ export class NewArticlePage extends React.Component<NewArticlePageProps, NewArti
                                value={this.state.subTitle}
                                onChange={this.handleChange}/>
                     </div>
-                    <div>
-                        <input type="file" onChange={this.onFileChange}/>
-                        <img src={this.state.thumbnail} height="50px"/>
-                    </div>
+
+                    <ThumbnailPreview color={this.state.color} thumbnail={this.state.thumbnail}
+                                      onFileChange={this.onFileChange} onColorChange={this.onColorChange}/>
+
                     <div className='editor-wrapper'>
                         <MyEditor updateArticles={this.updateArticles} articlesService={this.articlesService}/>
                     </div>
