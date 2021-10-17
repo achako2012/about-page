@@ -1,0 +1,35 @@
+.single-article {
+  //margin: 40px 100px;
+  margin: 40px auto 0;
+  max-width: 1000px;
+  border: 1px solid #ced4da;
+  background-color: #fff;
+  border-radius: 4px;
+
+
+  .article-title {
+    padding: 35px 100px 20px 100px;
+
+    .thumbnail-icon {
+      margin: 10px 0 25px;
+
+      img {
+        max-width: 120px;
+        max-height: 120px;
+      }
+    }
+
+    h1 {
+      margin-bottom: 15px;
+      margin-left: 15px;
+    }
+  }
+
+  .article-content{
+    padding: 35px 100px 20px 100px;
+
+    *{
+      margin:0 auto;
+    }
+  }
+}

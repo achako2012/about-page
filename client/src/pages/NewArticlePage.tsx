@@ -4,7 +4,6 @@ import {convertToRaw, EditorState} from "draft-js";
 import {stateToHTML} from "draft-js-export-html";
 import ArticlesService from "../api/services/articles-service";
 import "../styles/NewArticle.css"
-import {utils} from "../hooks/utils";
 import {ThumbnailPreview} from "../components/ThumbnailPreview";
 
 type NewArticlePageProps = {}

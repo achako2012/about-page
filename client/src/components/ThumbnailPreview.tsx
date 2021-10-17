@@ -1,5 +1,6 @@
 import React from "react";
 import {utils} from "../hooks/utils";
+import "../styles/ThumbnailPreview.css"
 
 interface ThumbnailPreviewProps {
     color: string

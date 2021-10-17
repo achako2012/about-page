@@ -22,13 +22,14 @@ export const ArticleView: React.FC<ArticleViewProps> = props => {
                 </div>
                 <div className='buttons'>
                     <Button outline onClick={() => props.onDeleteClick(article._id)}>Delete</Button>
+                    <Button outline>Edit</Button>
                     <Link to={`/articles/${article._id}`}>
                         <Button outline>Read more</Button>
                     </Link>
                 </div>
             </div>
             <div id='thumbnail' style={{backgroundColor: article.color}}>
-                <img src={article.thumbnail} alt='myPhotoAbout'/>
+                <img src={article.thumbnail} alt='articleIcon'/>
             </div>
         </article>
     )
