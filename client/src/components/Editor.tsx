@@ -1,10 +1,11 @@
 import React from 'react'
-import {Editor, EditorState, RichUtils} from 'draft-js'
+import {convertFromRaw, Editor, EditorState, RichUtils} from 'draft-js'
 import {Button} from "reactstrap";
+import ArticlesService from "../api/services/articles-service";
 
 type Props = {
     updateArticles(article: any): void
-    articlesService?: any
+    entity?: any
 }
 
 type State = {
@@ -16,9 +17,16 @@ export default class MyEditor extends React.Component<Props, State> {
     constructor(props: Props) {
         super(props);
         this.state = {
-            editorState: EditorState.createEmpty()
-        }
+            editorState:EditorState.createEmpty()
+        };
 
+    }
+
+    async componentDidMount() {
+        if (this.props.entity) {
+            console.log('props here')
+            this.setState({editorState: EditorState.createWithContent(convertFromRaw(JSON.parse(this.props.entity)))})
+        }
     }
 
     onChange = (editorState: EditorState) => {
@@ -42,6 +50,7 @@ export default class MyEditor extends React.Component<Props, State> {
     }
 
     render() {
+
         return (
             <>
                 <div className="form-control">
@@ -51,7 +60,8 @@ export default class MyEditor extends React.Component<Props, State> {
                         editorState={this.state.editorState}
                         onChange={this.onChange}/>
                 </div>
-                <Button id="save-article-btn" color="primary" onClick={this.onSaveClick.bind(this)}>save the article</Button>
+                <Button id="save-article-btn" color="primary" onClick={this.onSaveClick.bind(this)}>save the
+                    article</Button>
             </>
         );
     }

@@ -5,14 +5,18 @@ import {stateToHTML} from "draft-js-export-html";
 import ArticlesService from "../api/services/articles-service";
 import "../styles/NewArticle.css"
 import {ThumbnailPreview} from "../components/ThumbnailPreview";
+import {Spinner} from "../components/Spinner";
 
-type NewArticlePageProps = {}
+type NewArticlePageProps = {
+    match: any
+}
 
 type NewArticlePageState = {
     title: string,
     subTitle: string,
-    thumbnail?: any,
-    color: string
+    thumbnail: any,
+    color: string,
+    entity: string
 };
 
 export class NewArticlePage extends React.Component<NewArticlePageProps, NewArticlePageState> {
@@ -25,7 +29,8 @@ export class NewArticlePage extends React.Component<NewArticlePageProps, NewArti
             title: '',
             subTitle: '',
             thumbnail: null,
-            color: '#000000'
+            color: '#000000',
+            entity: ''
         }
         this.handleChange = this.handleChange.bind(this);
         this.updateArticles = this.updateArticles.bind(this);
@@ -33,10 +38,22 @@ export class NewArticlePage extends React.Component<NewArticlePageProps, NewArti
         this.onColorChange = this.onColorChange.bind(this);
     }
 
+    async componentDidMount() {
+        const {params: {articleId}} = this.props.match;
+        if (articleId) {
+            const article = await this.articlesService.getArticleById(articleId)
+            await this.setState({
+                title: article.title,
+                subTitle: article.subTitle,
+                entity: article.article
+            })
+        }
+    };
+
     handleChange(event: React.ChangeEvent<HTMLInputElement>) {
         const value = event.target.value
         event.target.id === 'title' ? this.setState({title: value}) : this.setState({subTitle: value})
-    }
+    };
 
     async onFileChange(value: string) {
         this.setState({thumbnail: value})
@@ -44,19 +61,35 @@ export class NewArticlePage extends React.Component<NewArticlePageProps, NewArti
 
     async onColorChange(value: string) {
         this.setState({color: value})
-    }
+    };
 
     async updateArticles(editorState: EditorState) {
-        const articleEntity = convertToRaw(editorState.getCurrentContent())
+        const {params: {articleId}} = this.props.match;
+        const {title, subTitle, thumbnail, color} = await this.state
 
-        const html = stateToHTML(editorState.getCurrentContent())
+        if (articleId) {
+            console.log('if block - update existing article')
 
-        const {title, subTitle, thumbnail,color} = await this.state
+            const articleEntity = JSON.stringify(convertToRaw(editorState.getCurrentContent()))
 
-        await this.articlesService.postArticles(title, subTitle, thumbnail,color, JSON.stringify(articleEntity), html)
+            await this.articlesService.updateArticle(articleId, articleEntity, title, subTitle)
+        } else {
+            console.log('else blog - create new article')
+
+            const articleEntity = convertToRaw(editorState.getCurrentContent())
+
+            const html = stateToHTML(editorState.getCurrentContent())
+
+            await this.articlesService.postArticles(title, subTitle, thumbnail, color, JSON.stringify(articleEntity), html)
+        }
     }
 
     render() {
+        const entity = this.state.entity
+        const {params: {articleId}} = this.props.match;
+        const editor = entity || !articleId ? <MyEditor updateArticles={this.updateArticles} entity={entity}/> :
+            <Spinner/>
+
         return (
             <>
                 <section className="new-article">
@@ -71,12 +104,10 @@ export class NewArticlePage extends React.Component<NewArticlePageProps, NewArti
                                value={this.state.subTitle}
                                onChange={this.handleChange}/>
                     </div>
-
                     <ThumbnailPreview color={this.state.color} thumbnail={this.state.thumbnail}
                                       onFileChange={this.onFileChange} onColorChange={this.onColorChange}/>
-
                     <div className='editor-wrapper'>
-                        <MyEditor updateArticles={this.updateArticles} articlesService={this.articlesService}/>
+                        {editor}
                     </div>
                 </section>
             </>

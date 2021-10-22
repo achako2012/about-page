@@ -5,7 +5,8 @@ import {Article} from "../types";
 
 interface ArticleViewProps {
     article: Article,
-    onDeleteClick(_id: string):Promise<void>
+
+    onDeleteClick(_id: string): Promise<void>
 }
 
 export const ArticleView: React.FC<ArticleViewProps> = props => {
@@ -22,7 +23,9 @@ export const ArticleView: React.FC<ArticleViewProps> = props => {
                 </div>
                 <div className='buttons'>
                     <Button outline onClick={() => props.onDeleteClick(article._id)}>Delete</Button>
-                    <Button outline>Edit</Button>
+                    <Link to={`/articles/${article._id}/edit`}>
+                        <Button outline>Edit</Button>
+                    </Link>
                     <Link to={`/articles/${article._id}`}>
                         <Button outline>Read more</Button>
                     </Link>

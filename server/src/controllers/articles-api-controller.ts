@@ -26,6 +26,25 @@ export const getArticleById = async (req: CustomRequest, res: Response) => {
     res.status(200).json(article)
 }
 
+export const updateArticleById = async (req: CustomRequest, res: Response) => {
+    const {id, entity, title, subTitle} = req.body
+
+    const query = {_id: id}
+
+    const update = {
+        $set: {
+            title: title,
+            subTitle: subTitle,
+            article: entity
+        }
+    }
+
+    await Articles.updateOne(query, update)
+
+    res.status(200).json({"message": "updated"})
+
+}
+
 export const createArticle = async (req: CustomRequest, res: Response) => {
     const {title, subTitle, thumbnail, color, article, html} = req.body
     const date = Date.now()
@@ -40,7 +59,7 @@ export const createArticle = async (req: CustomRequest, res: Response) => {
         html: html
     }
 
-    // //TODO solve this
+    //TODO solve this
     const foo = await Articles.create(newArticle)
     // Articles.create(newArticle, (err, doc) => {
     //

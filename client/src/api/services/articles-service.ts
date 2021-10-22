@@ -44,6 +44,22 @@ class ArticlesService extends AboutService {
         return response.data;
     }
 
+    async updateArticle(id: string, entity: string, title: string, subTitle: string): Promise<void> {
+        return this.httpClient.request({
+            method: "PUT",
+            url: `${this.baseUrl}/about-page-service/articles-api/articles-list`,
+            headers: {
+                [Header.ContentType]: 'application/json'
+            },
+            data: {
+                id: id,
+                entity: entity,
+                title: title,
+                subTitle: subTitle
+            }
+        })
+    }
+
     async deleteArticle(id: string): Promise<void> {
         return this.httpClient.request({
             method: 'DELETE',
