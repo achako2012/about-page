@@ -6,6 +6,7 @@ import ArticlesService from "../api/services/articles-service";
 import "../styles/NewArticle.css"
 import {ThumbnailPreview} from "../components/ThumbnailPreview";
 import {Spinner} from "../components/Spinner";
+import {Button} from "reactstrap";
 
 interface NewArticlePageProps {
     match: any;
@@ -22,6 +23,7 @@ export const EditArticlePage = (props: NewArticlePageProps) => {
     const [color, updateColor] = React.useState<string>('#000000')
     const [entity, updateEntity] = React.useState<string>('')
 
+    const [editorState, updateEditorState] = React.useState<EditorState>()
 
     useEffect(() => {
         const setArticle = async () => {
@@ -54,20 +56,27 @@ export const EditArticlePage = (props: NewArticlePageProps) => {
         updateColor(value)
     };
 
-    const updateArticles = async (editorState: EditorState) => {
-        const articleEntity = JSON.stringify(convertToRaw(editorState.getCurrentContent()))
+    const updateArticles = async () => {
+        if (editorState) {
+            const editorContent = editorState.getCurrentContent()
+            const articleEntity = JSON.stringify(convertToRaw(editorContent))
 
-        if (articleId) {
-            await articlesService.updateArticle(articleId, title, subTitle, thumbnail, color, articleEntity)
+            if (articleId) {
+                await articlesService.updateArticle(articleId, title, subTitle, thumbnail, color, articleEntity)
 
-        } else {
-            const html = stateToHTML(editorState.getCurrentContent())
+            } else {
+                const html = stateToHTML(editorContent)
 
-            await articlesService.postArticles(title, subTitle, thumbnail, color, articleEntity, html)
+                await articlesService.postArticles(title, subTitle, thumbnail, color, articleEntity, html)
+            }
         }
     }
 
-    const editor = entity || !articleId ? <MyEditor updateArticles={updateArticles} entity={entity}/> : <Spinner/>
+    const saveEditorState = async (editorState: EditorState) => {
+        updateEditorState(editorState)
+    }
+
+    const editor = entity || !articleId ? <MyEditor saveEditorState={saveEditorState} entity={entity}/> : <Spinner/>
 
     return (
         <>
@@ -88,6 +97,8 @@ export const EditArticlePage = (props: NewArticlePageProps) => {
                 <div className='editor-wrapper'>
                     {editor}
                 </div>
+                    <Button id="save-article-btn" color="primary" onClick={updateArticles}>save the
+                        article</Button>
             </section>
         </>
     )

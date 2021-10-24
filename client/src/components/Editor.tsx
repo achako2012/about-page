@@ -2,12 +2,12 @@ import React, {useEffect} from 'react'
 import {convertFromRaw, Editor, EditorState, RichUtils} from 'draft-js'
 import {Button} from "reactstrap";
 
-type Props = {
-    updateArticles(editorState: EditorState): void
+type EditorProps = {
+    saveEditorState(editorState: EditorState):void
     entity?: string
 }
 
-export const MyEditor = (props: Props) => {
+export const MyEditor = (props: EditorProps) => {
 
     const [editorState, updateEditorState] = React.useState<EditorState>(EditorState.createEmpty())
 
@@ -23,10 +23,7 @@ export const MyEditor = (props: Props) => {
 
     const onChange = (editorState: EditorState) => {
         updateEditorState(editorState)
-    }
-
-    const onSaveClick = () => {
-        props.updateArticles(editorState)
+        props.saveEditorState(editorState)
     }
 
     const onBoldClick = () => {
@@ -46,8 +43,6 @@ export const MyEditor = (props: Props) => {
                     editorState={editorState}
                     onChange={onChange}/>
             </div>
-            <Button id="save-article-btn" color="primary" onClick={onSaveClick}>save the
-                article</Button>
         </>
     )
 }
