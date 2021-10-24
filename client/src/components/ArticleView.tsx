@@ -13,7 +13,7 @@ export const ArticleView: React.FC<ArticleViewProps> = props => {
     const {...article} = props.article
 
     return (
-        <article key={article._id} id={article._id} className='article-view'>
+        <article id={article._id} className='article-view'>
             <div id='content'>
                 <div className='title'>
                     <h2 id='title'>{article.title}</h2>

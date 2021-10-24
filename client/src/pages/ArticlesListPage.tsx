@@ -36,7 +36,7 @@ export const ArticlesListPage = () => {
     const renderArticles = (arr: Article[]) => {
         return arr.map((item: any) => {
             return (
-                <ArticleView article={item} onDeleteClick={() => onDeleteClick(item._id)}/>
+                <ArticleView key={item._id} article={item} onDeleteClick={() => onDeleteClick(item._id)}/>
             )
         })
     }

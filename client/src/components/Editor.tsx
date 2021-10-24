@@ -1,7 +1,6 @@
 import React, {useEffect} from 'react'
 import {convertFromRaw, Editor, EditorState, RichUtils} from 'draft-js'
 import {Button} from "reactstrap";
-import {Article} from "../types";
 
 type Props = {
     updateArticles(editorState: EditorState): void
@@ -24,7 +23,6 @@ export const MyEditor = (props: Props) => {
 
     const onChange = (editorState: EditorState) => {
         updateEditorState(editorState)
-
     }
 
     const onSaveClick = () => {

@@ -9,7 +9,7 @@ export const AboutPage: React.FC = () => {
 
     const skillsService = SkillsService.create()
 
-    const [skillsList, updateSkillsList] = React.useState<Skill[] | null>()
+    const [skillsList, updateSkillsList] = React.useState<Skill[]>()
 
     useEffect(() => {
         const setSkills = async () => {
