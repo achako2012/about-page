@@ -1,17 +1,17 @@
 import React, {useEffect, useState} from "react";
-import MyEditor from "./Editor";
+import {MyEditor} from "../components/Editor";
 import {convertToRaw, EditorState} from "draft-js";
 import {stateToHTML} from "draft-js-export-html";
 import ArticlesService from "../api/services/articles-service";
 import "../styles/NewArticle.css"
-import {ThumbnailPreview} from "./ThumbnailPreview";
-import {Spinner} from "./Spinner";
+import {ThumbnailPreview} from "../components/ThumbnailPreview";
+import {Spinner} from "../components/Spinner";
 
 interface NewArticlePageProps {
     match: any;
 }
 
-export const EditArticle = (props: NewArticlePageProps) => {
+export const EditArticlePage = (props: NewArticlePageProps) => {
 
     const articlesService = ArticlesService.create()
     const {params: {articleId}} = props.match;

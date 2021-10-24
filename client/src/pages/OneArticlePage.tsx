@@ -1,7 +1,7 @@
 import React, {useEffect} from "react";
 import ArticlesService from "../api/services/articles-service";
 import parse from "html-react-parser";
-import {Spinner} from "./Spinner";
+import {Spinner} from "../components/Spinner";
 import {Article} from "../types";
 import "../styles/OneArticle.css"
 import styled from "@emotion/styled";
@@ -10,7 +10,7 @@ interface OneArticleProps {
     match: any
 }
 
-export const OneArticle = (props: OneArticleProps) => {
+export const OneArticlePage = (props: OneArticleProps) => {
 
     const articlesService = ArticlesService.create()
     const {params: {articleId}} = props.match;

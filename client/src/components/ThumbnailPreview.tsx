@@ -12,6 +12,7 @@ interface ThumbnailPreviewProps {
 }
 
 export const ThumbnailPreview: React.FC<ThumbnailPreviewProps> = props => {
+
     async function changeFile(event: React.ChangeEvent<HTMLInputElement>) {
         if (typeof props.onFileChange === 'function') {
             const files = event.target.files

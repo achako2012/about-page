@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from "react";
 import ArticlesService from "../api/services/articles-service";
-import {Spinner} from "./Spinner";
+import {Spinner} from "../components/Spinner";
 import {Button} from "reactstrap";
 import {Link} from "react-router-dom";
 import "../styles/Articles.css"
 import {Article} from "../types";
-import {ArticleView} from "./ArticleView";
+import {ArticleView} from "../components/ArticleView";
 
-export const ArticlesList = () => {
+export const ArticlesListPage = () => {
 
     const articlesService = ArticlesService.create()
 

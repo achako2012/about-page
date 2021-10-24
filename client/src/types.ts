@@ -4,7 +4,7 @@ export interface Article {
     subTitle:string
     thumbnail:string;
     color:string;
-    article: string;
+    entity: string;
     date?: string;
     html: string;
 }

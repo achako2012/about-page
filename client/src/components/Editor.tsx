@@ -1,65 +1,55 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {convertFromRaw, Editor, EditorState, RichUtils} from 'draft-js'
 import {Button} from "reactstrap";
-import ArticlesService from "../api/services/articles-service";
+import {Article} from "../types";
 
 type Props = {
-    updateArticles(article: any): void
-    entity?: any
+    updateArticles(editorState: EditorState): void
+    entity?: string
 }
 
-type State = {
-    editorState?: any
-};
+export const MyEditor = (props: Props) => {
 
-export default class MyEditor extends React.Component<Props, State> {
+    const [editorState, updateEditorState] = React.useState<EditorState>(EditorState.createEmpty())
 
-    constructor(props: Props) {
-        super(props);
-        this.state = {
-            editorState:EditorState.createEmpty()
-        };
-
-    }
-
-    async componentDidMount() {
-        if (this.props.entity) {
-            this.setState({editorState: EditorState.createWithContent(convertFromRaw(JSON.parse(this.props.entity)))})
+    useEffect(() => {
+        const setEditorState = () => {
+            if (props.entity) {
+                const state = EditorState.createWithContent(convertFromRaw(JSON.parse(props.entity)))
+                updateEditorState(state)
+            }
         }
+        setEditorState();
+    }, [props.entity])
+
+    const onChange = (editorState: EditorState) => {
+        updateEditorState(editorState)
+
     }
 
-    onChange = (editorState: EditorState) => {
-        this.setState({
-            editorState
-        });
+    const onSaveClick = () => {
+        props.updateArticles(editorState)
     }
 
-    async onSaveClick() {
-        this.props.updateArticles(this.state.editorState)
+    const onBoldClick = () => {
+        onChange(RichUtils.toggleInlineStyle(editorState, 'BOLD'));
     }
 
-    onBoldClick() {
-        this.onChange(RichUtils.toggleInlineStyle(this.state.editorState, 'BOLD'));
+    const onCodeClick = () => {
+        onChange(RichUtils.toggleInlineStyle(editorState, 'CODE'));
     }
 
-    onCodeClick() {
-        this.onChange(RichUtils.toggleInlineStyle(this.state.editorState, 'CODE'));
-    }
-
-    render() {
-
-        return (
-            <>
-                <div className="form-control">
-                    <Button outline color="secondary" onClick={this.onBoldClick.bind(this)}>Bold</Button>
-                    <Button outline color="secondary" onClick={this.onCodeClick.bind(this)}>Code</Button>
-                    <Editor
-                        editorState={this.state.editorState}
-                        onChange={this.onChange}/>
-                </div>
-                <Button id="save-article-btn" color="primary" onClick={this.onSaveClick.bind(this)}>save the
-                    article</Button>
-            </>
-        );
-    }
+    return (
+        <>
+            <div className="form-control">
+                <Button outline color="secondary" onClick={onBoldClick}>Bold</Button>
+                <Button outline color="secondary" onClick={onCodeClick}>Code</Button>
+                <Editor
+                    editorState={editorState}
+                    onChange={onChange}/>
+            </div>
+            <Button id="save-article-btn" color="primary" onClick={onSaveClick}>save the
+                article</Button>
+        </>
+    )
 }

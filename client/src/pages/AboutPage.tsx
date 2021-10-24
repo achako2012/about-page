@@ -5,29 +5,23 @@ import SkillsService from "../api/services/skills-service";
 import {Spinner} from "../components/Spinner";
 import {Skill} from "../api/types";
 
-type AboutPageState = {
-    skillsList: Skill[] | null
-}
-
 export const AboutPage: React.FC = () => {
 
     const skillsService = SkillsService.create()
 
-    const [state, updateSkillsList] = React.useState<AboutPageState>({
-        skillsList: null
-    })
+    const [skillsList, updateSkillsList] = React.useState<Skill[] | null>()
 
     useEffect(() => {
         const setSkills = async () => {
             const skills = await skillsService.getSkills()
-            updateSkillsList({skillsList: skills})
+            updateSkillsList(skills)
         }
 
         setSkills();
 
     }, []);
 
-    const skills = state.skillsList ? <Skills skillsList={state.skillsList}/> : <Spinner/>
+    const skills = skillsList ? <Skills skillsList={skillsList}/> : <Spinner/>
 
     return (
         <>
