@@ -1,15 +1,11 @@
 import AboutService from './about-service';
-
-interface getSkillsResponse {
-    title: string;
-    value: string
-}
+import {Skill} from "../types";
 
 class SkillsService extends AboutService {
 
     /** Returns user's skills list */
-    async getSkills(): Promise<getSkillsResponse[]> {
-        const response = await this.httpClient.request<getSkillsResponse[]>({
+    async getSkills(): Promise< Skill[]> {
+        const response = await this.httpClient.request< Skill[]>({
             url: `${this.baseUrl}/about-page-service/customer-api/skills`,
             method: 'GET'
         });

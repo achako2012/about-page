@@ -1,5 +1,5 @@
 import React from "react";
-import {utils} from "../hooks/utils";
+import {utils} from "../utils/utils";
 import "../styles/ThumbnailPreview.css"
 
 interface ThumbnailPreviewProps {

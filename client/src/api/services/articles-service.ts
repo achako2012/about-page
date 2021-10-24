@@ -24,7 +24,7 @@ class ArticlesService extends AboutService {
         return response.data;
     }
 
-    async postArticles(title: string, subTitle: string, thumbnail: string, color: string, article: string, html: string): Promise<Article> {
+    async postArticles(title: string, subTitle: string, thumbnail: string, color: string, entity: string, html: string): Promise<Article> {
         const response = await this.httpClient.request({
             method: "POST",
             url: `${this.baseUrl}/about-page-service/articles-api/articles-list`,
@@ -36,7 +36,7 @@ class ArticlesService extends AboutService {
                 subTitle: subTitle,
                 thumbnail: thumbnail,
                 color: color,
-                article: article,
+                entity: entity,
                 html: html
             }
         });
@@ -44,7 +44,7 @@ class ArticlesService extends AboutService {
         return response.data;
     }
 
-    async updateArticle(id: string, entity: string, title: string, subTitle: string): Promise<void> {
+    async updateArticle(id: string, title: string, subTitle: string, thumbnail: string, color: string, entity: string): Promise<void> {
         return this.httpClient.request({
             method: "PUT",
             url: `${this.baseUrl}/about-page-service/articles-api/articles-list`,
@@ -53,9 +53,12 @@ class ArticlesService extends AboutService {
             },
             data: {
                 id: id,
-                entity: entity,
                 title: title,
-                subTitle: subTitle
+                subTitle: subTitle,
+                thumbnail: thumbnail,
+                color: color,
+                entity: entity,
+
             }
         })
     }

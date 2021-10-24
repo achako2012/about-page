@@ -14,9 +14,9 @@ export const getArticles = async (req: CustomRequest, res: Response) => {
 }
 
 export const getArticleById = async (req: CustomRequest, res: Response) => {
-    const articleId = req.params.uid
+    const id = req.params.uid
 
-    const article = await Articles.findOne({_id: articleId}, undefined, undefined, (err: any, result: any) => {
+    const article = await Articles.findOne({_id: id}, undefined, undefined, (err: any, result: any) => {
 
         if (err) console.log(err)
 
@@ -27,7 +27,7 @@ export const getArticleById = async (req: CustomRequest, res: Response) => {
 }
 
 export const updateArticleById = async (req: CustomRequest, res: Response) => {
-    const {id, entity, title, subTitle} = req.body
+    const {id, title, subTitle, thumbnail, color, entity} = req.body
 
     const query = {_id: id}
 
@@ -35,7 +35,9 @@ export const updateArticleById = async (req: CustomRequest, res: Response) => {
         $set: {
             title: title,
             subTitle: subTitle,
-            article: entity
+            thumbnail: thumbnail,
+            color: color,
+            entity: entity
         }
     }
 
@@ -46,7 +48,7 @@ export const updateArticleById = async (req: CustomRequest, res: Response) => {
 }
 
 export const createArticle = async (req: CustomRequest, res: Response) => {
-    const {title, subTitle, thumbnail, color, article, html} = req.body
+    const {title, subTitle, thumbnail, color, entity, html} = req.body
     const date = Date.now()
 
     const newArticle = {
@@ -54,7 +56,7 @@ export const createArticle = async (req: CustomRequest, res: Response) => {
         subTitle: subTitle,
         thumbnail: thumbnail,
         color: color,
-        article: article,
+        entity: entity,
         date: date,
         html: html
     }
@@ -73,9 +75,9 @@ export const createArticle = async (req: CustomRequest, res: Response) => {
 }
 
 export const deleteArticleById = async (req: CustomRequest, res: Response) => {
-    const articleId = req.body.id
+    const {id} = req.body
 
-    await Articles.findOneAndDelete({_id: articleId}, undefined, (err: any, result: any) => {
+    await Articles.findOneAndDelete({_id: id}, undefined, (err: any, result: any) => {
 
         if (err) console.log(err)
 

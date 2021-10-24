@@ -8,8 +8,8 @@ export const getArticles = async (req, res) => {
     res.status(200).json(articles);
 };
 export const getArticleById = async (req, res) => {
-    const articleId = req.params.uid;
-    const article = await Articles.findOne({ _id: articleId }, undefined, undefined, (err, result) => {
+    const id = req.params.uid;
+    const article = await Articles.findOne({ _id: id }, undefined, undefined, (err, result) => {
         if (err)
             console.log(err);
         console.log(result);
@@ -17,27 +17,29 @@ export const getArticleById = async (req, res) => {
     res.status(200).json(article);
 };
 export const updateArticleById = async (req, res) => {
-    const { id, entity, title, subTitle } = req.body;
+    const { id, title, subTitle, thumbnail, color, entity } = req.body;
     const query = { _id: id };
     const update = {
         $set: {
             title: title,
             subTitle: subTitle,
-            article: entity
+            thumbnail: thumbnail,
+            color: color,
+            entity: entity
         }
     };
     await Articles.updateOne(query, update);
     res.status(200).json({ "message": "updated" });
 };
 export const createArticle = async (req, res) => {
-    const { title, subTitle, thumbnail, color, article, html } = req.body;
+    const { title, subTitle, thumbnail, color, entity, html } = req.body;
     const date = Date.now();
     const newArticle = {
         title: title,
         subTitle: subTitle,
         thumbnail: thumbnail,
         color: color,
-        article: article,
+        entity: entity,
         date: date,
         html: html
     };
@@ -53,8 +55,8 @@ export const createArticle = async (req, res) => {
     res.status(201).json(foo);
 };
 export const deleteArticleById = async (req, res) => {
-    const articleId = req.body.id;
-    await Articles.findOneAndDelete({ _id: articleId }, undefined, (err, result) => {
+    const { id } = req.body;
+    await Articles.findOneAndDelete({ _id: id }, undefined, (err, result) => {
         if (err)
             console.log(err);
         console.log(result);

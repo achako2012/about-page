@@ -1,3 +1,12 @@
+
+export type Skill  ={
+    _id: string;
+    title: string;
+    value: string;
+}
+
+
+
 export class HttpError extends Error {
     public body: unknown;
 

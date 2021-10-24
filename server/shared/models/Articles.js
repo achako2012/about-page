@@ -22,7 +22,7 @@ const schema = new Schema({
         type: Date,
         required: true
     },
-    article: {
+    entity: {
         type: JSON,
         required: true
     },

@@ -24,7 +24,6 @@ export default class MyEditor extends React.Component<Props, State> {
 
     async componentDidMount() {
         if (this.props.entity) {
-            console.log('props here')
             this.setState({editorState: EditorState.createWithContent(convertFromRaw(JSON.parse(this.props.entity)))})
         }
     }
@@ -36,9 +35,7 @@ export default class MyEditor extends React.Component<Props, State> {
     }
 
     async onSaveClick() {
-        const {editorState} = await this.state
-
-        this.props.updateArticles(editorState)
+        this.props.updateArticles(this.state.editorState)
     }
 
     onBoldClick() {

@@ -39,7 +39,7 @@ export class OneArticle extends React.Component<OneArticleProps, OneArticleState
 
         const article = await this.articlesService.getArticleById(articleId)
 
-        await this.setState({article})
+        this.setState({article})
     }
 
     renderTitle(article: Article) {

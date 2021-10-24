@@ -41,11 +41,13 @@ export class NewArticlePage extends React.Component<NewArticlePageProps, NewArti
     async componentDidMount() {
         const {params: {articleId}} = this.props.match;
         if (articleId) {
-            const article = await this.articlesService.getArticleById(articleId)
+            const {title, subTitle, thumbnail, color, article} = await this.articlesService.getArticleById(articleId)
             await this.setState({
-                title: article.title,
-                subTitle: article.subTitle,
-                entity: article.article
+                title: title,
+                subTitle: subTitle,
+                thumbnail: thumbnail,
+                color: color,
+                entity: article
             })
         }
     };
@@ -68,19 +70,15 @@ export class NewArticlePage extends React.Component<NewArticlePageProps, NewArti
         const {title, subTitle, thumbnail, color} = await this.state
 
         if (articleId) {
-            console.log('if block - update existing article')
-
             const articleEntity = JSON.stringify(convertToRaw(editorState.getCurrentContent()))
 
-            await this.articlesService.updateArticle(articleId, articleEntity, title, subTitle)
+            await this.articlesService.updateArticle(articleId, title, subTitle, thumbnail, color, articleEntity)
         } else {
-            console.log('else blog - create new article')
-
-            const articleEntity = convertToRaw(editorState.getCurrentContent())
+            const articleEntity = JSON.stringify(convertToRaw(editorState.getCurrentContent()))
 
             const html = stateToHTML(editorState.getCurrentContent())
 
-            await this.articlesService.postArticles(title, subTitle, thumbnail, color, JSON.stringify(articleEntity), html)
+            await this.articlesService.postArticles(title, subTitle, thumbnail, color, articleEntity, html)
         }
     }
 
