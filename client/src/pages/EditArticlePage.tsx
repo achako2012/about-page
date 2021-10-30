@@ -46,6 +46,7 @@ export const EditArticlePage = (props: NewArticlePageProps) => {
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const value = event.target.value
         event.target.id === 'title' ? updateTitle(value) : updateSubTitle(value)
+        console.log(title)
     };
 
     const onFileChange = async (value: string) => {
@@ -56,7 +57,9 @@ export const EditArticlePage = (props: NewArticlePageProps) => {
         updateColor(value)
     };
 
+    // TODO Simplify this
     const updateArticles = async () => {
+
         if (editorState) {
             const editorContent = editorState.getCurrentContent()
             const articleEntity = JSON.stringify(convertToRaw(editorContent))
@@ -69,6 +72,8 @@ export const EditArticlePage = (props: NewArticlePageProps) => {
 
                 await articlesService.postArticles(title, subTitle, thumbnail, color, articleEntity, html)
             }
+        } else {
+            await articlesService.updateArticle(articleId, title, subTitle, thumbnail, color, entity)
         }
     }
 
@@ -97,8 +102,8 @@ export const EditArticlePage = (props: NewArticlePageProps) => {
                 <div className='editor-wrapper'>
                     {editor}
                 </div>
-                    <Button id="save-article-btn" color="primary" onClick={updateArticles}>save the
-                        article</Button>
+                <Button id="save-article-btn" color="primary" onClick={updateArticles}>save the
+                    article</Button>
             </section>
         </>
     )

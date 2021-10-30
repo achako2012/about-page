@@ -1,8 +1,7 @@
-import {CustomRequest} from "../types.js";
-import {Response} from "express";
+import { Request,Response} from "express";
 import Articles from "../models/Articles.js";
 
-export const getArticles = async (req: CustomRequest, res: Response) => {
+export const getArticles = async (req: Request, res: Response) => {
     const articles = await Articles.find({}, (err, doc) => {
 
         if (err) console.log(err)
@@ -13,7 +12,7 @@ export const getArticles = async (req: CustomRequest, res: Response) => {
     res.status(200).json(articles)
 }
 
-export const getArticleById = async (req: CustomRequest, res: Response) => {
+export const getArticleById = async (req: Request, res: Response) => {
     const id = req.params.uid
 
     const article = await Articles.findOne({_id: id}, undefined, undefined, (err: any, result: any) => {
@@ -26,7 +25,7 @@ export const getArticleById = async (req: CustomRequest, res: Response) => {
     res.status(200).json(article)
 }
 
-export const updateArticleById = async (req: CustomRequest, res: Response) => {
+export const updateArticleById = async (req: Request, res: Response) => {
     const {id, title, subTitle, thumbnail, color, entity} = req.body
 
     const query = {_id: id}
@@ -47,7 +46,7 @@ export const updateArticleById = async (req: CustomRequest, res: Response) => {
 
 }
 
-export const createArticle = async (req: CustomRequest, res: Response) => {
+export const createArticle = async (req: Request, res: Response) => {
     const {title, subTitle, thumbnail, color, entity, html} = req.body
     const date = Date.now()
 
@@ -74,7 +73,7 @@ export const createArticle = async (req: CustomRequest, res: Response) => {
     res.status(201).json(foo)
 }
 
-export const deleteArticleById = async (req: CustomRequest, res: Response) => {
+export const deleteArticleById = async (req: Request, res: Response) => {
     const {id} = req.body
 
     await Articles.findOneAndDelete({_id: id}, undefined, (err: any, result: any) => {

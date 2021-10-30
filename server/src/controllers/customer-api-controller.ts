@@ -1,11 +1,10 @@
 import About from "../models/About.js";
 import Experience from "../models/Experience.js";
 import Skills from "../models/Skills.js";
-import {CustomRequest} from "../types.js";
-import {Response} from "express";
+import {Request,Response} from "express";
 
 
-export const getAbout = async (req: CustomRequest, res: Response) => {
+export const getAbout = async (req: Request, res: Response) => {
     const about = await About.find({}, (err, doc) => {
 
         if (err) console.log(err)
@@ -16,7 +15,7 @@ export const getAbout = async (req: CustomRequest, res: Response) => {
     res.status(200).json(about)
 }
 
-export const getExperience = async (req: CustomRequest, res: Response) => {
+export const getExperience = async (req: Request, res: Response) => {
     const experienceList = await Experience.find({}, (err, doc) => {
 
         if (err) console.log(err)
@@ -27,7 +26,7 @@ export const getExperience = async (req: CustomRequest, res: Response) => {
     res.status(200).json(experienceList)
 }
 
-export const getSkills = async (req: CustomRequest, res: Response) => {
+export const getSkills = async (req: Request, res: Response) => {
     const skills = await Skills.find({}, (err, doc) => {
 
         if (err) console.log(err)
@@ -38,7 +37,7 @@ export const getSkills = async (req: CustomRequest, res: Response) => {
     res.status(200).json(skills)
 }
 
-export const addAbout = async (req: CustomRequest, res: Response) => {
+export const addAbout = async (req: Request, res: Response) => {
     const {name, intro, position, title, article} = req.body
 
     const about = {
@@ -59,7 +58,7 @@ export const addAbout = async (req: CustomRequest, res: Response) => {
     res.status(201).json(req.body)
 }
 
-export const addExperience = async (req: CustomRequest, res: Response) => {
+export const addExperience = async (req: Request, res: Response) => {
     const {title, article} = req.body
 
     const experience = {
@@ -77,7 +76,7 @@ export const addExperience = async (req: CustomRequest, res: Response) => {
     res.status(201).json(req.body)
 }
 
-export const addSkill = async (req: CustomRequest, res: Response) => {
+export const addSkill = async (req: Request, res: Response) => {
     const {title, value} = req.body
 
     const skill = {
@@ -95,7 +94,7 @@ export const addSkill = async (req: CustomRequest, res: Response) => {
     res.status(201).json(req.body)
 }
 
-export const deleteAboutById = async (req: CustomRequest, res: Response) => {
+export const deleteAboutById = async (req: Request, res: Response) => {
     const aboutId = req.body.id
 
     await About.findOneAndDelete({_id: aboutId}, undefined, (err: any, result: any) => {
@@ -108,7 +107,7 @@ export const deleteAboutById = async (req: CustomRequest, res: Response) => {
     res.status(200).json({"message": `about by id: ${aboutId} deleted!`})
 }
 
-export const deleteExperienceById = async (req: CustomRequest, res: Response) => {
+export const deleteExperienceById = async (req: Request, res: Response) => {
     const experienceId = req.body.id
 
     await Experience.findOneAndDelete({_id: experienceId}, undefined, (err: any, result: any) => {
@@ -121,7 +120,7 @@ export const deleteExperienceById = async (req: CustomRequest, res: Response) =>
     res.status(200).json({"message": `about by id: ${experienceId} deleted!`})
 }
 
-export const deleteSkillById = async (req: CustomRequest, res: Response) => {
+export const deleteSkillById = async (req: Request, res: Response) => {
     const skillId = req.body.id
 
     await Skills.findOneAndDelete({_id: skillId}, undefined, (err: any, result: any) => {
