@@ -1,5 +1,4 @@
-import { CustomRequest } from "../types.js";
-import { Response } from "express";
-export declare const getAll: (req: CustomRequest, res: Response) => Promise<void>;
-export declare const create: (req: CustomRequest, res: Response) => Promise<void>;
-export declare const deleteWorkById: (req: CustomRequest, res: Response) => Promise<void>;
+import { Request, Response } from "express";
+export declare const getAll: (req: Request, res: Response) => Promise<void>;
+export declare const create: (req: Request, res: Response) => Promise<void>;
+export declare const deleteWorkById: (req: Request, res: Response) => Promise<void>;

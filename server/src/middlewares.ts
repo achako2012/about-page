@@ -1,17 +1,16 @@
 import colors from 'colors'
-import {Response, NextFunction} from "express";
-import {CustomRequest} from "./types";
+import {Response, NextFunction, Request} from "express";
 
-
-const requestTime = (req: CustomRequest, res: Response, next: NextFunction) => {
+const requestTime = (req: Request, res: Response, next: NextFunction) => {
     req.requestTime = Date.now()
     next()
 }
 
-const logger = (req: CustomRequest, res: Response, next: NextFunction) => {
+const logger = (req: Request, res: Response, next: NextFunction) => {
     console.log(colors.bgGreen.black(`Req.time: ${req.requestTime}`))
     next()
 }
+
 
 const middlewares = {
     requestTime,

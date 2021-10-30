@@ -1,25 +1,16 @@
 import {Progress} from "reactstrap";
 import '../app.css'
-import React, {Component} from "react";
-import {Spinner} from "./Spinner";
+import React from "react";
 import '../styles/Skills.css'
+import {Skill} from "../api/types";
 
 type SkillsProps = {
-    skillsService: any
+    skillsList: Skill[]
 }
 
-export default class Skills extends Component<SkillsProps> {
+export const Skills: React.FC<SkillsProps> = props => {
 
-    state = {
-        skillsList: null
-    }
-
-    async componentDidMount() {
-        const skillsList = await this.props.skillsService.getSkills()
-        await this.setState({skillsList})
-    }
-
-    getColor(value:any) {
+    const getColor = (value: any) => {
         if (value > 7 && value < 11) {
             return 'success'
         } else if (value > 4 && value < 8) {
@@ -29,13 +20,12 @@ export default class Skills extends Component<SkillsProps> {
         }
     }
 
-    //TODO Create types for articles array
-    renderSkills(arr:any) {
-        return arr.map((item:any) => {
+    const renderSkills = (arr: any) => {
+        return arr.map((item: any) => {
             const {_id, ...skills} = item
-            const color = this.getColor(skills.value)
+            const color = getColor(skills.value)
             return (
-                <div key={_id}>
+                <div key={_id} className='skills-item'>
                     <div className="text-center">{skills.title}</div>
                     <Progress value={skills.value} max="10" color={color}/>
                 </div>
@@ -43,46 +33,21 @@ export default class Skills extends Component<SkillsProps> {
         })
     }
 
-    render() {
+    const skills = renderSkills(props.skillsList)
 
-        const {skillsList} = this.state
-
-        if (!skillsList) {
-            return <Spinner/>
-        }
-
-        const items = this.renderSkills(skillsList)
-
-        //TODO Create function for list rendering
-        return (
-            <section className='skills-section'>
-                <div className='row'>
-                    <div className='skills'>
-                        <div className='skills-title'>
-                            <h1>My skills</h1>
-                        </div>
-                        <div className='skills-container'>
-                            <div className='core-skills'>
-                                <div className='skills-progress'>
-                                    {items[0]}
-                                    {items[1]}
-                                    {items[2]}
-                                    {items[3]}
-                                </div>
-                            </div>
-                            <div className='soft-skills'>
-                                <div className='skills-progress'>
-                                    {items[4]}
-                                    {items[5]}
-                                    {items[6]}
-                                    {items[7]}
-                                </div>
-                            </div>
-                        </div>
+    return (
+        <section className='skills-section'>
+            <div className='row'>
+                <div className='skills'>
+                    <div className='skills-title'>
+                        <h1>My skills</h1>
+                    </div>
+                    <div className='skills-container'>
+                        {skills}
                     </div>
                 </div>
-            </section>
-        )
-    }
+            </div>
+        </section>
+    )
 
 }

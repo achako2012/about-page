@@ -8,7 +8,7 @@ import aboutRoutes from './routes/about.js';
 import articlesRoutes from './routes/articles.js';
 
 const server = express()
-const PORT = process.env.PORT || '5000'
+const PORT = process.env.PORT || '3001'
 
 const uri = process.env.MONGODB_URI || 'mongodb+srv://alex:chako2012@cluster0.t6ctu.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 
@@ -34,11 +34,9 @@ if (process.env.NODE_ENV === 'production') {
     server.use(express.static('client/build'))
 }
 
-// TODO remove ts-ignore
-// @ts-ignore
 server.use(middlewares.requestTime)
-// @ts-ignore
 server.use(middlewares.logger)
+
 server.use('/about-page-service', workRoutes)
 server.use('/about-page-service', aboutRoutes)
 server.use('/about-page-service', articlesRoutes)

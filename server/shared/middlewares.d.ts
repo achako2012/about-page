@@ -1,7 +1,6 @@
-import { Response, NextFunction } from "express";
-import { CustomRequest } from "./types";
+import { Response, NextFunction, Request } from "express";
 declare const middlewares: {
-    requestTime: (req: CustomRequest, res: Response, next: NextFunction) => void;
-    logger: (req: CustomRequest, res: Response, next: NextFunction) => void;
+    requestTime: (req: Request, res: Response, next: NextFunction) => void;
+    logger: (req: Request, res: Response, next: NextFunction) => void;
 };
 export default middlewares;

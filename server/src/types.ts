@@ -1,6 +1,5 @@
-import {Request} from "express";
-
-export interface CustomRequest extends Request{
-    requestTime: number
-
+declare namespace Express {
+    export interface Request {
+        requestTime: number
+    }
 }
