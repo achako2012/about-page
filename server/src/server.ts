@@ -3,6 +3,7 @@ import cors from 'cors'
 import mongoose from 'mongoose';
 import bodyParser from "body-parser";
 import middlewares from './middlewares.js';
+import authRoutes from './routes/auth.js';
 import workRoutes from './routes/work.js';
 import aboutRoutes from './routes/about.js';
 import articlesRoutes from './routes/articles.js';
@@ -37,9 +38,12 @@ if (process.env.NODE_ENV === 'production') {
 server.use(middlewares.requestTime)
 server.use(middlewares.logger)
 
-server.use('/about-page-service', workRoutes)
-server.use('/about-page-service', aboutRoutes)
-server.use('/about-page-service', articlesRoutes)
+const baseService = '/about-page-service'
+
+server.use(baseService, authRoutes)
+server.use(baseService, workRoutes)
+server.use(baseService, aboutRoutes)
+server.use(baseService, articlesRoutes)
 
 server.listen(PORT, () => console.log(`App has been started on port ${PORT}...`))
 
