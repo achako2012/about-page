@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 import {MyEditor} from "../components/Editor";
 import {convertToRaw, EditorState} from "draft-js";
 import {stateToHTML} from "draft-js-export-html";

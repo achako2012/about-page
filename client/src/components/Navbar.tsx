@@ -1,16 +1,20 @@
-import React from 'react'
-import '../app.css'
+import React, {useState} from 'react'
 import {Link} from 'react-router-dom';
 import {SiGithub, SiLinkedin} from "react-icons/si";
 import {FaTelegram} from "react-icons/fa";
 import "../styles/Navbar.css"
 
-export const Navbar: React.FC = () => {
+interface NavbarProps {
+    onClickModal:any
+}
+
+export const Navbar: React.FC<NavbarProps> = ({onClickModal}) => {
+
     return (
         <header>
             <div className='row'>
                 <nav className='about-nav'>
-                    <Link to="/">alex</Link>
+                    <a onClick={ onClickModal }>alex</a>
                     <Link to="/">about</Link>
                     <Link to="/articles">articles</Link>
                     <Link to="/contact">contact</Link>
