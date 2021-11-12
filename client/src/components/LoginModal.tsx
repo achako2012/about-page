@@ -1,14 +1,35 @@
-import React from "react";
+import React, {useContext, useState} from "react";
 import ReactDom from "react-dom";
 import '../styles/LoginModal.css'
 import {Button, Form, Input} from "reactstrap";
+import AuthService from "../api/services/auth-service";
+import {AuthContext} from "../context/AuthContext";
 
 interface LoginModalProps {
     open: any,
-    onClose:any
+    onClose: any
 }
 
 export const LoginModal: React.FC<LoginModalProps> = ({open, onClose}) => {
+
+    const articlesService = AuthService.create()
+    const auth = useContext(AuthContext)
+
+    const [form, setForm] = useState({email: '', password: ''})
+
+    const changeHandler = (event: { target: { name: any; value: any; }; }) => {
+        setForm({...form, [event.target.name]: event.target.value})
+    }
+
+    const loginHandler = async () => {
+        try {
+            const data = await articlesService.getUserToken(form.email, form.password)
+            auth.login(data.token, data.userId)
+            onClose()
+        } catch (e) {
+        }
+
+    }
 
     if (!open) return null
 
@@ -45,12 +66,15 @@ export const LoginModal: React.FC<LoginModalProps> = ({open, onClose}) => {
                         </div>
                         <div className="modal-body">
                             <Form className='login-wrapper'>
-                                <Input type="email" name="email" id="emailInput" placeholder="email"/>
-                                <Input type="password" name="password" id="passwordInput" placeholder="password"/>
+                                <Input type="email" name="email" id="emailInput" placeholder="email"
+                                       onChange={ changeHandler }/>
+                                <Input type="password" name="password" id="passwordInput" placeholder="password"
+                                       onChange={ changeHandler }/>
                             </Form>
                         </div>
                         <div className="modal-footer">
-                            <Button type="submit" id="submitButton" color="secondary" size="sm">Submit</Button>
+                            <Button type="submit" id="submitButton" color="secondary" size="sm"
+                                    onClick={ () => loginHandler() }>Submit</Button>
                             <Button type="button" id="closeButton" color="danger" size="sm" onClick={ onClose }>Close
                                 modal</Button>
                         </div>

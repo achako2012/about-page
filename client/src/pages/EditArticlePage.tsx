@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useContext, useEffect} from "react";
 import {MyEditor} from "../components/Editor";
 import {convertToRaw, EditorState} from "draft-js";
 import {stateToHTML} from "draft-js-export-html";
@@ -7,6 +7,7 @@ import "../styles/NewArticle.css"
 import {ThumbnailPreview} from "../components/ThumbnailPreview";
 import {Spinner} from "../components/Spinner";
 import {Button} from "reactstrap";
+import {AuthContext} from "../context/AuthContext";
 
 interface NewArticlePageProps {
     match: any;
@@ -81,7 +82,7 @@ export const EditArticlePage = (props: NewArticlePageProps) => {
         updateEditorState(editorState)
     }
 
-    const editor = entity || !articleId ? <MyEditor saveEditorState={saveEditorState} entity={entity}/> : <Spinner/>
+    const editor = entity || !articleId ? <MyEditor saveEditorState={ saveEditorState } entity={ entity }/> : <Spinner/>
 
     return (
         <>
@@ -89,20 +90,20 @@ export const EditArticlePage = (props: NewArticlePageProps) => {
                 <h1>It's new article page</h1>
                 <div className="new-article-title">
                     <input id='title' className='form-control' type="text" placeholder="Title"
-                           value={title}
-                           onChange={handleChange}/>
+                           value={ title }
+                           onChange={ handleChange }/>
                 </div>
                 <div className="new-article-sub-title">
                     <input id='sub-title' className='form-control' type="text" placeholder="Sub Title"
-                           value={subTitle}
-                           onChange={handleChange}/>
+                           value={ subTitle }
+                           onChange={ handleChange }/>
                 </div>
-                <ThumbnailPreview color={color} thumbnail={thumbnail}
-                                  onFileChange={onFileChange} onColorChange={onColorChange}/>
+                <ThumbnailPreview color={ color } thumbnail={ thumbnail }
+                                  onFileChange={ onFileChange } onColorChange={ onColorChange }/>
                 <div className='editor-wrapper'>
-                    {editor}
+                    { editor }
                 </div>
-                <Button id="save-article-btn" color="primary" onClick={updateArticles}>save the
+                <Button id="save-article-btn" color="primary" onClick={ updateArticles }>save the
                     article</Button>
             </section>
         </>

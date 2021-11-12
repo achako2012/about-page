@@ -1,20 +1,24 @@
-import React, {useState} from 'react'
+import React, {useContext, useState} from 'react'
 import {Link} from 'react-router-dom';
 import {SiGithub, SiLinkedin} from "react-icons/si";
 import {FaTelegram} from "react-icons/fa";
 import "../styles/Navbar.css"
+import {AuthContext} from "../context/AuthContext";
 
 interface NavbarProps {
-    onClickModal:any
+    onClickModal: any
 }
 
 export const Navbar: React.FC<NavbarProps> = ({onClickModal}) => {
+
+    const auth = useContext(AuthContext)
 
     return (
         <header>
             <div className='row'>
                 <nav className='about-nav'>
-                    <a onClick={ onClickModal }>alex</a>
+                    { auth.isAuthenticated ? <a onClick={ () => auth.logout() }>logout</a> :
+                        <a onClick={ onClickModal }>alex</a> }
                     <Link to="/">about</Link>
                     <Link to="/articles">articles</Link>
                     <Link to="/contact">contact</Link>
