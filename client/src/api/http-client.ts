@@ -1,28 +1,30 @@
 /**
  * Returns an instance of Axios HTTP client with intercepted requests
  */
-import axios, {AxiosRequestConfig, AxiosResponse, AxiosError} from 'axios';
+import axios, { AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios';
 import logger from '../logger';
-import {HttpError} from './types';
-import {Header} from "./confg";
+import { HttpError } from './types';
+import { Header } from './confg';
 
 const httpClient = axios.create({
     headers: {
         [Header.ContentType]: 'application/json',
-        [Header.Accept]: '*/*',
+        [Header.Accept]: '*/*'
     }
 });
 
 const onRequest = (request: AxiosRequestConfig) => {
-    const {method, url, data} = request;
+    const { method, url, data } = request;
 
-    logger.info(`--> ${method?.toUpperCase()} ${url} ${data ? `Body: ${JSON.stringify(data)}` : ''}`);
+    logger.info(
+        `--> ${method?.toUpperCase()} ${url} ${data ? `Body: ${JSON.stringify(data)}` : ''}`
+    );
 
     return request;
 };
 
 const onResponse = <T>(response: AxiosResponse<T>) => {
-    const {status, config} = response;
+    const { status, config } = response;
 
     logger.info(`<-- ${status} ${config.url}`);
 
@@ -30,7 +32,7 @@ const onResponse = <T>(response: AxiosResponse<T>) => {
 };
 
 const onError = (error: AxiosError) => {
-    const {message, response, config} = error;
+    const { message, response, config } = error;
 
     if (response) {
         logger.error(`<-- ${response.status} ${config.url} Body: ${JSON.stringify(response.data)}`);

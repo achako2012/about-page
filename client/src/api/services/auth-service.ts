@@ -1,14 +1,12 @@
-import AboutService from "./about-service";
-import {Article} from "../../types";
-import {Header} from "../confg";
+import AboutService from './about-service';
+import { Header } from '../confg';
 
 class AuthService extends AboutService {
-
     /** Returns JWT token */
     async getUserToken(email: string, password: string): Promise<any> {
         const response = await this.httpClient.request({
             method: 'POST',
-            url: `${ this.baseUrl }/about-page-service/auth/login`,
+            url: `${this.baseUrl}/about-page-service/auth/login`,
             headers: {
                 [Header.ContentType]: 'application/json'
             },
@@ -20,7 +18,6 @@ class AuthService extends AboutService {
 
         return response.data;
     }
-
 }
 
-export default AuthService
+export default AuthService;

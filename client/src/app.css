@@ -1,5 +1,5 @@
 .row {
-    display:flex;
+    display: flex;
     justify-content: space-around;
     max-width: 1040px;
     margin: 0 auto;
@@ -10,7 +10,3 @@ section {
     background-color: #fafafa;
     box-shadow: #f4f4f4 0px 2px 4px 0px, #f3f3f3 0px 2px 16px 0px;
 }
-
-
-
-
