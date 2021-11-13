@@ -1,111 +1,149 @@
-import React, {useEffect, useState} from "react";
-import {MyEditor} from "../components/Editor";
-import {convertToRaw, EditorState} from "draft-js";
-import {stateToHTML} from "draft-js-export-html";
-import ArticlesService from "../api/services/articles-service";
-import "../styles/NewArticle.css"
-import {ThumbnailPreview} from "../components/ThumbnailPreview";
-import {Spinner} from "../components/Spinner";
-import {Button} from "reactstrap";
+import React, { useEffect } from 'react';
+import { convertToRaw, EditorState } from 'draft-js';
+import { Button } from 'reactstrap';
+import { stateToHTML } from 'draft-js-export-html';
+import { MyEditor } from '../components/Editor';
+import ArticlesService from '../api/services/articles-service';
+import '../styles/NewArticle.css';
+import { ThumbnailPreview } from '../components/ThumbnailPreview';
+import { Spinner } from '../components/Spinner';
 
 interface NewArticlePageProps {
     match: any;
 }
 
-export const EditArticlePage = (props: NewArticlePageProps) => {
+export const EditArticlePage = ({ match }: NewArticlePageProps) => {
+    const articlesService = ArticlesService.create();
+    const {
+        params: { articleId }
+    } = match;
 
-    const articlesService = ArticlesService.create()
-    const {params: {articleId}} = props.match;
+    const [title, updateTitle] = React.useState<string>('');
+    const [subTitle, updateSubTitle] = React.useState<string>('');
+    const [thumbnail, updateThumbnail] = React.useState<string>('');
+    const [color, updateColor] = React.useState<string>('#000000');
+    const [entity, updateEntity] = React.useState<string>('');
 
-    const [title, updateTitle] = React.useState<string>('')
-    const [subTitle, updateSubTitle] = React.useState<string>('')
-    const [thumbnail, updateThumbnail] = React.useState<string>('')
-    const [color, updateColor] = React.useState<string>('#000000')
-    const [entity, updateEntity] = React.useState<string>('')
-
-    const [editorState, updateEditorState] = React.useState<EditorState>()
+    const [editorState, updateEditorState] = React.useState<EditorState>();
 
     useEffect(() => {
         const setArticle = async () => {
-            const {params: {articleId}} = props.match;
+            const {
+                params: { articleId }
+            } = match;
 
             if (articleId) {
-                const {title, subTitle, thumbnail, color, entity} = await articlesService.getArticleById(articleId)
-                updateTitle(title)
-                updateSubTitle(subTitle)
-                updateThumbnail(thumbnail)
-                updateColor(color)
-                updateEntity(entity)
+                const { title, subTitle, thumbnail, color, entity } =
+                    await articlesService.getArticleById(articleId);
+                updateTitle(title);
+                updateSubTitle(subTitle);
+                updateThumbnail(thumbnail);
+                updateColor(color);
+                updateEntity(entity);
             }
-        }
+        };
 
         setArticle();
-
-    }, [])
+    }, []);
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const value = event.target.value
-        event.target.id === 'title' ? updateTitle(value) : updateSubTitle(value)
-        console.log(title)
+        const { value } = event.target;
+        event.target.id === 'title' ? updateTitle(value) : updateSubTitle(value);
     };
 
     const onFileChange = async (value: string) => {
-        updateThumbnail(value)
+        updateThumbnail(value);
     };
 
     const onColorChange = async (value: string) => {
-        updateColor(value)
+        updateColor(value);
     };
 
     // TODO Simplify this
     const updateArticles = async () => {
-
         if (editorState) {
-            const editorContent = editorState.getCurrentContent()
-            const articleEntity = JSON.stringify(convertToRaw(editorContent))
+            const editorContent = editorState.getCurrentContent();
+            const articleEntity = JSON.stringify(convertToRaw(editorContent));
 
             if (articleId) {
-                await articlesService.updateArticle(articleId, title, subTitle, thumbnail, color, articleEntity)
-
+                await articlesService.updateArticle(
+                    articleId,
+                    title,
+                    subTitle,
+                    thumbnail,
+                    color,
+                    articleEntity
+                );
             } else {
-                const html = stateToHTML(editorContent)
+                const html = stateToHTML(editorContent);
 
-                await articlesService.postArticles(title, subTitle, thumbnail, color, articleEntity, html)
+                await articlesService.postArticles(
+                    title,
+                    subTitle,
+                    thumbnail,
+                    color,
+                    articleEntity,
+                    html
+                );
             }
         } else {
-            await articlesService.updateArticle(articleId, title, subTitle, thumbnail, color, entity)
+            await articlesService.updateArticle(
+                articleId,
+                title,
+                subTitle,
+                thumbnail,
+                color,
+                entity
+            );
         }
-    }
+    };
 
     const saveEditorState = async (editorState: EditorState) => {
-        updateEditorState(editorState)
-    }
+        updateEditorState(editorState);
+    };
 
-    const editor = entity || !articleId ? <MyEditor saveEditorState={saveEditorState} entity={entity}/> : <Spinner/>
+    const editor =
+        entity || !articleId ? (
+            <MyEditor saveEditorState={saveEditorState} entity={entity} />
+        ) : (
+            <Spinner />
+        );
 
     return (
-        <>
-            <section className="new-article">
-                <h1>It's new article page</h1>
-                <div className="new-article-title">
-                    <input id='title' className='form-control' type="text" placeholder="Title"
-                           value={title}
-                           onChange={handleChange}/>
-                </div>
-                <div className="new-article-sub-title">
-                    <input id='sub-title' className='form-control' type="text" placeholder="Sub Title"
-                           value={subTitle}
-                           onChange={handleChange}/>
-                </div>
-                <ThumbnailPreview color={color} thumbnail={thumbnail}
-                                  onFileChange={onFileChange} onColorChange={onColorChange}/>
-                <div className='editor-wrapper'>
-                    {editor}
-                </div>
-                <Button id="save-article-btn" color="primary" onClick={updateArticles}>save the
-                    article</Button>
-            </section>
-        </>
-    )
+        <section className="new-article">
+            <h1>It&apos;s new article page</h1>
+            <div className="new-article-title">
+                <input
+                    id="title"
+                    className="form-control"
+                    type="text"
+                    placeholder="Title"
+                    value={title}
+                    onChange={handleChange}
+                />
+            </div>
+            <div className="new-article-sub-title">
+                <input
+                    id="sub-title"
+                    className="form-control"
+                    type="text"
+                    placeholder="Sub Title"
+                    value={subTitle}
+                    onChange={handleChange}
+                />
+            </div>
+            <ThumbnailPreview
+                color={color}
+                thumbnail={thumbnail}
+                onFileChange={onFileChange}
+                onColorChange={onColorChange}
+            />
+            <div className="editor-wrapper">{editor}</div>
+            <Button id="save-article-btn" color="primary" onClick={updateArticles}>
+                save the article
+            </Button>
+        </section>
+    );
+};
 
-}
+export default EditArticlePage;
