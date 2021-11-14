@@ -11,12 +11,7 @@
     },
     "parser": "@typescript-eslint/parser",
     "rules": {
-        "prettier/prettier": [
-            "warn",
-            {
-                "endOfLine": "cr"
-            }
-        ],
+        "prettier/prettier": ["warn"],
         "@typescript-eslint/comma-dangle": ["warn", "never"],
         "react/function-component-definition": [
             2,

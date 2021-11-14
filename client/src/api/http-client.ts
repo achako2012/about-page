@@ -3,7 +3,6 @@
  */
 import axios, { AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios';
 import logger from '../logger';
-import { HttpError } from './types';
 import { Header } from './confg';
 
 const httpClient = axios.create({
@@ -32,12 +31,11 @@ const onResponse = <T>(response: AxiosResponse<T>) => {
 };
 
 const onError = (error: AxiosError) => {
-    const { message, response, config } = error;
+    const { response, config } = error;
 
     if (response) {
         logger.error(`<-- ${response.status} ${config.url} Body: ${JSON.stringify(response.data)}`);
-
-        throw new HttpError(message, response.status, response.headers, response.data);
+        // throw new HttpError(message, response.status, response.headers, response.data);
     }
 
     throw error;

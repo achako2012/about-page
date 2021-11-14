@@ -2,9 +2,9 @@ import React, { useContext, useState } from 'react';
 import ReactDom from 'react-dom';
 import '../styles/LoginModal.css';
 import { Button, Form, Input } from 'reactstrap';
+import axios, { AxiosError } from 'axios';
 import AuthService from '../api/services/auth-service';
 import { AuthContext } from '../context/AuthContext';
-import logger from '../logger';
 
 interface LoginModalProps {
     open: any;
@@ -16,6 +16,7 @@ export const LoginModal: React.FC<LoginModalProps> = ({ open, onClose }) => {
     const auth = useContext(AuthContext);
 
     const [form, setForm] = useState({ email: '', password: '' });
+    const [error, setError] = useState('');
 
     const changeHandler = (event: { target: { name: any; value: any } }) => {
         setForm({ ...form, [event.target.name]: event.target.value });
@@ -26,8 +27,13 @@ export const LoginModal: React.FC<LoginModalProps> = ({ open, onClose }) => {
             const data = await articlesService.getUserToken(form.email, form.password);
             auth.login(data.token, data.userId);
             onClose();
-        } catch (e) {
-            logger.log(e);
+        } catch (error) {
+            if (axios.isAxiosError(error)) {
+                const axiosError: AxiosError = error;
+                setError(axiosError?.response?.data?.message);
+                return;
+            }
+            throw error;
         }
     };
 
@@ -64,6 +70,7 @@ export const LoginModal: React.FC<LoginModalProps> = ({ open, onClose }) => {
                 <div className="modal-content">
                     <div className="modal-title">Login into the app</div>
                     <div className="modal-body">
+                        {error ? <p style={{ color: 'red' }}>{error}</p> : null}
                         <Form className="login-wrapper">
                             <Input
                                 type="email"
