@@ -1,29 +1,29 @@
 .single-article {
-    margin: 40px auto 0;
-    max-width: 1000px;
-    border: 1px solid #ced4da;
-    background-color: #fff;
-    border-radius: 4px;
+  margin: 40px auto 0;
+  max-width: 1000px;
+  border: 1px solid #ced4da;
+  background-color: #fff;
+  border-radius: 4px;
 }
 .single-article .article-title {
-    padding: 35px 100px 20px 100px;
+  padding: 35px 100px 20px 100px;
 }
 .single-article .article-title .thumbnail-icon {
-    margin: 10px 0 25px;
+  margin: 10px 0 25px;
 }
 .single-article .article-title .thumbnail-icon img {
-    max-width: 120px;
-    max-height: 120px;
+  max-width: 120px;
+  max-height: 120px;
 }
 .single-article .article-title h1 {
-    margin-bottom: 15px;
-    margin-left: 15px;
+  margin-bottom: 15px;
+  margin-left: 15px;
 }
 .single-article .article-content {
-    padding: 35px 100px 20px 100px;
+  padding: 35px 100px 20px 100px;
 }
 .single-article .article-content * {
-    margin: 0 auto;
+  margin: 0 auto;
 }
 
 /*# sourceMappingURL=OneArticle.css.map */
