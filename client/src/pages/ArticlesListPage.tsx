@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from 'reactstrap';
 import ArticlesService from '../api/services/articles-service';
@@ -6,8 +6,10 @@ import { Spinner } from '../components/Spinner';
 import '../styles/Articles.css';
 import { Article } from '../types';
 import { ArticleView } from '../components/ArticleView';
+import { AuthContext } from '../context/AuthContext';
 
 export const ArticlesListPage = () => {
+    const auth = useContext(AuthContext);
     const articlesService = ArticlesService.create();
 
     const [articlesList, updateArticlesList] = React.useState<Article[]>();
@@ -39,13 +41,17 @@ export const ArticlesListPage = () => {
 
     const articles = articlesList?.length ? renderArticles(articlesList) : <Spinner />;
 
+    const createArticleElement = (
+        <Link to="/articles/new">
+            <Button color="primary">create new article</Button>
+        </Link>
+    );
+
     return (
         <>
             {articles}
             <div className="new-article-btn">
-                <Link to="/articles/new">
-                    <Button color="primary">create new article</Button>
-                </Link>
+                {auth.isAuthenticated ? createArticleElement : null}
             </div>
         </>
     );

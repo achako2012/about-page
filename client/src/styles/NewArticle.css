@@ -1,13 +1,13 @@
 .new-article {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
 }
 
 #save-article-btn {
-  max-width: 150px;
-  margin-top: 10px;
+    max-width: 150px;
+    margin-top: 10px;
 }
 
 /*# sourceMappingURL=NewArticle.css.map */
