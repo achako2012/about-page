@@ -1,0 +1,30 @@
+{
+    "root": true,
+    "env": {
+        "node": true,
+        "es2021": true
+    },
+    "plugins": ["@typescript-eslint", "prettier", "eslint-plugin-tsdoc"],
+    "extends": ["airbnb", "airbnb/hooks", "airbnb-typescript", "prettier"],
+    "parserOptions": {
+        "project": "./tsconfig.json"
+    },
+    "parser": "@typescript-eslint/parser",
+    "rules": {
+        "prettier/prettier": ["warn"],
+        "@typescript-eslint/comma-dangle": ["warn", "never"],
+        "react/function-component-definition": [
+            2,
+            {
+                "namedComponents": "arrow-function"
+            }
+        ],
+        "react-hooks/exhaustive-deps": 0,
+        //TODO remove this rules
+        "no-underscore-dangle": 0,
+        "react/require-default-props": 0,
+        "@typescript-eslint/no-shadow": 0,
+        "@typescript-eslint/naming-convention": 0,
+        "@typescript-eslint/no-unused-expressions": 0
+    }
+}

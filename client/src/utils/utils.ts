@@ -1,18 +1,15 @@
-const convertBase64File = (file:File) => {
-    return new Promise((resolve, reject) => {
-        const fileReader = new FileReader()
-        fileReader.readAsDataURL(file)
+export const convertBase64File = (file: File) =>
+    new Promise((resolve, reject) => {
+        const fileReader = new FileReader();
+        fileReader.readAsDataURL(file);
 
         fileReader.onload = () => {
-            resolve(fileReader.result)
-        }
+            resolve(fileReader.result);
+        };
 
         fileReader.onerror = (error) => {
-            reject(error)
-        }
-    })
-}
+            reject(error);
+        };
+    });
 
-export const utils = {
-    convertBase64File
-}
+export default convertBase64File;

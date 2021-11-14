@@ -1,9 +1,8 @@
 import AboutService from './about-service';
-import {Header} from "../confg";
-import {Article} from "../../types";
+import { Header } from '../confg';
+import { Article } from '../../types';
 
 class ArticlesService extends AboutService {
-
     /** Returns articles list */
     async getArticles(): Promise<Article[]> {
         const response = await this.httpClient.request<Article[]>({
@@ -24,43 +23,56 @@ class ArticlesService extends AboutService {
         return response.data;
     }
 
-    async postArticles(title: string, subTitle: string, thumbnail: string, color: string, entity: string, html: string): Promise<Article> {
+    async postArticles(
+        title: string,
+        subTitle: string,
+        thumbnail: string,
+        color: string,
+        entity: string,
+        html: string
+    ): Promise<Article> {
         const response = await this.httpClient.request({
-            method: "POST",
+            method: 'POST',
             url: `${this.baseUrl}/about-page-service/articles-api/articles-list`,
             headers: {
                 [Header.ContentType]: 'application/json'
             },
             data: {
-                title: title,
-                subTitle: subTitle,
-                thumbnail: thumbnail,
-                color: color,
-                entity: entity,
-                html: html
+                title,
+                subTitle,
+                thumbnail,
+                color,
+                entity,
+                html
             }
         });
 
         return response.data;
     }
 
-    async updateArticle(id: string, title: string, subTitle: string, thumbnail: string, color: string, entity: string): Promise<void> {
+    async updateArticle(
+        id: string,
+        title: string,
+        subTitle: string,
+        thumbnail: string,
+        color: string,
+        entity: string
+    ): Promise<void> {
         return this.httpClient.request({
-            method: "PUT",
+            method: 'PUT',
             url: `${this.baseUrl}/about-page-service/articles-api/articles-list`,
             headers: {
                 [Header.ContentType]: 'application/json'
             },
             data: {
-                id: id,
-                title: title,
-                subTitle: subTitle,
-                thumbnail: thumbnail,
-                color: color,
-                entity: entity,
-
+                id,
+                title,
+                subTitle,
+                thumbnail,
+                color,
+                entity
             }
-        })
+        });
     }
 
     async deleteArticle(id: string): Promise<void> {
@@ -71,11 +83,10 @@ class ArticlesService extends AboutService {
                 [Header.ContentType]: 'application/json'
             },
             data: {
-                id: id
+                id
             }
-        })
+        });
     }
-
 }
 
 export default ArticlesService;

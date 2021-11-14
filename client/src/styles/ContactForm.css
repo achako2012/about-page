@@ -1,52 +1,52 @@
 .social-section {
-  padding: 20px 0;
+    padding: 20px 0;
 }
 .social-section .social-title {
-  text-align: center;
+    text-align: center;
 }
 .social-section .social-links {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 .social-section .social-links a {
-  font-size: 4em;
+    font-size: 4em;
 }
 .social-section .social-links #linkedin {
-  color: #0a66c2;
+    color: #0a66c2;
 }
 .social-section .social-links #telegram {
-  color: #0088cc;
+    color: #0088cc;
 }
 
 .contact-section {
-  padding: 40px 0;
+    padding: 40px 0;
 }
 .contact-section .contact-title {
-  text-align: center;
+    text-align: center;
 }
 .contact-section .contact-wrapper {
-  display: grid;
-  grid-template-areas: "nameInput textInput" "emailInput textInput" ". submitButton";
-  grid-template-rows: 1fr 1fr 1fr;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 1vw;
-  padding: 30px 0;
+    display: grid;
+    grid-template-areas: 'nameInput textInput' 'emailInput textInput' '. submitButton';
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1vw;
+    padding: 30px 0;
 }
 .contact-section #nameInput {
-  grid-area: nameInput;
+    grid-area: nameInput;
 }
 .contact-section #emailInput {
-  grid-area: emailInput;
+    grid-area: emailInput;
 }
 .contact-section #textInput {
-  grid-area: textInput;
+    grid-area: textInput;
 }
 .contact-section #submitButton {
-  width: 50%;
-  grid-area: submitButton;
-  justify-self: end;
+    width: 50%;
+    grid-area: submitButton;
+    justify-self: end;
 }
 
 /*# sourceMappingURL=ContactForm.css.map */
