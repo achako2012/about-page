@@ -1,24 +1,24 @@
-import React, {FC} from "react";
-import {EditorState} from "draft-js";
-import {StyleButtons} from "./StyleButtons";
+import React, { FC } from 'react';
+import { EditorState } from 'draft-js';
+import { StyleButtons } from './StyleButtons';
 
 type InlineStyleControlsProps = {
     editorState: EditorState;
     onClick(blockType: string): void;
-}
+};
 
-export const InlineStyleControls: FC<InlineStyleControlsProps> = ({editorState, onClick}) => {
+export const InlineStyleControls: FC<InlineStyleControlsProps> = ({ editorState, onClick }) => {
     const INLINE_STYLES = [
-        {label: 'Bold', style: 'BOLD'},
-        {label: 'Italic', style: 'ITALIC'},
-        {label: 'Underline', style: 'UNDERLINE'},
-        {label: 'Monospace', style: 'CODE'}
+        { label: 'Bold', style: 'BOLD' },
+        { label: 'Italic', style: 'ITALIC' },
+        { label: 'Underline', style: 'UNDERLINE' },
+        { label: 'Monospace', style: 'CODE' }
     ];
 
     const currentStyle = editorState.getCurrentInlineStyle();
     return (
         <div className="inline-style-controls">
-            {INLINE_STYLES.map(type => (
+            {INLINE_STYLES.map((type) => (
                 <StyleButtons
                     key={type.label}
                     active={currentStyle.has(type.style)}
@@ -29,6 +29,6 @@ export const InlineStyleControls: FC<InlineStyleControlsProps> = ({editorState, 
             ))}
         </div>
     );
-}
+};
 
 export default InlineStyleControls;

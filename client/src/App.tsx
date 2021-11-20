@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import './app.css';
+import './index.css';
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
 import { AboutPage } from './pages/AboutPage';
 import { ContactPage } from './pages/ContactPage';

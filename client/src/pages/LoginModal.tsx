@@ -27,13 +27,13 @@ export const LoginModal: React.FC<LoginModalProps> = ({ open, onClose }) => {
             const data = await articlesService.getUserToken(form.email, form.password);
             auth.login(data.token, data.userId);
             onClose();
-        } catch (error) {
-            if (axios.isAxiosError(error)) {
-                const axiosError: AxiosError = error;
+        } catch (err) {
+            if (axios.isAxiosError(err)) {
+                const axiosError: AxiosError = err;
                 setError(axiosError?.response?.data?.message);
                 return;
             }
-            throw error;
+            throw err;
         }
     };
 

@@ -27,8 +27,8 @@ export const OneArticlePage = ({ match }: OneArticleProps) => {
         setArticle();
     }, []);
 
-    const renderTitle = (article: Article) => {
-        const { title, thumbnail, color } = article;
+    const renderTitle = (newArticle: Article) => {
+        const { title, thumbnail, color } = newArticle;
 
         const ArticleTitle = styled.div`
             background-image: linear-gradient(${color}, #fff 120%);
@@ -44,8 +44,8 @@ export const OneArticlePage = ({ match }: OneArticleProps) => {
         );
     };
 
-    const renderContent = (article: Article) => {
-        const { html } = article;
+    const renderContent = (newArticle: Article) => {
+        const { html } = newArticle;
 
         return <div className="article-content">{parse(html)}</div>;
     };

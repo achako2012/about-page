@@ -1,5 +1,5 @@
-import React from "react";
-import {Button} from "reactstrap";
+import React from 'react';
+import { Button } from 'reactstrap';
 
 export const About: React.FC = () => (
     <section className="about-section">

@@ -1,10 +1,10 @@
-import React, {useMemo} from "react";
-import {Card, CardText, CardTitle, Col, Row} from "reactstrap";
-import {IconContext} from "react-icons";
-import {BsGear, GoBrowser, MdDeveloperBoard} from "react-icons/all";
+import React, { useMemo } from 'react';
+import { Card, CardText, CardTitle, Col, Row } from 'reactstrap';
+import { IconContext } from 'react-icons';
+import { BsGear, GoBrowser, MdDeveloperBoard } from 'react-icons/all';
 
 export const Services: React.FC = () => {
-    const reactIconsClass = useMemo(() => ({className: 'react-icons'}), []);
+    const reactIconsClass = useMemo(() => ({ className: 'react-icons' }), []);
 
     return (
         <section className="services-section">
@@ -16,9 +16,9 @@ export const Services: React.FC = () => {
                     <Row>
                         <Col>
                             <Card body>
-                                <IconContext.Provider value={ reactIconsClass }>
+                                <IconContext.Provider value={reactIconsClass}>
                                     <div>
-                                        <BsGear/>
+                                        <BsGear />
                                     </div>
                                 </IconContext.Provider>
                                 <CardTitle tag="h5">Test automation</CardTitle>
@@ -32,9 +32,9 @@ export const Services: React.FC = () => {
                         </Col>
                         <Col>
                             <Card body>
-                                <IconContext.Provider value={ reactIconsClass }>
+                                <IconContext.Provider value={reactIconsClass}>
                                     <div>
-                                        <MdDeveloperBoard/>
+                                        <MdDeveloperBoard />
                                     </div>
                                 </IconContext.Provider>
                                 <CardTitle tag="h5">Manual testing</CardTitle>
@@ -47,9 +47,9 @@ export const Services: React.FC = () => {
                         </Col>
                         <Col>
                             <Card body>
-                                <IconContext.Provider value={ reactIconsClass }>
+                                <IconContext.Provider value={reactIconsClass}>
                                     <div>
-                                        <GoBrowser/>
+                                        <GoBrowser />
                                     </div>
                                 </IconContext.Provider>
                                 <CardTitle tag="h5">Web Development</CardTitle>

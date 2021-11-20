@@ -1,5 +1,5 @@
-import React, {FC} from "react";
-import {Button} from "reactstrap";
+import React, { FC } from 'react';
+import { Button } from 'reactstrap';
 
 type StyleButtonProps = {
     active: boolean;
@@ -8,22 +8,22 @@ type StyleButtonProps = {
     style: string;
 };
 
-export const StyleButtons: FC<StyleButtonProps> = ({onClick, active, label, style}) => {
-    let color="secondary"
+export const StyleButtons: FC<StyleButtonProps> = ({ onClick, active, label, style }) => {
+    let color = 'secondary';
     if (active) {
-        color= 'primary';
+        color = 'primary';
     }
 
     return (
         <Button
             outline
             color={color}
-            onMouseDown={ (e) => {
+            onMouseDown={(e) => {
                 e.preventDefault();
                 onClick(style);
-            } }
+            }}
         >
-            { label }
+            {label}
         </Button>
     );
 };

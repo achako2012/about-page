@@ -16,8 +16,8 @@ export const ArticlesListPage = () => {
 
     useEffect(() => {
         const setArticles = async () => {
-            const articlesList = await articlesService.getArticles();
-            updateArticlesList(articlesList);
+            const articles = await articlesService.getArticles();
+            updateArticlesList(articles);
         };
         setArticles();
     }, []);
