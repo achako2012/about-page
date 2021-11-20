@@ -1,13 +1,13 @@
 import React, {useEffect} from 'react';
 import {convertToRaw, EditorState} from 'draft-js';
-import {Button} from 'reactstrap';
+import {Button, Input} from 'reactstrap';
 import {stateToHTML} from 'draft-js-export-html';
 import {MyEditor} from '../components/Editor/Editor';
 import ArticlesService from '../api/services/articles-service';
 import '../styles/NewArticle.css';
+import '../styles/ThumbnailPreview.css';
 import {ThumbnailPreview} from '../components/ThumbnailPreview';
 import {Spinner} from '../components/Spinner';
-import '../styles/ThumbnailPreview.css';
 
 interface NewArticlePageProps {
     match: any;
@@ -111,10 +111,9 @@ export const EditArticlePage = ({match}: NewArticlePageProps) => {
         );
 
     return (
-        <section className="new-article">
-            <h1>It&apos;s new article page</h1>
+        <article className="new-article">
             <div className="new-article-title">
-                <input
+                <Input
                     id="title"
                     className="form-control"
                     type="text"
@@ -124,10 +123,10 @@ export const EditArticlePage = ({match}: NewArticlePageProps) => {
                 />
             </div>
             <div className="new-article-sub-title">
-                <input
+                <Input
                     id="sub-title"
                     className="form-control"
-                    type="text"
+                    type="textarea"
                     placeholder="Sub Title"
                     value={ subTitle }
                     onChange={ handleChange }
@@ -143,7 +142,7 @@ export const EditArticlePage = ({match}: NewArticlePageProps) => {
             <Button id="save-article-btn" color="primary" onClick={ updateArticles }>
                 save the article
             </Button>
-        </section>
+        </article>
     );
 };
 

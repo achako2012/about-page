@@ -6,3 +6,110 @@
     margin: 1px 1px;
   }
 }
+
+#rich-editor em {
+  font-style: italic;
+}
+
+#rich-editor h1,
+#rich-editor h2,
+#rich-editor h3,
+#rich-editor h4,
+#rich-editor h5,
+#rich-editor h6 {
+  margin: 10px 0;
+  font-family: inherit;
+  font-weight: bold;
+  line-height: 20px;
+  color: inherit;
+  text-rendering: optimizelegibility;
+}
+
+#rich-editor h1 small,
+#rich-editor h2 small,
+#rich-editor h3 small,
+#rich-editor h4 small,
+#rich-editor h5 small,
+#rich-editor h6 small {
+  font-weight: normal;
+  color: #7b7b7b;
+}
+
+#rich-editor h1,
+#rich-editor h2,
+#rich-editor h3 {
+  line-height: 40px;
+}
+
+#rich-editor h1 {
+  font-size: 39px;
+}
+
+#rich-editor h2 {
+  font-size: 31px;
+}
+
+#rich-editor h3 {
+  font-size: 23px;
+}
+
+#rich-editor h4 {
+  font-size: 17px;
+}
+
+#rich-editor h5 {
+  font-size: 14px;
+}
+
+#rich-editor h6 {
+  font-size: 11px;
+}
+
+#rich-editor h1 small {
+  font-size: 24px;
+}
+
+#rich-editor h2 small {
+  font-size: 18px;
+}
+
+#rich-editor h3 small {
+  font-size: 16px;
+}
+
+#rich-editor h4 small {
+  font-size: 14px;
+}
+
+#rich-editor ul, #rich-editor ol {
+  margin: 0 0 10px 25px;
+  padding: 0;
+}
+
+#rich-editor ul ul,
+#rich-editor ul ol,
+#rich-editor ol ol,
+#rich-editor ol ul {
+  margin-bottom: 0;
+}
+
+#rich-editor li {
+  line-height: 20px;
+}
+
+#rich-editor blockquote {
+  background-color: inherit;
+  border-left: 5px solid rgb(221 221 221);
+  margin: 16px 0;
+  padding: 10px 20px;
+}
+
+#rich-editor pre{
+  margin: 5px 50px 5px 5px;
+  border-radius: 5px;
+  background-color: rgb(8, 9, 10);
+  color: rgb(248, 248, 242);
+  font-size: 14px;
+  padding: 10px;
+}
+
