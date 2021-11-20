@@ -1,5 +1,4 @@
 import React from 'react';
-import '../styles/ThumbnailPreview.css';
 import { convertBase64File } from '../utils/utils';
 import logger from '../logger';
 

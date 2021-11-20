@@ -1,9 +1,13 @@
-import React, { useEffect } from 'react';
-import { Title, About, Services } from '../components/About';
-import { Skills } from '../components/Skills';
+import React, {useEffect} from 'react';
+import {Skills} from '../components/Skills';
 import SkillsService from '../api/services/skills-service';
-import { Spinner } from '../components/Spinner';
-import { Skill } from '../api/types';
+import {Spinner} from '../components/Spinner';
+import {Skill} from '../api/types';
+import '../styles/About.css';
+import {Title} from "../components/About/Title";
+import {About} from "../components/About/About";
+import {Services} from "../components/About/Services";
+import '../styles/Skills.css';
 
 export const AboutPage: React.FC = () => {
     const skillsService = SkillsService.create();
@@ -19,14 +23,14 @@ export const AboutPage: React.FC = () => {
         setSkills();
     }, []);
 
-    const skills = skillsList ? <Skills skillsList={skillsList} /> : <Spinner />;
+    const skills = skillsList ? <Skills skillsList={ skillsList }/> : <Spinner/>;
 
     return (
         <>
-            <Title />
-            <About />
-            <Services />
-            {skills}
+            <Title/>
+            <About/>
+            <Services/>
+            { skills }
         </>
     );
 };

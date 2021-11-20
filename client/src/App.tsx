@@ -7,7 +7,7 @@ import { Navbar } from './components/Navbar';
 import { ArticlesListPage } from './pages/ArticlesListPage';
 import { EditArticlePage } from './pages/EditArticlePage';
 import { OneArticlePage } from './pages/OneArticlePage';
-import { LoginModal } from './components/LoginModal';
+import { LoginModal } from './pages/LoginModal';
 import { useAuth } from './hooks/auth.hooks';
 import { AuthContext } from './context/AuthContext';
 

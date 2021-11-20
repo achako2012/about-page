@@ -1,0 +1,9 @@
+.editor-operations {
+  display: flex;
+  flex-direction: column;
+}
+.editor-operations * {
+  margin: 1px 1px;
+}
+
+/*# sourceMappingURL=Editor.css.map */

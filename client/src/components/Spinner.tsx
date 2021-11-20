@@ -1,6 +1,6 @@
 import React from 'react';
-import '../app.css';
 import '../styles/Spinner.css';
+
 
 export const Spinner: React.FC = () => (
     <section className="spinner">

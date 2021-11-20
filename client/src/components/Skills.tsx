@@ -1,7 +1,5 @@
 import { Progress } from 'reactstrap';
-import '../app.css';
 import React from 'react';
-import '../styles/Skills.css';
 import { Skill } from '../api/types';
 
 type SkillsProps = {

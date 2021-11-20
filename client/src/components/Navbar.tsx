@@ -2,8 +2,8 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { SiGithub, SiLinkedin } from 'react-icons/si';
 import { FaTelegram } from 'react-icons/fa';
-import '../styles/Navbar.css';
 import { AuthContext } from '../context/AuthContext';
+import '../styles/Navbar.css';
 
 interface NavbarProps {
     onClickModal: any;
