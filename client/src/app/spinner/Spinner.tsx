@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/Spinner.css';
+import './Spinner.css';
 
 export const Spinner: React.FC = () => (
     <section className="spinner">

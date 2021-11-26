@@ -1,0 +1,62 @@
+header {
+  width: 100%;
+  font-size: 20px;
+  background-color: #5f6366;
+  padding: 17px 0;
+}
+header .nav-wrapper {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+header .nav-wrapper * {
+  color: #fff;
+}
+header .nav-wrapper .login-buttons, header .nav-wrapper .logout-buttons {
+  display: flex;
+  align-items: center;
+  margin-right: auto;
+  cursor: pointer;
+  font-size: 1.1em;
+  z-index: 20;
+}
+header .nav-wrapper .login-buttons button, header .nav-wrapper .logout-buttons button {
+  border: none;
+  background-color: #5f6366;
+}
+
+@media (min-width: 1280px) {
+  .nav-wrapper {
+    max-width: 60%;
+  }
+
+  .authenticate-icon-login, .authenticate-icon-logout, .nav-burger {
+    display: none !important;
+  }
+}
+@media (min-width: 900px) and (max-width: 1279px) {
+  .nav-wrapper {
+    max-width: 80%;
+  }
+
+  .authenticate-icon-login, .authenticate-icon-logout, .nav-burger {
+    display: none !important;
+  }
+}
+@media (max-width: 899px) {
+  .nav-wrapper {
+    max-width: 70%;
+  }
+
+  .authenticate-button-login, .authenticate-button-logout {
+    display: none !important;
+  }
+
+  .view-row {
+    display: none !important;
+  }
+}
+
+/*# sourceMappingURL=Navbar.css.map */

@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import parse from 'html-react-parser';
 import styled from '@emotion/styled';
-import ArticlesService from '../api/services/articles-service';
-import { Spinner } from '../components/Spinner';
-import { Article } from '../types';
-import '../styles/OneArticle.css';
+import ArticlesService from '../../../../api/services/articles-service';
+import { Spinner } from '../../../spinner/Spinner';
+import { Article } from '../../../../types';
+import './OneArticle.css';
 
 interface OneArticleProps {
     match: any;

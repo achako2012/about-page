@@ -2,13 +2,13 @@ import React, { useEffect } from 'react';
 import { convertToRaw, EditorState } from 'draft-js';
 import { Button, Input } from 'reactstrap';
 import { stateToHTML } from 'draft-js-export-html';
-import { MyEditor } from '../components/Editor/Editor';
-import ArticlesService from '../api/services/articles-service';
-import '../styles/NewArticle.css';
-import '../styles/ThumbnailPreview.css';
-import { ThumbnailPreview } from '../components/ThumbnailPreview';
-import { Spinner } from '../components/Spinner';
-import logger from '../logger';
+import { MyEditor } from '../../components/editor/Editor';
+import ArticlesService from '../../../../api/services/articles-service';
+import './NewArticle.css';
+import './ThumbnailPreview.css';
+import { ThumbnailPreview } from '../../components/editor/ThumbnailPreview';
+import { Spinner } from '../../../spinner/Spinner';
+import logger from '../../../../logger';
 
 interface NewArticlePageProps {
     match: any;

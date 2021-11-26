@@ -1,6 +1,6 @@
 import React from 'react';
-import { convertBase64File } from '../utils/utils';
-import logger from '../logger';
+import { convertBase64File } from '../../../../utils/utils';
+import logger from '../../../../logger';
 
 interface ThumbnailPreviewProps {
     color: string;

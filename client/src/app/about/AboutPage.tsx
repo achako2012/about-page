@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
-import { Skills } from '../components/Skills';
-import SkillsService from '../api/services/skills-service';
-import { Spinner } from '../components/Spinner';
-import { Skill } from '../api/types';
-import '../styles/About.css';
-import { Title } from '../components/About/Title';
-import { About } from '../components/About/About';
-import { Services } from '../components/About/Services';
-import '../styles/Skills.css';
+import { Skills } from './components/skills/Skills';
+import SkillsService from '../../api/services/skills-service';
+import { Spinner } from '../spinner/Spinner';
+import { Skill } from '../../api/types';
+import './About.css';
+import { Title } from './components/Title';
+import { About } from './components/About';
+import { Services } from './components/Services';
+import './components/skills/Skills.css';
 
 export const AboutPage: React.FC = () => {
     const skillsService = SkillsService.create();

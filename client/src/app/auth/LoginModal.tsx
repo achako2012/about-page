@@ -2,9 +2,9 @@ import React, { useContext, useState } from 'react';
 import ReactDom from 'react-dom';
 import { Button, Form, Input } from 'reactstrap';
 import axios, { AxiosError } from 'axios';
-import AuthService from '../api/services/auth-service';
-import { AuthContext } from '../context/AuthContext';
-import '../styles/LoginModal.css';
+import AuthService from '../../api/services/auth-service';
+import { AuthContext } from '../../context-provider/AuthContext';
+import './LoginModal.css';
 
 interface LoginModalProps {
     open: any;

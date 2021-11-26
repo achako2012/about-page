@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { convertFromRaw, Editor, EditorState, RichUtils } from 'draft-js';
 import { BlockStyleControls } from './BlockStyleControls';
 import { InlineStyleControls } from './InlineStyleControls';
-import '../../styles/Editor.css';
+import './Editor.css';
 
 type EditorProps = {
     saveEditorState(editorState: EditorState): void;

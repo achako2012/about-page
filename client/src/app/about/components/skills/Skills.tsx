@@ -1,6 +1,6 @@
 import { Progress } from 'reactstrap';
 import React from 'react';
-import { Skill } from '../api/types';
+import { Skill } from '../../../../api/types';
 
 type SkillsProps = {
     skillsList: Skill[];
