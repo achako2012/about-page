@@ -13,7 +13,7 @@ class ArticlesService extends AboutService {
         return response.data;
     }
 
-    /** Returns article by Id */
+    /** Returns articles by Id */
     async getArticleById(id: string): Promise<Article> {
         const response = await this.httpClient.request<Article>({
             method: 'GET',

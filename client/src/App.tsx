@@ -1,15 +1,15 @@
 import React, { useMemo, useState } from 'react';
-import './app.css';
+import './index.css';
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
-import { AboutPage } from './pages/AboutPage';
-import { ContactPage } from './pages/ContactPage';
-import { Navbar } from './components/Navbar';
-import { ArticlesListPage } from './pages/ArticlesListPage';
-import { EditArticlePage } from './pages/EditArticlePage';
-import { OneArticlePage } from './pages/OneArticlePage';
-import { LoginModal } from './components/LoginModal';
+import { AboutPage } from './app/about/AboutPage';
+import { ContactPage } from './app/contact/ContactPage';
+import { Navbar } from './app/navbar/Navbar';
+import { ArticlesListPage } from './app/articles/pages/articles-list/ArticlesListPage';
+import { EditArticlePage } from './app/articles/pages/edit-article/EditArticlePage';
+import { OneArticlePage } from './app/articles/pages/one-article/OneArticlePage';
+import { LoginModal } from './app/auth/LoginModal';
 import { useAuth } from './hooks/auth.hooks';
-import { AuthContext } from './context/AuthContext';
+import { AuthContext } from './context-provider/AuthContext';
 
 const App: React.FC = () => {
     const { token, login, logout } = useAuth();

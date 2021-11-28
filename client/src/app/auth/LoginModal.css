@@ -1,0 +1,72 @@
+.auth-modal-wrapper {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    gap: 40px;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 20;
+}
+.auth-modal-wrapper .auth-modal-content {
+    padding: 20px;
+    background: #fff;
+    border-radius: 4px;
+    display: inline-block;
+    margin: 1rem;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    justify-self: center;
+    min-height: 35%;
+}
+.auth-modal-wrapper .auth-modal-content .modal-content {
+    padding: 20px;
+    border: none;
+}
+.auth-modal-wrapper .auth-modal-content .modal-content .modal-body {
+    margin: 20px 0;
+    padding: 0;
+}
+.auth-modal-wrapper .auth-modal-content .modal-content .modal-body .login-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.auth-modal-wrapper .auth-modal-content .modal-content .modal-footer {
+    border: none;
+    padding: 0;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+.auth-modal-wrapper .auth-modal-content .modal-content .modal-footer button {
+    margin: 0;
+}
+
+@media (min-width: 1280px) {
+    .auth-modal-content {
+        min-width: 35% !important;
+    }
+}
+@media (min-width: 1000px) and (max-width: 1279px) {
+    .auth-modal-content {
+        min-width: 45% !important;
+    }
+}
+@media (min-width: 900px) and (max-width: 999px) {
+    .auth-modal-content {
+        min-width: 50% !important;
+    }
+}
+@media (max-width: 899px) {
+    .auth-modal-content {
+        min-width: 55% !important;
+    }
+}
+
+/*# sourceMappingURL=LoginModal.css.map */
