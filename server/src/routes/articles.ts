@@ -11,12 +11,12 @@ const router = Router()
 
 router.get("/articles-api/articles-list", getArticles)
 
-router.get("/articles-api/articles/:uid", getArticleById)
-
 router.post(`/articles-api/articles-list`, createArticle)
 
 router.put(`/articles-api/articles-list`, updateArticleById)
 
 router.delete(`/articles-api/articles-list`, deleteArticleById)
+
+router.get("/articles-api/article/:uid", getArticleById)
 
 export default router
