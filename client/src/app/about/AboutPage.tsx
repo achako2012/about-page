@@ -3,11 +3,9 @@ import { Skills } from './components/skills/Skills';
 import SkillsService from '../../api/services/skills-service';
 import { Spinner } from '../spinner/Spinner';
 import { Skill } from '../../api/types';
-import './About.css';
-import { Title } from './components/Title';
-import { About } from './components/About';
-import { Services } from './components/Services';
-import './components/skills/Skills.css';
+import { Title } from './components/title/Title';
+import { About } from './components/about/About';
+import { Services } from './components/services/Services';
 
 export const AboutPage: React.FC = () => {
     const skillsService = SkillsService.create();

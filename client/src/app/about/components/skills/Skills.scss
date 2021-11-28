@@ -5,7 +5,7 @@
 .skills-title {
     text-align: center;
     padding-top: 15px;
-    padding-bottom: 5px;
+    padding-bottom: 10px;
 }
 
 .skills-container {
@@ -20,4 +20,28 @@
 
 .skills-item {
     flex: 1 1 320px;
+}
+
+// 1280px ----->
+@media (min-width: 1280px) {
+}
+
+// 900px <-----> 1279px
+@media (min-width: 900px) and (max-width: 1279px) {
+    .skills {
+        padding: 30px 0 !important;
+    }
+    .skills-container {
+        padding: 0 20px !important;
+    }
+}
+
+// -----> 899px
+@media (max-width: 899px) {
+    .skills {
+        padding: 30px 0 !important;
+    }
+    .skills-container {
+        padding: 0 20px !important;
+    }
 }

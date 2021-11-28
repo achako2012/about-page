@@ -20,57 +20,33 @@ section {
 .row {
     display: flex;
     justify-content: space-around;
-    max-width: 60%;
     margin: 0 auto;
 }
 
-/*pc view*/
-@media (min-width: 1025px) {
-    .row{
-        color:blue;
+/*1280px ----->*/
+@media (min-width: 1280px) {
+    .row {
+        max-width: 60% !important;
     }
 }
 
-/*big tablet view*/
-@media (min-width: 768px) and (max-width: 1024px){
-   .row{
-       color:green;
-   }
-}
-
-/*medium tablet view*/
-@media (min-width: 768px) and (max-width: 899px){
-    .row{
-        color:cyan;
+/*1000px <-----> 1279px*/
+@media (min-width: 900px) and (max-width: 999px) {
+    .row {
+        max-width: 70% !important;
     }
 }
 
-/*small tablet view*/
-@media (min-width: 540px) and (max-width: 767px) {
-    .row{
-        color:purple;
+/*900px <-----> 999px*/
+@media (min-width: 900px) and (max-width: 1279px) {
+    .row {
+        max-width: 80% !important;
     }
 }
 
-/*big smartphone view*/
-@media (min-width: 411px) and (max-width: 539px) {
-    .row{
-        color:red;
+/*-----> 899px*/
+@media (max-width: 899px) {
+    .row {
+        max-width: 90% !important;
     }
 }
-
-/*medium smartphone view*/
-@media (min-width: 375px) and (max-width: 410px) {
-    .row{
-        color:yellow;
-    }
-}
-
-/*small smartphone view*/
-@media (max-width: 374px) {
-    .row{
-        color:pink;
-    }
-}
-
-
