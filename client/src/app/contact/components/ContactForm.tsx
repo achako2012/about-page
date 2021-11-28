@@ -16,18 +16,16 @@ interface ContactFormProps {
 export const Social: React.FC = () => (
     <section className="social-section">
         <div className="row">
-            <div className="main">
-                <div className="social-title">
-                    <h1>Contact me in social</h1>
-                </div>
-                <div className="social-links">
-                    <a href="https://www.linkedin.com/in/alexander-chako-907624154/" id="linkedin">
-                        <SiLinkedin />
-                    </a>
-                    <a href="https://t.me/AleksandrChako" id="telegram">
-                        <FaTelegram />
-                    </a>
-                </div>
+            <div className="social-title">
+                <h1>Contact me in social</h1>
+            </div>
+            <div className="social-links">
+                <a href="https://www.linkedin.com/in/alexander-chako-907624154/" id="linkedin">
+                    <SiLinkedin />
+                </a>
+                <a href="https://t.me/AleksandrChako" id="telegram">
+                    <FaTelegram />
+                </a>
             </div>
         </div>
     </section>

@@ -3,12 +3,14 @@ import NavigationElements from '../navigation-elements/NavigationElements';
 import './Burger.css';
 
 export const Burger = () => {
-    const [selected, setOpen] = useState(false);
+    const [selected, setSelected] = useState(false);
 
-    const navigationElements = <NavigationElements view="view-column" />;
+    const navigationElements = (
+        <NavigationElements view="view-column" onClickNavigation={() => setSelected(false)} />
+    );
 
     const clickOnBurger = () => {
-        setOpen(!selected);
+        setSelected(!selected);
     };
     useEffect(() => {
         document.body.style.overflow = selected ? 'hidden' : 'unset';

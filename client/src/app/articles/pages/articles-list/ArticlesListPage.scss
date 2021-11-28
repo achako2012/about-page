@@ -70,29 +70,7 @@
     }
 }
 
-/*1000px <-----> 1279px*/
-@media (min-width: 900px) and (max-width: 999px) {
-    .new-article-btn {
-        max-width: 70% !important;
-    }
-
-    .article-view {
-        max-width: 70% !important;
-        flex-direction: row !important;
-
-        #thumbnail {
-            border-top-right-radius: 4px !important;
-            border-bottom-right-radius: 4px !important;
-        }
-
-        #content {
-            border-top-left-radius: 4px !important;
-            border-bottom-left-radius: 4px !important;
-        }
-    }
-}
-
-/*900px <-----> 999px*/
+/*900px <-----> 1279px*/
 @media (min-width: 900px) and (max-width: 1279px) {
     .new-article-btn {
         max-width: 80% !important;

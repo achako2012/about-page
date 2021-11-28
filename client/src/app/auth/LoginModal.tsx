@@ -7,6 +7,7 @@ import { AuthContext } from '../../context-provider/AuthContext';
 import './LoginModal.css';
 
 interface LoginModalProps {
+    // TODO fix types
     open: any;
     onClose: any;
 }
