@@ -40,33 +40,8 @@ export const LoginModal: React.FC<LoginModalProps> = ({ open, onClose }) => {
     if (!open) return null;
 
     return ReactDom.createPortal(
-        <div
-            style={{
-                position: 'absolute',
-                top: '0',
-                bottom: '0',
-                left: '0',
-                right: '0',
-                display: 'grid',
-                justifyContent: 'center',
-                alignItems: 'center',
-                backgroundColor: 'rgba(0,0,0,0.3)'
-            }}
-        >
-            <div
-                style={{
-                    padding: 20,
-                    background: '#fff',
-                    borderRadius: '4px',
-                    display: 'inline-block',
-                    minHeight: '300px',
-                    margin: '1rem',
-                    position: 'relative',
-                    minWidth: '450px',
-                    boxShadow: '0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)',
-                    justifySelf: 'center'
-                }}
-            >
+        <div className="auth-modal-wrapper">
+            <div className="auth-modal-content">
                 <div className="modal-content">
                     <div className="modal-title">Login into the app</div>
                     <div className="modal-body">

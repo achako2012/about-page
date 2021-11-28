@@ -17,6 +17,12 @@ section {
     box-shadow: #f4f4f4 0px 2px 4px 0px, #f3f3f3 0px 2px 16px 0px;
 }
 
+article {
+    border-radius: 4px;
+    background-color: #fafafa;
+    box-shadow: #f4f4f4 0px 2px 4px 0px, #f3f3f3 0px 2px 16px 0px;
+}
+
 .row {
     display: flex;
     justify-content: space-around;

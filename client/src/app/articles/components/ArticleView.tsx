@@ -6,7 +6,6 @@ import { AuthContext } from '../../../context-provider/AuthContext';
 
 interface ArticleViewProps {
     article: Article;
-
     onDeleteClick(_id: string): Promise<void>;
 }
 
