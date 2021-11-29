@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { Card, CardText, CardTitle, Col, Row } from 'reactstrap';
+import { Card, CardText, CardTitle } from 'reactstrap';
 import { IconContext } from 'react-icons';
 import { BsGear, GoBrowser, MdDeveloperBoard } from 'react-icons/all';
 import './Services.css';
