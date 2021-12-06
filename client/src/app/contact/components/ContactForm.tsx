@@ -2,7 +2,7 @@ import React from 'react';
 import emailjs from 'emailjs-com';
 import { Button, Form, Input } from 'reactstrap';
 import { SiLinkedin } from 'react-icons/si';
-import { FaTelegram } from 'react-icons/fa';
+import { FaTelegram, FaWhatsapp } from "react-icons/fa";
 import logger from '../../../logger';
 
 interface ContactFormProps {
@@ -25,6 +25,9 @@ export const Social: React.FC = () => (
                 </a>
                 <a href="https://t.me/AleksandrChako" id="telegram">
                     <FaTelegram />
+                </a>
+                <a href="https://wa.me/380982829279" id="whatsapp">
+                    <FaWhatsapp/>
                 </a>
             </div>
         </div>

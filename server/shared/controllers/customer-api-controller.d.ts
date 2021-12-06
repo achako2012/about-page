@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 export declare const getAbout: (req: Request, res: Response) => Promise<void>;
 export declare const getExperience: (req: Request, res: Response) => Promise<void>;
 export declare const getSkills: (req: Request, res: Response) => Promise<void>;
+export declare const getAboutProfile: (req: Request, res: Response) => Promise<void>;
 export declare const addAbout: (req: Request, res: Response) => Promise<void>;
 export declare const addExperience: (req: Request, res: Response) => Promise<void>;
 export declare const addSkill: (req: Request, res: Response) => Promise<void>;

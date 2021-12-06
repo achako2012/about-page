@@ -1,63 +1,63 @@
 .about-section .about {
-    padding: 60px 0;
-    display: flex;
-    justify-content: space-evenly;
+  padding: 60px 0;
+  display: flex;
+  justify-content: space-evenly;
 }
 .about-section .about .about-photo {
-    max-width: 20%;
+  max-width: 20%;
 }
 .about-section .about .about-photo img {
-    border-radius: 50%;
-    border: 2px solid;
-    max-width: 100%;
+  border-radius: 50%;
+  border: 2px solid;
+  max-width: 100%;
 }
 .about-section .about .about-info {
-    max-width: 60%;
+  max-width: 60%;
 }
 .about-section .about .info-title {
-    font-weight: bold;
+  font-weight: bold;
 }
 .about-section .about .info-article span {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 @media (min-width: 600px) and (max-width: 900px) {
-    .about {
-        flex-direction: column !important;
-        align-items: center !important;
-    }
-    .about .about-info {
-        margin-top: 10px !important;
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-    }
-    .about .about-info .info-title {
-        text-align: center !important;
-    }
-    .about .about-info button {
-        margin-top: 8px !important;
-        font-size: 1.5rem !important;
-    }
+  .about {
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  .about .about-info {
+    margin-top: 10px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  .about .about-info .info-title {
+    text-align: center !important;
+  }
+  .about .about-info button {
+    margin-top: 8px !important;
+    font-size: 1.5rem !important;
+  }
 }
 @media (max-width: 599px) {
-    .about {
-        flex-direction: column !important;
-        align-items: center !important;
-    }
-    .about .about-info {
-        margin-top: 10px !important;
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-    }
-    .about .about-info .info-title {
-        text-align: center !important;
-    }
-    .about .about-info button {
-        margin-top: 8px !important;
-        font-size: 0.7rem !important;
-    }
+  .about {
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  .about .about-info {
+    margin-top: 10px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  .about .about-info .info-title {
+    text-align: center !important;
+  }
+  .about .about-info button {
+    margin-top: 8px !important;
+    font-size: 0.7rem !important;
+  }
 }
 
 /*# sourceMappingURL=About.css.map */

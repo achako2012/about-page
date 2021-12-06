@@ -3,7 +3,7 @@ import {
     addAbout,
     addExperience,
     addSkill, deleteAboutById, deleteExperienceById, deleteSkillById,
-    getAbout,
+    getAbout, getAboutProfile,
     getExperience,
     getSkills
 } from "../controllers/customer-api-controller.js";
@@ -15,6 +15,8 @@ router.get("/customer-api/about", getAbout)
 router.get(`/customer-api/experience`, getExperience)
 
 router.get(`/customer-api/skills`, getSkills)
+
+router.get(`/customer-api/profile`, getAboutProfile)
 
 router.post(`/customer-api/about`, addAbout)
 
