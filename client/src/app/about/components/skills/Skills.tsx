@@ -9,13 +9,11 @@ type SkillsProps = {
 
 export const Skills: React.FC<SkillsProps> = ({ skillsList }: SkillsProps) => {
     const getColor = (value: any) => {
-        if (value > 7 && value < 11) {
-            return 'success';
-        }
-        if (value > 4 && value < 8) {
-            return 'warning';
-        }
-        return 'danger';
+        if (value < 4) return 'danger';
+
+        if (value < 7) return 'warning';
+
+        return 'success';
     };
 
     const renderSkills = (arr: any) =>

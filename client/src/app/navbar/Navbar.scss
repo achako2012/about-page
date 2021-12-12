@@ -42,7 +42,7 @@ header {
 // 1280px ----->
 @media (min-width: 1280px) {
     .nav-wrapper {
-        max-width: 60% !important;
+        max-width: 65% !important;
     }
     .authenticate-icon-login,
     .authenticate-icon-logout,
@@ -54,7 +54,7 @@ header {
 // 1000px <-----> 1279px
 @media (min-width: 1000px) and (max-width: 1279px) {
     .nav-wrapper {
-        max-width: 70% !important;
+        max-width: 75% !important;
     }
     .authenticate-icon-login,
     .authenticate-icon-logout,
@@ -66,7 +66,7 @@ header {
 // 900px <-----> 999px
 @media (min-width: 900px) and (max-width: 999px) {
     .nav-wrapper {
-        max-width: 80% !important;
+        max-width: 85% !important;
     }
     .authenticate-icon-login,
     .authenticate-icon-logout,
@@ -78,7 +78,7 @@ header {
 // -----> 899px
 @media (max-width: 899px) {
     .nav-wrapper {
-        max-width: 80% !important;
+        max-width: 85% !important;
     }
     .authenticate-button-login,
     .authenticate-button-logout {

@@ -16,7 +16,7 @@ export const About: React.FC<AboutProps> = ({ name, position, article }: AboutPr
                     <img src={`${process.env.PUBLIC_URL}/img/photo.jpg`} alt="myPhotoAbout" />
                 </div>
                 <div className="about-info">
-                    <h1 className="info-header">some facts about me</h1>
+                    <h1 className="info-header">facts about me</h1>
                     <p className="info-title">{position}</p>
                     <p className="info-article">
                         I&apos;m <span>{name}</span> {article}
