@@ -31,7 +31,7 @@ header .nav-wrapper .logout-buttons button {
 
 @media (min-width: 1280px) {
     .nav-wrapper {
-        max-width: 60% !important;
+        max-width: 65% !important;
     }
 
     .authenticate-icon-login,
@@ -42,7 +42,7 @@ header .nav-wrapper .logout-buttons button {
 }
 @media (min-width: 1000px) and (max-width: 1279px) {
     .nav-wrapper {
-        max-width: 70% !important;
+        max-width: 75% !important;
     }
 
     .authenticate-icon-login,
@@ -53,7 +53,7 @@ header .nav-wrapper .logout-buttons button {
 }
 @media (min-width: 900px) and (max-width: 999px) {
     .nav-wrapper {
-        max-width: 80% !important;
+        max-width: 85% !important;
     }
 
     .authenticate-icon-login,
@@ -64,7 +64,7 @@ header .nav-wrapper .logout-buttons button {
 }
 @media (max-width: 899px) {
     .nav-wrapper {
-        max-width: 80% !important;
+        max-width: 85% !important;
     }
 
     .authenticate-button-login,

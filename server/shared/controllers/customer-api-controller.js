@@ -25,6 +25,14 @@ export const getSkills = async (req, res) => {
     });
     res.status(200).json(skills);
 };
+export const getAboutProfile = async (req, res) => {
+    const aboutProfile = await About.find({}, (err, doc) => {
+        if (err)
+            console.log(err);
+        console.log(doc);
+    });
+    res.status(200).json(aboutProfile);
+};
 export const addAbout = async (req, res) => {
     const { name, intro, position, title, article } = req.body;
     const about = {

@@ -5,10 +5,10 @@
     text-align: center;
 }
 .view-row * {
-    margin: 0 15px;
+    margin: 0 10px;
 }
 .view-row a {
-    margin: 0 15px;
+    margin: 0 10px;
     text-decoration: none;
 }
 .view-row .contacts-links {
@@ -32,6 +32,7 @@
     align-items: center;
     text-align: center;
     flex-direction: column;
+    z-index: 19;
 }
 .view-column * {
     font-size: 1.4em;

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { SiGithub, SiLinkedin } from 'react-icons/si';
-import { FaTelegram } from 'react-icons/fa';
+import { FaTelegram, FaWhatsapp } from 'react-icons/fa';
 import React, { FC } from 'react';
 import './NavigationElements.css';
 
@@ -31,6 +31,9 @@ const NavigationElements: FC<RightElementsProps> = ({ view, onClickNavigation })
                 </a>
                 <a href="https://t.me/AleksandrChako">
                     <FaTelegram />
+                </a>
+                <a href="https://wa.me/380982829279">
+                    <FaWhatsapp />
                 </a>
             </div>
         </div>

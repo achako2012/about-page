@@ -5,6 +5,8 @@
         justify-content: space-evenly;
 
         .about-photo {
+            display: flex;
+            align-items: center;
             max-width: 20%;
 
             img {
