@@ -1,3 +1,5 @@
+@import "../../../../global-styles/variables";
+
 .single-article {
     margin: 40px auto 0;
     max-width: 95%;
@@ -29,6 +31,8 @@
         * {
             margin: 0 auto;
         }
+
+        @include editor
     }
 }
 

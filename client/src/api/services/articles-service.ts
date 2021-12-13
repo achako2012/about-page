@@ -56,7 +56,8 @@ class ArticlesService extends AboutService {
         subTitle: string,
         thumbnail: string,
         color: string,
-        entity: string
+        entity: string,
+        html:string
     ): Promise<void> {
         return this.httpClient.request({
             method: 'PUT',
@@ -70,7 +71,8 @@ class ArticlesService extends AboutService {
                 subTitle,
                 thumbnail,
                 color,
-                entity
+                entity,
+                html
             }
         });
     }

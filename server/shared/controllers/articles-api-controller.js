@@ -17,7 +17,7 @@ export const getArticleById = async (req, res) => {
     res.status(200).json(article);
 };
 export const updateArticleById = async (req, res) => {
-    const { id, title, subTitle, thumbnail, color, entity } = req.body;
+    const { id, title, subTitle, thumbnail, color, entity, html } = req.body;
     const query = { _id: id };
     const update = {
         $set: {
@@ -25,7 +25,8 @@ export const updateArticleById = async (req, res) => {
             subTitle: subTitle,
             thumbnail: thumbnail,
             color: color,
-            entity: entity
+            entity: entity,
+            html: html
         }
     };
     await Articles.updateOne(query, update);

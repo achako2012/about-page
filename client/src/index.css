@@ -32,27 +32,27 @@ article {
 /*1280px ----->*/
 @media (min-width: 1280px) {
     .row {
-        max-width: 60% !important;
+        max-width: 65% !important;
     }
 }
 
 /*1000px <-----> 1279px*/
 @media (min-width: 900px) and (max-width: 999px) {
     .row {
-        max-width: 70% !important;
+        max-width: 75% !important;
     }
 }
 
 /*900px <-----> 999px*/
 @media (min-width: 900px) and (max-width: 1279px) {
     .row {
-        max-width: 80% !important;
+        max-width: 85% !important;
     }
 }
 
 /*-----> 899px*/
 @media (max-width: 899px) {
     .row {
-        max-width: 90% !important;
+        max-width: 95% !important;
     }
 }
