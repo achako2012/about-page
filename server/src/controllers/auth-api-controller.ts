@@ -30,7 +30,7 @@ export const register = async (req: Request, res: Response) => {
 
     res.status(201).json({ message: 'User created' });
   } catch (e) {
-    return res.status(500).json({ message: 'Something went wrong' });
+    res.status(500).json({ message: 'Something went wrong' });
   }
 };
 

@@ -6,45 +6,45 @@ import logger from '../logger';
 import { Header } from './confg';
 
 const httpClient = axios.create({
-    headers: {
-        [Header.ContentType]: 'application/json',
-        [Header.Accept]: '*/*'
-    }
+  headers: {
+    [Header.ContentType]: 'application/json',
+    [Header.Accept]: '*/*',
+  },
 });
 
 const onRequest = (request: AxiosRequestConfig) => {
-    const { method, url, data } = request;
+  const { method, url, data } = request;
 
-    logger.info(
-        `--> ${method?.toUpperCase()} ${url} ${data ? `Body: ${JSON.stringify(data)}` : ''}`
-    );
+  logger.info(
+    `--> ${method?.toUpperCase()} ${url} ${data ? `Body: ${JSON.stringify(data)}` : ''}`,
+  );
 
-    return request;
+  return request;
 };
 
 const onResponse = <T>(response: AxiosResponse<T>) => {
-    const { status, config } = response;
+  const { status, config } = response;
 
-    logger.info(`<-- ${status} ${config.url}`);
+  logger.info(`<-- ${status} ${config.url}`);
 
-    return response;
+  return response;
 };
 
 const onError = (error: AxiosError) => {
-    const { response, config } = error;
+  const { response, config } = error;
 
-    if (response) {
-        logger.error(`<-- ${response.status} ${config.url} Body: ${JSON.stringify(response.data)}`);
-        // throw new HttpError(message, response.status, response.headers, response.data);
-    }
+  if (response) {
+    logger.error(`<-- ${response.status} ${config.url} Body: ${JSON.stringify(response.data)}`);
+    // throw new HttpError(message, response.status, response.headers, response.data);
+  }
 
-    throw error;
+  throw error;
 };
 
 httpClient.interceptors.request.use((request) => onRequest(request));
 httpClient.interceptors.response.use(
-    (response) => onResponse(response),
-    (error) => onError(error)
+  (response) => onResponse(response),
+  (error) => onError(error),
 );
 
 export default httpClient;

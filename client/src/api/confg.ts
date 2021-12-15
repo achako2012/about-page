@@ -1,6 +1,6 @@
 export enum Header {
-    ContentType = 'Content-Type',
-    Accept = 'Accept'
+  ContentType = 'Content-Type',
+  Accept = 'Accept',
 }
 
 // TODO Create switcher with envalid library
