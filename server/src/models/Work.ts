@@ -1,6 +1,6 @@
 import pkg from 'mongoose';
 
-const {Schema, model} = pkg;
+const { Schema, model } = pkg;
 
 const schema = new Schema({
     company: {
@@ -19,6 +19,6 @@ const schema = new Schema({
         type: String,
         required: true
     }
-})
+});
 
-export default model('Work', schema)
+export default model('Work', schema);

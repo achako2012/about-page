@@ -4,7 +4,6 @@ import { BASE_URL } from '../confg';
 
 type HttpClient = AxiosInstance;
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type StaticThis<T> = { new (...args: any[]): T };
 
 abstract class AboutService {

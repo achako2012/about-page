@@ -57,7 +57,7 @@ class ArticlesService extends AboutService {
         thumbnail: string,
         color: string,
         entity: string,
-        html:string
+        html: string
     ): Promise<void> {
         return this.httpClient.request({
             method: 'PUT',

@@ -16,7 +16,7 @@ const schema = new Schema({
     },
     color: {
         type: String,
-        required: true,
+        required: true
     },
     date: {
         type: Date,

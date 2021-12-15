@@ -1,0 +1,14 @@
+{
+    "root": true,
+    "env": {
+        "node": true,
+        "es2021": true
+    },
+    "plugins": ["@typescript-eslint", "prettier", "eslint-plugin-tsdoc"],
+    "extends": ["prettier"],
+    "rules": {
+        "@typescript-eslint/comma-dangle": ["warn", "never"],
+        "no-underscore-dangle": 0,
+        "@typescript-eslint/naming-convention": 0
+    }
+}

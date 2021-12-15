@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { deleteUser, login, register } from "../controllers/auth-api-controller.js";
+import { deleteUser, login, register } from '../controllers/auth-api-controller.js';
 import { check } from 'express-validator';
 const router = Router();
 const registrationValidator = [
@@ -7,7 +7,7 @@ const registrationValidator = [
     check('password', 'Password is to short').isLength({ min: 6 })
 ];
 const loginValidator = [
-    check('email', "Type valid email").normalizeEmail().isEmail(),
+    check('email', 'Type valid email').normalizeEmail().isEmail(),
     check('password', 'Type valid password').exists()
 ];
 router.post('/auth/register', registrationValidator, register);

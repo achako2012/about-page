@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import { Request, Response } from 'express';
 export declare const getArticles: (req: Request, res: Response) => Promise<void>;
 export declare const getArticleById: (req: Request, res: Response) => Promise<void>;
 export declare const updateArticleById: (req: Request, res: Response) => Promise<void>;

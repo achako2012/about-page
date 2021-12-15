@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import { Request, Response } from 'express';
 export declare const getAbout: (req: Request, res: Response) => Promise<void>;
 export declare const getExperience: (req: Request, res: Response) => Promise<void>;
 export declare const getSkills: (req: Request, res: Response) => Promise<void>;

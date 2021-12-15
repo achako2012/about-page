@@ -1,17 +1,17 @@
 import pkg from 'mongoose';
 
-const {Schema, model} = pkg;
+const { Schema, model } = pkg;
 
 const schema = new Schema({
     email: {
         type: String,
         required: true,
-        unique:true
+        unique: true
     },
     password: {
         type: String,
         required: true
     }
-})
+});
 
-export default model('User', schema)
+export default model('User', schema);

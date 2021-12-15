@@ -1,8 +1,7 @@
 import pkg from 'mongoose';
 
-const {Schema, model} = pkg;
+const { Schema, model } = pkg;
 const schema = new Schema({
-
     title: {
         type: String,
         required: true
@@ -11,6 +10,6 @@ const schema = new Schema({
         type: String,
         required: true
     }
-})
+});
 
-export default model('Skills', schema)
+export default model('Skills', schema);
