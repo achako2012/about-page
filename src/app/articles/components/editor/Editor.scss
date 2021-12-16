@@ -1,0 +1,14 @@
+@import "../../../../global-styles/variables";
+
+.editor-operations {
+  display: flex;
+  flex-direction: column;
+
+  * {
+    margin: 1px 1px;
+  }
+}
+
+#rich-editor {
+  @include editor;
+}

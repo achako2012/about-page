@@ -1,0 +1,17 @@
+.nav-burger {
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  justify-content: space-around;
+  flex-flow: column nowrap;
+}
+.nav-burger div {
+  width: 2rem;
+  height: 0.25rem;
+  background-color: #fff;
+  border-radius: 10px;
+  transform-origin: 1px;
+  z-index: 20;
+}
+
+/*# sourceMappingURL=Burger.css.map */
