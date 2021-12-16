@@ -9,6 +9,7 @@ import './ThumbnailPreview.css';
 import { ThumbnailPreview } from '../../components/editor/ThumbnailPreview';
 import { Spinner } from '../../../spinner/Spinner';
 import logger from '../../../../logger';
+import { Article } from '../../../../types';
 
 interface NewArticlePageProps {
     match: any;
@@ -20,11 +21,16 @@ export const EditArticlePage = ({ match }: NewArticlePageProps) => {
         params: { articleId }
     } = match;
 
-    const [title, updateTitle] = React.useState<string>('');
-    const [subTitle, updateSubTitle] = React.useState<string>('');
-    const [thumbnail, updateThumbnail] = React.useState<string>('');
-    const [color, updateColor] = React.useState<string>('#000000');
-    const [entity, updateEntity] = React.useState<string>('');
+    const [article, updateArticle] = React.useState<Article>({
+        _id: '',
+        color: '#000000',
+        date: '',
+        entity: '',
+        html: '',
+        subTitle: '',
+        thumbnail: '',
+        title: ''
+    });
 
     // TODO I have duplicated code in Editor.tsx
     const [editorState, updateEditorState] = React.useState<EditorState>();
@@ -32,12 +38,8 @@ export const EditArticlePage = ({ match }: NewArticlePageProps) => {
     useEffect(() => {
         const setArticle = async () => {
             if (articleId) {
-                const article = await articlesService.getArticleById(articleId);
-                updateTitle(article.title);
-                updateSubTitle(article.subTitle);
-                updateThumbnail(article.thumbnail);
-                updateColor(article.color);
-                updateEntity(article.entity);
+                const fetchedArticle = await articlesService.getArticleById(articleId);
+                updateArticle({ ...fetchedArticle });
             }
         };
 
@@ -45,20 +47,25 @@ export const EditArticlePage = ({ match }: NewArticlePageProps) => {
     }, []);
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const { value } = event.target;
-        if (event.target.id === 'title') {
-            updateTitle(value);
-            return;
-        }
-        updateSubTitle(value);
+        logger.log(event.target.id);
+        updateArticle({
+            ...article,
+            [event.target.id]: event.target.value
+        });
     };
 
     const onFileChange = async (value: string) => {
-        updateThumbnail(value);
+        updateArticle({
+            ...article,
+            thumbnail: value
+        });
     };
 
     const onColorChange = async (value: string) => {
-        updateColor(value);
+        updateArticle({
+            ...article,
+            color: value
+        });
     };
 
     const updateArticles = async () => {
@@ -70,26 +77,18 @@ export const EditArticlePage = ({ match }: NewArticlePageProps) => {
 
         const editorContent = editorState.getCurrentContent();
         const articleEntity = JSON.stringify(convertToRaw(editorContent));
-        const html = stateToHTML(editorContent);
+        const articleHtml = stateToHTML(editorContent);
+
+        updateArticle({
+            ...article,
+            entity: articleEntity,
+            html: articleHtml
+        });
+
         if (articleId) {
-            await articlesService.updateArticle(
-                articleId,
-                title,
-                subTitle,
-                thumbnail,
-                color,
-                articleEntity,
-                html
-            );
+            await articlesService.updateArticle({ ...article });
         } else {
-            await articlesService.postArticles(
-                title,
-                subTitle,
-                thumbnail,
-                color,
-                articleEntity,
-                html
-            );
+            await articlesService.postArticles({ ...article });
         }
     };
 
@@ -98,8 +97,8 @@ export const EditArticlePage = ({ match }: NewArticlePageProps) => {
     };
 
     const editor =
-        entity || !articleId ? (
-            <MyEditor saveEditorState={saveEditorState} entity={entity} />
+        article.entity || !articleId ? (
+            <MyEditor saveEditorState={saveEditorState} entity={article.entity} />
         ) : (
             <Spinner />
         );
@@ -112,23 +111,23 @@ export const EditArticlePage = ({ match }: NewArticlePageProps) => {
                     className="form-control"
                     type="text"
                     placeholder="Title"
-                    value={title}
+                    value={article.title}
                     onChange={handleChange}
                 />
             </div>
             <div className="new-article-sub-title">
                 <Input
-                    id="sub-title"
+                    id="subTitle"
                     className="form-control"
                     type="textarea"
                     placeholder="Sub Title"
-                    value={subTitle}
+                    value={article.subTitle}
                     onChange={handleChange}
                 />
             </div>
             <ThumbnailPreview
-                color={color}
-                thumbnail={thumbnail}
+                color={article.color}
+                thumbnail={article.thumbnail}
                 onFileChange={onFileChange}
                 onColorChange={onColorChange}
             />
