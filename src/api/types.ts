@@ -1,11 +1,11 @@
 export type Skill = {
-    _id: string;
+    id: string;
     title: string;
     value: string;
 };
 
 export type Profile = {
-    _id: string;
+    id: string;
     name: string;
     intro: string;
     position: string;
