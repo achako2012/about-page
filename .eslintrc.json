@@ -5,8 +5,9 @@
         "project": "./tsconfig.json"
     },
     "plugins": ["@typescript-eslint", "prettier", "eslint-plugin-tsdoc"],
-    "extends": ["prettier", "airbnb", "airbnb/hooks", "airbnb-typescript"],
+    "extends": ["airbnb", "airbnb/hooks", "airbnb-typescript", "prettier"],
     "rules": {
+        "prettier/prettier": ["warn"],
         "no-console": 0,
         "no-underscore-dangle": 0,
         "@typescript-eslint/naming-convention": 0,
