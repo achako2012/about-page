@@ -3,7 +3,7 @@
     "version": "0.1.0",
     "private": true,
     "scripts": {
-        "heroku-postbuild": "npm install",
+        "heroku-postbuild": "npm install && npm run build",
         "start": "node_modules/.bin/react-scripts start",
         "build": "node_modules/.bin/react-scripts build",
         "test": "node_modules/.bin/react-scripts test",
