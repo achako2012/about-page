@@ -35,8 +35,8 @@ header .nav-wrapper .logout-buttons button {
   }
 
   .authenticate-icon-login,
-  .authenticate-icon-logout,
-  .nav-burger {
+.authenticate-icon-logout,
+.nav-burger {
     display: none !important;
   }
 }
@@ -46,8 +46,8 @@ header .nav-wrapper .logout-buttons button {
   }
 
   .authenticate-icon-login,
-  .authenticate-icon-logout,
-  .nav-burger {
+.authenticate-icon-logout,
+.nav-burger {
     display: none !important;
   }
 }
@@ -57,8 +57,8 @@ header .nav-wrapper .logout-buttons button {
   }
 
   .authenticate-icon-login,
-  .authenticate-icon-logout,
-  .nav-burger {
+.authenticate-icon-logout,
+.nav-burger {
     display: none !important;
   }
 }
@@ -68,7 +68,7 @@ header .nav-wrapper .logout-buttons button {
   }
 
   .authenticate-button-login,
-  .authenticate-button-logout {
+.authenticate-button-logout {
     display: none !important;
   }
 

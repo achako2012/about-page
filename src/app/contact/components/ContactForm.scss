@@ -1,97 +1,97 @@
 .social-section {
-  padding: 20px 0;
+    padding: 20px 0;
 
-  .social-title {
-    text-align: center;
-  }
-
-  .social-links {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    gap: 5%;
-    font-size: 500%;
-
-    #linkedin {
-      color: #0a66c2;
+    .social-title {
+        text-align: center;
     }
 
-    #telegram {
-      color: #0088cc;
-    }
+    .social-links {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        gap: 5%;
+        font-size: 500%;
 
-    #whatsapp {
-      color: #79c736;
+        #linkedin {
+            color: #0a66c2;
+        }
+
+        #telegram {
+            color: #0088cc;
+        }
+
+        #whatsapp {
+            color: #79c736;
+        }
     }
-  }
 }
 
 .contact-section {
-  padding: 40px 0;
+    padding: 40px 0;
 
-  .contact-title {
-    text-align: center;
-  }
+    .contact-title {
+        text-align: center;
+    }
 
-  #nameInput {
-    grid-area: nameInput;
-  }
+    #nameInput {
+        grid-area: nameInput;
+    }
 
-  #emailInput {
-    grid-area: emailInput;
-  }
+    #emailInput {
+        grid-area: emailInput;
+    }
 
-  #textInput {
-    grid-area: textInput;
-  }
+    #textInput {
+        grid-area: textInput;
+    }
 
-  #submitButton {
-    width: 50%;
-    grid-area: submitButton;
-    justify-self: end;
-  }
+    #submitButton {
+        width: 50%;
+        grid-area: submitButton;
+        justify-self: end;
+    }
 }
 
 /*1280px ----->*/
 @media (min-width: 1280px) {
-  .contact-wrapper {
-    display: grid !important;
-    grid-template-areas:
-      "nameInput textInput"
-      "emailInput textInput"
-      ". submitButton";
-    grid-template-rows: 1fr 1fr 1fr !important;
-    grid-template-columns: 1fr 1fr !important;
-    grid-gap: 1vw !important;
-    padding: 30px 0 !important;
-  }
+    .contact-wrapper {
+        display: grid !important;
+        grid-template-areas:
+            'nameInput textInput'
+            'emailInput textInput'
+            '. submitButton';
+        grid-template-rows: 1fr 1fr 1fr !important;
+        grid-template-columns: 1fr 1fr !important;
+        grid-gap: 1vw !important;
+        padding: 30px 0 !important;
+    }
 }
 
 /*900px <-----> 1279px*/
 @media (min-width: 900px) and (max-width: 1279px) {
-  .contact-wrapper {
-    display: flex !important;
-    flex-direction: column !important;
+    .contact-wrapper {
+        display: flex !important;
+        flex-direction: column !important;
 
-    input,
-    textarea,
-    #submitButton {
-      margin: 10px 0;
+        input,
+        textarea,
+        #submitButton {
+            margin: 10px 0;
+        }
     }
-  }
 }
 
 /*-----> 899px*/
 @media (max-width: 899px) {
-  .contact-wrapper {
-    display: flex !important;
-    flex-direction: column !important;
+    .contact-wrapper {
+        display: flex !important;
+        flex-direction: column !important;
 
-    input,
-    textarea,
-    #submitButton {
-      margin: 10px 0;
+        input,
+        textarea,
+        #submitButton {
+            margin: 10px 0;
+        }
     }
-  }
 }

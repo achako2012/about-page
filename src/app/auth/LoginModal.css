@@ -32,11 +32,7 @@
   margin: 20px 0;
   padding: 0;
 }
-.auth-modal-wrapper
-  .auth-modal-content
-  .modal-content
-  .modal-body
-  .login-wrapper {
+.auth-modal-wrapper .auth-modal-content .modal-content .modal-body .login-wrapper {
   display: flex;
   flex-direction: column;
   gap: 15px;

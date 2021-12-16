@@ -1,74 +1,74 @@
 .services-section {
-  .services {
-    padding: 30px 0;
+    .services {
+        padding: 30px 0;
 
-    .services-title {
-      text-align: center;
-      padding-top: 15px;
-      padding-bottom: 25px;
+        .services-title {
+            text-align: center;
+            padding-top: 15px;
+            padding-bottom: 25px;
 
-      h1 {
-        margin: 0 auto;
-      }
+            h1 {
+                margin: 0 auto;
+            }
+        }
+
+        .services-cards-wrapper {
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: space-evenly;
+
+            .card-body {
+                display: flex;
+                align-items: center;
+            }
+
+            .react-icons {
+                margin: 0 auto 0.5rem;
+                height: 4em;
+                width: 4em;
+            }
+        }
     }
-
-    .services-cards-wrapper {
-      display: flex;
-      flex-wrap: nowrap;
-      justify-content: space-evenly;
-
-      .card-body {
-        display: flex;
-        align-items: center;
-      }
-
-      .react-icons {
-        margin: 0 auto 0.5rem;
-        height: 4em;
-        width: 4em;
-      }
-    }
-  }
 }
 
 // 1280px ----->
 @media (min-width: 1280px) {
-  .services-cards-wrapper {
-    flex-direction: row !important;
-    padding: 0 20px !important;
-    gap: 40px !important;
+    .services-cards-wrapper {
+        flex-direction: row !important;
+        padding: 0 20px !important;
+        gap: 40px !important;
 
-    .card {
-      min-height: 100% !important;
-      width: 30% !important;
+        .card {
+            min-height: 100% !important;
+            width: 30% !important;
+        }
     }
-  }
 }
 
 // 900px <-----> 1279px
 @media (min-width: 900px) and (max-width: 1279px) {
-  .services-cards-wrapper {
-    flex-direction: column !important;
-    padding: 0 !important;
-    gap: 20px !important;
+    .services-cards-wrapper {
+        flex-direction: column !important;
+        padding: 0 !important;
+        gap: 20px !important;
 
-    .card {
-      min-height: 30% !important;
-      width: 100% !important;
+        .card {
+            min-height: 30% !important;
+            width: 100% !important;
+        }
     }
-  }
 }
 
 // -----> 899px
 @media (max-width: 899px) {
-  .services-cards-wrapper {
-    flex-direction: column !important;
-    padding: 0 !important;
-    gap: 20px !important;
+    .services-cards-wrapper {
+        flex-direction: column !important;
+        padding: 0 !important;
+        gap: 20px !important;
 
-    .card {
-      min-height: 30% !important;
-      width: 100% !important;
+        .card {
+            min-height: 30% !important;
+            width: 100% !important;
+        }
     }
-  }
 }
