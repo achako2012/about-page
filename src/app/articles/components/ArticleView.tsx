@@ -13,7 +13,7 @@ export const ArticleView: React.FC<ArticleViewProps> = (props) => {
     const auth = useContext(AuthContext);
     const { article, onDeleteClick } = props;
 
-    const authenticatedButtons = (
+    const controlArticleButtons = (
         <>
             <Button outline onClick={() => onDeleteClick(article._id)}>
                 Delete
@@ -34,7 +34,7 @@ export const ArticleView: React.FC<ArticleViewProps> = (props) => {
                     <p id="sub-title">{article.subTitle}</p>
                 </div>
                 <div className="buttons">
-                    {auth.isAuthenticated ? authenticatedButtons : null}
+                    {auth.isAuthenticated ? controlArticleButtons : null}
                     <Link to={`/articles/${article._id}`}>
                         <Button outline>Read more</Button>
                     </Link>
