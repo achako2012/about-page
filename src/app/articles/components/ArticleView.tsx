@@ -31,7 +31,7 @@ export const ArticleView: React.FC<ArticleViewProps> = (props) => {
                     <h2 id="title">{article.title}</h2>
                 </div>
                 <div className="entry-content">
-                    <p id="sub-title">{article.subTitle}</p>
+                    <p id="subTitle">{article.subTitle}</p>
                 </div>
                 <div className="buttons">
                     {auth.isAuthenticated ? controlArticleButtons : null}

@@ -18,10 +18,10 @@ export const Skills: React.FC<SkillsProps> = ({ skillsList }: SkillsProps) => {
 
     const renderSkills = (arr: any) =>
         arr.map((item: any) => {
-            const { _id, ...skills } = item;
+            const { id, ...skills } = item;
             const color = getColor(skills.value);
             return (
-                <div key={_id} className="skills-item">
+                <div key={id} className="skills-item">
                     <div className="text-center">{skills.title}</div>
                     <Progress value={skills.value} max="10" color={color} />
                 </div>

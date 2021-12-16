@@ -23,14 +23,14 @@ class ArticlesService extends AboutService {
         return response.data;
     }
 
-    async postArticles(
-        title: string,
-        subTitle: string,
-        thumbnail: string,
-        color: string,
-        entity: string,
-        html: string
-    ): Promise<Article> {
+    async postArticles({
+        title,
+        subTitle,
+        thumbnail,
+        color,
+        entity,
+        html
+    }: Article): Promise<Article> {
         const response = await this.httpClient.request({
             method: 'POST',
             url: `${this.baseUrl}/about-page-service/articles-api/articles-list`,
@@ -50,15 +50,15 @@ class ArticlesService extends AboutService {
         return response.data;
     }
 
-    async updateArticle(
-        id: string,
-        title: string,
-        subTitle: string,
-        thumbnail: string,
-        color: string,
-        entity: string,
-        html: string
-    ): Promise<void> {
+    async updateArticle({
+        _id,
+        title,
+        subTitle,
+        thumbnail,
+        color,
+        entity,
+        html
+    }: Article): Promise<void> {
         return this.httpClient.request({
             method: 'PUT',
             url: `${this.baseUrl}/about-page-service/articles-api/articles-list`,
@@ -66,7 +66,7 @@ class ArticlesService extends AboutService {
                 [Header.ContentType]: 'application/json'
             },
             data: {
-                id,
+                _id,
                 title,
                 subTitle,
                 thumbnail,

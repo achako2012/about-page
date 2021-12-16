@@ -44,7 +44,7 @@
 /*1280px ----->*/
 @media (min-width: 1280px) {
     .new-article-btn {
-        max-width: 60% !important;
+        max-width: 70% !important;
     }
 
     .article-view {
