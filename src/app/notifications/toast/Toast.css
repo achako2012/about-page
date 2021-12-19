@@ -34,7 +34,7 @@
 }
 
 .notification {
-    background: #fff;
+    background: red;
     transition: 0.3s ease;
     position: relative;
     pointer-events: auto;
@@ -78,17 +78,7 @@
     white-space: nowrap;
 }
 
-.notification-image {
-    float: left;
-    margin-right: 15px;
-}
-
-.notification-image img {
-    width: 30px;
-    height: 30px;
-}
-
-.toast {
+.custom-toast {
     height: 50px;
     width: 365px;
     color: #fff;

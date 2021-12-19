@@ -9,7 +9,7 @@ import './ThumbnailPreview.css';
 import { ThumbnailPreview } from '../../components/editor/ThumbnailPreview';
 import { Spinner } from '../../../spinner/Spinner';
 import logger from '../../../../logger';
-import { Article } from '../../../../types';
+import { Article, ToastI } from '../../../../types';
 // eslint-disable-next-line import/no-named-as-default
 import FooButton from '../../../notifications/toast/FooButton';
 // eslint-disable-next-line import/no-named-as-default
@@ -25,24 +25,6 @@ const BUTTON_PROPS = [
         type: 'success',
         className: 'success',
         label: 'Success'
-    },
-    {
-        id: 2,
-        type: 'danger',
-        className: 'danger',
-        label: 'Danger'
-    },
-    {
-        id: 3,
-        type: 'info',
-        className: 'info',
-        label: 'Info'
-    },
-    {
-        id: 4,
-        type: 'warning',
-        className: 'warning',
-        label: 'Warning'
     }
 ];
 
@@ -66,10 +48,7 @@ export const EditArticlePage = ({ match }: NewArticlePageProps) => {
 
     const [editorState, updateEditorState] = React.useState<EditorState>();
 
-    // const [position] = React.useState('Select Position');
-    // const [list, setList] = React.useState([]);
-    // const [checkValue, setCheckValue] = React.useState(false);
-    // const [autoDeleteTime, setAutoDeleteTime] = React.useState(0);
+    const [list, setList] = React.useState<ToastI[]>();
 
     useEffect(() => {
         const setArticle = async () => {
@@ -139,54 +118,29 @@ export const EditArticlePage = ({ match }: NewArticlePageProps) => {
             <Spinner />
         );
 
-    // const showToast = (type: string) => {
-    //     const id = Math.floor(Math.random() * 101 + 1);
-    //
-    //     switch (type) {
-    //         case 'success':
-    //             toastProperties = {
-    //                 id,
-    //                 title: 'Success',
-    //                 description: 'This is a success toast component',
-    //                 backgroundColor: '#5cb85c'
-    //             };
-    //             break;
-    //         case 'danger':
-    //             toastProperties = {
-    //                 id,
-    //                 title: 'Danger',
-    //                 description: 'This is a error toast component',
-    //                 backgroundColor: '#d9534f'
-    //             };
-    //             break;
-    //         case 'info':
-    //             toastProperties = {
-    //                 id,
-    //                 title: 'Info',
-    //                 description: 'This is an info toast component',
-    //                 backgroundColor: '#5bc0de'
-    //             };
-    //             break;
-    //         case 'warning':
-    //             toastProperties = {
-    //                 id,
-    //                 title: 'Warning',
-    //                 description: 'This is a warning toast component',
-    //                 backgroundColor: '#f0ad4e'
-    //             };
-    //             break;
-    //
-    //         default:
-    //             setList([]);
-    //     }
-    //
-    //     // @ts-ignore
-    //     setList([...list, toastProperties]);
-    // };
+    const showToast = (type: string) => {
+        console.log(type);
+        if (type) {
+            const id = Math.floor(Math.random() * 101 + 1);
+            const toastProperties = {
+                id,
+                title: 'Success',
+                description: 'This is a success toast component',
+                backgroundColor: '#5cb85c'
+            };
+
+            setList([toastProperties]);
+        }
+    };
 
     const renderToastButtons = (arr: any) =>
         arr.map((item: any) => (
-            <FooButton key={item.id} className={item.className} label={item.label} />
+            <FooButton
+                key={item.id}
+                className={item.className}
+                label={item.label}
+                onButtonClick={() => showToast(item.type)}
+            />
         ));
 
     const toastButtons = renderToastButtons(BUTTON_PROPS);
@@ -226,13 +180,7 @@ export const EditArticlePage = ({ match }: NewArticlePageProps) => {
 
             <div>{toastButtons}</div>
 
-            {/* <Toast */}
-            {/*    toastList={list} */}
-            {/*    position={position} */}
-            {/*    autoDelete={checkValue} */}
-            {/*    // @ts-ignore */}
-            {/*    autoDeleteTime={autoDeleteTime} */}
-            {/* /> */}
+            <Toast toastList={list} autoDelete={3000} />
         </article>
     );
 };

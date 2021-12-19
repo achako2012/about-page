@@ -1,16 +1,16 @@
 import React from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import PropTypes from 'prop-types';
 
 interface FooButtonProps {
     label: any;
     className: any;
-    // handleClick: any;
+    onButtonClick: any;
 }
 
-export const FooButton: React.FC<FooButtonProps> = ({ label, className }) => (
+export const FooButton: React.FC<FooButtonProps> = ({ label, className, onButtonClick }) => (
     // eslint-disable-next-line react/button-has-type
-    <button className={className}>{label}</button>
+    <button className={className} onClick={() => onButtonClick()}>
+        {label}
+    </button>
 );
 
 export default FooButton;

@@ -8,3 +8,10 @@ export interface Article {
     date?: string;
     html: string;
 }
+
+export interface ToastI {
+    id: number;
+    title: string;
+    description: string;
+    backgroundColor: string;
+}
