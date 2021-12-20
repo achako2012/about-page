@@ -31,7 +31,7 @@ export const ArticlesListPage = () => {
     };
 
     const renderArticles = (arr: Article[]) =>
-        arr.map((item: any) => (
+        arr.map((item: Article) => (
             <ArticleView
                 key={item._id}
                 article={item}

@@ -11,7 +11,16 @@ export interface Article {
 
 export interface ToastI {
     id: number;
-    title: string;
-    description: string;
-    backgroundColor: string;
+    type: string;
+    message: string;
+}
+
+export enum ToastType {
+    Success = 'success',
+    Warning = 'warning',
+    Error = 'error'
+}
+
+export enum ToastPosition {
+    TopRight = 'top-right'
 }

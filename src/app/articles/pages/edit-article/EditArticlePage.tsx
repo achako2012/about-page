@@ -1,6 +1,6 @@
-import React, { ReactNode, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { convertToRaw, EditorState } from 'draft-js';
-import { Button, Input, Progress } from 'reactstrap';
+import { Button, Input } from 'reactstrap';
 import { stateToHTML } from 'draft-js-export-html';
 import { MyEditor } from '../../components/editor/Editor';
 import ArticlesService from '../../../../api/services/articles-service';
@@ -9,24 +9,12 @@ import './ThumbnailPreview.css';
 import { ThumbnailPreview } from '../../components/editor/ThumbnailPreview';
 import { Spinner } from '../../../spinner/Spinner';
 import logger from '../../../../logger';
-import { Article, ToastI } from '../../../../types';
-// eslint-disable-next-line import/no-named-as-default
-import FooButton from '../../../notifications/toast/FooButton';
-// eslint-disable-next-line import/no-named-as-default
-import Toast from '../../../notifications/toast/Toast';
+import { Article, ToastI, ToastPosition, ToastType } from '../../../../types';
+import { Toast } from '../../../notifications/toast/Toast';
 
 interface NewArticlePageProps {
     match: any;
 }
-
-const BUTTON_PROPS = [
-    {
-        id: 1,
-        type: 'success',
-        className: 'success',
-        label: 'Success'
-    }
-];
 
 export const EditArticlePage = ({ match }: NewArticlePageProps) => {
     const articlesService = ArticlesService.create();
@@ -48,7 +36,7 @@ export const EditArticlePage = ({ match }: NewArticlePageProps) => {
 
     const [editorState, updateEditorState] = React.useState<EditorState>();
 
-    const [list, setList] = React.useState<ToastI[]>();
+    const [currentToast, setCurrentToast] = React.useState<ToastI>();
 
     useEffect(() => {
         const setArticle = async () => {
@@ -118,32 +106,16 @@ export const EditArticlePage = ({ match }: NewArticlePageProps) => {
             <Spinner />
         );
 
-    const showToast = (type: string) => {
-        console.log(type);
-        if (type) {
-            const id = Math.floor(Math.random() * 101 + 1);
-            const toastProperties = {
-                id,
-                title: 'Success',
-                description: 'This is a success toast component',
-                backgroundColor: '#5cb85c'
-            };
+    const showToast = (type: string, message: string) => {
+        const id = Math.floor(Math.random() * 101 + 1);
+        const toastProperties = {
+            id,
+            type,
+            message
+        };
 
-            setList([toastProperties]);
-        }
+        setCurrentToast(toastProperties);
     };
-
-    const renderToastButtons = (arr: any) =>
-        arr.map((item: any) => (
-            <FooButton
-                key={item.id}
-                className={item.className}
-                label={item.label}
-                onButtonClick={() => showToast(item.type)}
-            />
-        ));
-
-    const toastButtons = renderToastButtons(BUTTON_PROPS);
 
     return (
         <article className="new-article">
@@ -178,9 +150,30 @@ export const EditArticlePage = ({ match }: NewArticlePageProps) => {
                 save the article
             </Button>
 
-            <div>{toastButtons}</div>
-
-            <Toast toastList={list} autoDelete={3000} />
+            <div>
+                <button type="button" onClick={() => showToast(ToastType.Success, 'Article saved')}>
+                    success
+                </button>
+                <button
+                    type="button"
+                    onClick={() => showToast(ToastType.Warning, 'Something went wrong')}
+                >
+                    warning
+                </button>
+                <button
+                    type="button"
+                    onClick={() => showToast(ToastType.Error, "It's an error bro!")}
+                >
+                    error
+                </button>
+            </div>
+            {currentToast ? (
+                <Toast
+                    position={ToastPosition.TopRight}
+                    currentToast={currentToast}
+                    autoDelete={0}
+                />
+            ) : null}
         </article>
     );
 };
