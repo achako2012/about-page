@@ -22,5 +22,10 @@ export enum ToastType {
 }
 
 export enum ToastPosition {
-    TopRight = 'top-right'
+    TopRight = 'top-right',
+    TopLeft = 'top-left',
+    TopMiddle = 'top-middle',
+    BottomLeft = 'bottom-left',
+    BottomRight = 'bottom-right',
+    BottomMiddle = 'bottom-middle'
 }

@@ -50,7 +50,6 @@ export const EditArticlePage = ({ match }: NewArticlePageProps) => {
     }, []);
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        logger.log(event.target.id);
         updateArticle({
             ...article,
             [event.target.id]: event.target.value
@@ -71,6 +70,17 @@ export const EditArticlePage = ({ match }: NewArticlePageProps) => {
         });
     };
 
+    const showToast = (type: string, message: string) => {
+        const id = Math.floor(Math.random() * 101 + 1);
+        const toastProperties = {
+            id,
+            type,
+            message
+        };
+
+        setCurrentToast(toastProperties);
+    };
+
     const updateArticles = async () => {
         if (!editorState) {
             // Logic to check if all fields are filled up
@@ -82,16 +92,21 @@ export const EditArticlePage = ({ match }: NewArticlePageProps) => {
         const articleEntity = JSON.stringify(convertToRaw(editorContent));
         const articleHtml = stateToHTML(editorContent);
 
-        updateArticle({
+        const newArticle = {
             ...article,
             entity: articleEntity,
             html: articleHtml
-        });
+        };
+
+        updateArticle(newArticle);
 
         if (articleId) {
-            await articlesService.updateArticle({ ...article });
+            await articlesService.updateArticle({ ...newArticle });
         } else {
-            await articlesService.postArticles({ ...article });
+            const articleResponse = await articlesService.createArticle({ ...newArticle });
+            articleResponse.code === 201
+                ? showToast(ToastType.Success, 'Article created')
+                : showToast(ToastType.Error, `Response code: ${articleResponse.code}`);
         }
     };
 
@@ -105,17 +120,6 @@ export const EditArticlePage = ({ match }: NewArticlePageProps) => {
         ) : (
             <Spinner />
         );
-
-    const showToast = (type: string, message: string) => {
-        const id = Math.floor(Math.random() * 101 + 1);
-        const toastProperties = {
-            id,
-            type,
-            message
-        };
-
-        setCurrentToast(toastProperties);
-    };
 
     return (
         <article className="new-article">
@@ -149,7 +153,6 @@ export const EditArticlePage = ({ match }: NewArticlePageProps) => {
             <Button id="save-article-btn" color="primary" onClick={updateArticles}>
                 save the article
             </Button>
-
             <div>
                 <button type="button" onClick={() => showToast(ToastType.Success, 'Article saved')}>
                     success
@@ -169,7 +172,7 @@ export const EditArticlePage = ({ match }: NewArticlePageProps) => {
             </div>
             {currentToast ? (
                 <Toast
-                    position={ToastPosition.TopRight}
+                    position={ToastPosition.BottomMiddle}
                     currentToast={currentToast}
                     autoDelete={0}
                 />

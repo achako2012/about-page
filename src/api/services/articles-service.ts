@@ -2,6 +2,12 @@ import AboutService from './about-service';
 import { Header } from '../confg';
 import { Article } from '../../types';
 
+interface CreateArticleRequest {
+    code: number;
+    message: string;
+    article: Article;
+}
+
 class ArticlesService extends AboutService {
     /** Returns articles list */
     async getArticles(): Promise<Article[]> {
@@ -23,14 +29,14 @@ class ArticlesService extends AboutService {
         return response.data;
     }
 
-    async postArticles({
+    async createArticle({
         title,
         subTitle,
         thumbnail,
         color,
         entity,
         html
-    }: Article): Promise<Article> {
+    }: Article): Promise<CreateArticleRequest> {
         const response = await this.httpClient.request({
             method: 'POST',
             url: `${this.baseUrl}/about-page-service/articles-api/articles-list`,
