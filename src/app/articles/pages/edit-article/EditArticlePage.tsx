@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { convertToRaw, EditorState } from 'draft-js';
+import { convertFromRaw, convertToRaw, EditorState } from 'draft-js';
 import { Button, Input } from 'reactstrap';
 import { stateToHTML } from 'draft-js-export-html';
 import { MyEditor } from '../../components/editor/Editor';
@@ -8,7 +8,6 @@ import './NewArticle.css';
 import './ThumbnailPreview.css';
 import { ThumbnailPreview } from '../../components/editor/ThumbnailPreview';
 import { Spinner } from '../../../spinner/Spinner';
-import logger from '../../../../logger';
 import { Article, ToastI, ToastPosition, ToastType } from '../../../../types';
 import { Toast } from '../../../notifications/toast/Toast';
 
@@ -48,6 +47,18 @@ export const EditArticlePage = ({ match }: NewArticlePageProps) => {
 
         setArticle();
     }, []);
+
+    useEffect(() => {
+        const setEditorState = () => {
+            if (article.entity) {
+                const state = EditorState.createWithContent(
+                    convertFromRaw(JSON.parse(article.entity))
+                );
+                updateEditorState(state);
+            }
+        };
+        setEditorState();
+    }, [article.entity]);
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         updateArticle({
@@ -134,7 +145,7 @@ export const EditArticlePage = ({ match }: NewArticlePageProps) => {
 
     const editor =
         article.entity || !articleId ? (
-            <MyEditor saveEditorState={saveEditorState} entity={article.entity} />
+            <MyEditor saveEditorState={saveEditorState} editorState={editorState} />
         ) : (
             <Spinner />
         );
