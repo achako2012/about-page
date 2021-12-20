@@ -21,7 +21,6 @@ export const Toast: React.FC<ToastProps> = ({ position, currentToast, autoDelete
     useEffect(() => {
         const setToasts = async () => {
             if (currentToast) {
-                console.log(currentToast);
                 setToastList([currentToast]);
             }
         };

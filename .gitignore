@@ -11,6 +11,6 @@
 # production
 /build
 
-.DS_Store
-
 .idea
+
+.DS_Store

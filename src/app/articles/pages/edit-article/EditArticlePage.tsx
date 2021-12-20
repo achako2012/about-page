@@ -34,7 +34,7 @@ export const EditArticlePage = ({ match }: NewArticlePageProps) => {
         title: ''
     });
 
-    const [editorState, updateEditorState] = React.useState<EditorState>();
+    const [editorState, updateEditorState] = React.useState<EditorState>(EditorState.createEmpty());
 
     const [currentToast, setCurrentToast] = React.useState<ToastI>();
 
@@ -71,6 +71,7 @@ export const EditArticlePage = ({ match }: NewArticlePageProps) => {
     };
 
     const showToast = (type: string, message: string) => {
+        // TODO implement faker library
         const id = Math.floor(Math.random() * 101 + 1);
         const toastProperties = {
             id,
@@ -81,10 +82,20 @@ export const EditArticlePage = ({ match }: NewArticlePageProps) => {
         setCurrentToast(toastProperties);
     };
 
+    const validateArticle = (art: Article, editor: EditorState): boolean => {
+        const { title, subTitle, color, thumbnail } = art;
+        return (
+            !!title &&
+            !!subTitle &&
+            !!thumbnail &&
+            editor.getCurrentContent().hasText() &&
+            color !== '#000000'
+        );
+    };
+
     const updateArticles = async () => {
-        if (!editorState) {
-            // Logic to check if all fields are filled up
-            logger.info('Fill up the fields');
+        if (!validateArticle(article, editorState)) {
+            showToast(ToastType.Warning, 'Fill up all fields');
             return;
         }
 
@@ -160,28 +171,11 @@ export const EditArticlePage = ({ match }: NewArticlePageProps) => {
             <Button id="save-article-btn" color="primary" onClick={updateArticles}>
                 save the article
             </Button>
-            <div>
-                <button type="button" onClick={() => showToast(ToastType.Success, 'Article saved')}>
-                    success
-                </button>
-                <button
-                    type="button"
-                    onClick={() => showToast(ToastType.Warning, 'Something went wrong')}
-                >
-                    warning
-                </button>
-                <button
-                    type="button"
-                    onClick={() => showToast(ToastType.Error, "It's an error bro!")}
-                >
-                    error
-                </button>
-            </div>
             {currentToast ? (
                 <Toast
                     position={ToastPosition.BottomMiddle}
                     currentToast={currentToast}
-                    autoDelete={0}
+                    autoDelete={2 * 1000}
                 />
             ) : null}
         </article>
