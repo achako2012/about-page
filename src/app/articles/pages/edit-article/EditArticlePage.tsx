@@ -101,12 +101,19 @@ export const EditArticlePage = ({ match }: NewArticlePageProps) => {
         updateArticle(newArticle);
 
         if (articleId) {
-            await articlesService.updateArticle({ ...newArticle });
+            try {
+                const articleResponse = await articlesService.updateArticle({ ...newArticle });
+                showToast(ToastType.Success, articleResponse.message);
+            } catch (e) {
+                showToast(ToastType.Error, `Something went wrong`);
+            }
         } else {
-            const articleResponse = await articlesService.createArticle({ ...newArticle });
-            articleResponse.code === 201
-                ? showToast(ToastType.Success, 'Article created')
-                : showToast(ToastType.Error, `Response code: ${articleResponse.code}`);
+            try {
+                const articleResponse = await articlesService.createArticle({ ...newArticle });
+                showToast(ToastType.Success, articleResponse.message);
+            } catch (e) {
+                showToast(ToastType.Error, `Something went wrong`);
+            }
         }
     };
 

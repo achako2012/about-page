@@ -5,7 +5,12 @@ import { Article } from '../../types';
 interface CreateArticleRequest {
     code: number;
     message: string;
-    article: Article;
+    article?: Article;
+}
+
+interface UpdateArticleResponse {
+    code: number;
+    message: string;
 }
 
 class ArticlesService extends AboutService {
@@ -64,8 +69,8 @@ class ArticlesService extends AboutService {
         color,
         entity,
         html
-    }: Article): Promise<void> {
-        return this.httpClient.request({
+    }: Article): Promise<UpdateArticleResponse> {
+        const response = await this.httpClient.request({
             method: 'PUT',
             url: `${this.baseUrl}/about-page-service/articles-api/articles-list`,
             headers: {
@@ -81,6 +86,8 @@ class ArticlesService extends AboutService {
                 html
             }
         });
+
+        return response.data;
     }
 
     async deleteArticle(id: string): Promise<void> {
