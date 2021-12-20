@@ -6,7 +6,7 @@ import './Editor.css';
 
 type EditorProps = {
     saveEditorState(editorState: EditorState): void;
-    entity: string;
+    editorState: EditorState;
 };
 
 // Custom overrides for "code" style.
@@ -21,32 +21,19 @@ const styleMap = {
     }
 };
 
-export const MyEditor = ({ entity, saveEditorState }: EditorProps) => {
-    const [editorState, updateEditorState] = React.useState<EditorState>(EditorState.createEmpty());
-
-    useEffect(() => {
-        const setEditorState = () => {
-            if (entity) {
-                const state = EditorState.createWithContent(convertFromRaw(JSON.parse(entity)));
-                updateEditorState(state);
-            }
-        };
-        setEditorState();
-    }, [entity]);
-
+export const MyEditor = ({ editorState, saveEditorState }: EditorProps) => {
     const onChange = (newEditorState: EditorState) => {
-        updateEditorState(newEditorState);
         saveEditorState(newEditorState);
     };
 
     const onBlockStyleClick = (blockType: string) => {
         const newState = RichUtils.toggleBlockType(editorState, blockType);
-        updateEditorState(newState);
+        saveEditorState(newState);
     };
 
     const onInlineStyleClick = (inlineType: string) => {
         const newState = RichUtils.toggleInlineStyle(editorState, inlineType);
-        updateEditorState(newState);
+        saveEditorState(newState);
     };
 
     return (

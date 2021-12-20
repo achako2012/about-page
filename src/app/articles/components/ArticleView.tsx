@@ -9,9 +9,8 @@ interface ArticleViewProps {
     onDeleteClick(_id: string): Promise<void>;
 }
 
-export const ArticleView: React.FC<ArticleViewProps> = (props) => {
+export const ArticleView: React.FC<ArticleViewProps> = ({ article, onDeleteClick }) => {
     const auth = useContext(AuthContext);
-    const { article, onDeleteClick } = props;
 
     const controlArticleButtons = (
         <>

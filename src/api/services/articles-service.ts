@@ -2,6 +2,17 @@ import AboutService from './about-service';
 import { Header } from '../confg';
 import { Article } from '../../types';
 
+interface CreateArticleRequest {
+    code: number;
+    message: string;
+    article?: Article;
+}
+
+interface UpdateArticleResponse {
+    code: number;
+    message: string;
+}
+
 class ArticlesService extends AboutService {
     /** Returns articles list */
     async getArticles(): Promise<Article[]> {
@@ -23,14 +34,14 @@ class ArticlesService extends AboutService {
         return response.data;
     }
 
-    async postArticles({
+    async createArticle({
         title,
         subTitle,
         thumbnail,
         color,
         entity,
         html
-    }: Article): Promise<Article> {
+    }: Article): Promise<CreateArticleRequest> {
         const response = await this.httpClient.request({
             method: 'POST',
             url: `${this.baseUrl}/about-page-service/articles-api/articles-list`,
@@ -58,8 +69,8 @@ class ArticlesService extends AboutService {
         color,
         entity,
         html
-    }: Article): Promise<void> {
-        return this.httpClient.request({
+    }: Article): Promise<UpdateArticleResponse> {
+        const response = await this.httpClient.request({
             method: 'PUT',
             url: `${this.baseUrl}/about-page-service/articles-api/articles-list`,
             headers: {
@@ -75,6 +86,8 @@ class ArticlesService extends AboutService {
                 html
             }
         });
+
+        return response.data;
     }
 
     async deleteArticle(id: string): Promise<void> {

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { convertToRaw, EditorState } from 'draft-js';
+import { convertFromRaw, convertToRaw, EditorState } from 'draft-js';
 import { Button, Input } from 'reactstrap';
 import { stateToHTML } from 'draft-js-export-html';
 import { MyEditor } from '../../components/editor/Editor';
@@ -8,8 +8,8 @@ import './NewArticle.css';
 import './ThumbnailPreview.css';
 import { ThumbnailPreview } from '../../components/editor/ThumbnailPreview';
 import { Spinner } from '../../../spinner/Spinner';
-import logger from '../../../../logger';
-import { Article } from '../../../../types';
+import { Article, ToastI, ToastPosition, ToastType } from '../../../../types';
+import { Toast } from '../../../notifications/toast/Toast';
 
 interface NewArticlePageProps {
     match: any;
@@ -17,6 +17,7 @@ interface NewArticlePageProps {
 
 export const EditArticlePage = ({ match }: NewArticlePageProps) => {
     const articlesService = ArticlesService.create();
+
     const {
         params: { articleId }
     } = match;
@@ -32,8 +33,9 @@ export const EditArticlePage = ({ match }: NewArticlePageProps) => {
         title: ''
     });
 
-    // TODO I have duplicated code in Editor.tsx
-    const [editorState, updateEditorState] = React.useState<EditorState>();
+    const [editorState, updateEditorState] = React.useState<EditorState>(EditorState.createEmpty());
+
+    const [currentToast, setCurrentToast] = React.useState<ToastI>();
 
     useEffect(() => {
         const setArticle = async () => {
@@ -46,8 +48,19 @@ export const EditArticlePage = ({ match }: NewArticlePageProps) => {
         setArticle();
     }, []);
 
+    useEffect(() => {
+        const setEditorState = () => {
+            if (article.entity) {
+                const state = EditorState.createWithContent(
+                    convertFromRaw(JSON.parse(article.entity))
+                );
+                updateEditorState(state);
+            }
+        };
+        setEditorState();
+    }, [article.entity]);
+
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        logger.log(event.target.id);
         updateArticle({
             ...article,
             [event.target.id]: event.target.value
@@ -68,10 +81,32 @@ export const EditArticlePage = ({ match }: NewArticlePageProps) => {
         });
     };
 
+    const showToast = (type: string, message: string) => {
+        // TODO implement faker library
+        const id = Math.floor(Math.random() * 101 + 1);
+        const toastProperties = {
+            id,
+            type,
+            message
+        };
+
+        setCurrentToast(toastProperties);
+    };
+
+    const validateArticle = (art: Article, editor: EditorState): boolean => {
+        const { title, subTitle, color, thumbnail } = art;
+        return (
+            !!title &&
+            !!subTitle &&
+            !!thumbnail &&
+            editor.getCurrentContent().hasText() &&
+            color !== '#000000'
+        );
+    };
+
     const updateArticles = async () => {
-        if (!editorState) {
-            // Logic to check if all fields are filled up
-            logger.info('Fill up the fields');
+        if (!validateArticle(article, editorState)) {
+            showToast(ToastType.Warning, 'Fill up all fields');
             return;
         }
 
@@ -79,16 +114,28 @@ export const EditArticlePage = ({ match }: NewArticlePageProps) => {
         const articleEntity = JSON.stringify(convertToRaw(editorContent));
         const articleHtml = stateToHTML(editorContent);
 
-        updateArticle({
+        const newArticle = {
             ...article,
             entity: articleEntity,
             html: articleHtml
-        });
+        };
+
+        updateArticle(newArticle);
 
         if (articleId) {
-            await articlesService.updateArticle({ ...article });
+            try {
+                const articleResponse = await articlesService.updateArticle({ ...newArticle });
+                showToast(ToastType.Success, articleResponse.message);
+            } catch (e) {
+                showToast(ToastType.Error, `Something went wrong`);
+            }
         } else {
-            await articlesService.postArticles({ ...article });
+            try {
+                const articleResponse = await articlesService.createArticle({ ...newArticle });
+                showToast(ToastType.Success, articleResponse.message);
+            } catch (e) {
+                showToast(ToastType.Error, `Something went wrong`);
+            }
         }
     };
 
@@ -98,7 +145,7 @@ export const EditArticlePage = ({ match }: NewArticlePageProps) => {
 
     const editor =
         article.entity || !articleId ? (
-            <MyEditor saveEditorState={saveEditorState} entity={article.entity} />
+            <MyEditor saveEditorState={saveEditorState} editorState={editorState} />
         ) : (
             <Spinner />
         );
@@ -135,6 +182,13 @@ export const EditArticlePage = ({ match }: NewArticlePageProps) => {
             <Button id="save-article-btn" color="primary" onClick={updateArticles}>
                 save the article
             </Button>
+            {currentToast ? (
+                <Toast
+                    position={ToastPosition.BottomMiddle}
+                    currentToast={currentToast}
+                    autoDelete={2 * 1000}
+                />
+            ) : null}
         </article>
     );
 };
