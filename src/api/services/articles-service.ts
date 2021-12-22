@@ -1,6 +1,6 @@
+import { Article } from 'types';
 import AboutService from './about-service';
 import { Header } from '../confg';
-import { Article } from '../../types';
 
 interface CreateArticleRequest {
     code: number;

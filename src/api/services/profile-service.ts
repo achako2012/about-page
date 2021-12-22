@@ -1,5 +1,5 @@
+import { Profile } from 'api/types';
 import AboutService from './about-service';
-import { Profile } from '../types';
 
 class ProfileService extends AboutService {
     /** Returns user's skills list */

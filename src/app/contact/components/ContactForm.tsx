@@ -3,7 +3,7 @@ import emailjs from 'emailjs-com';
 import { Button, Form, Input } from 'reactstrap';
 import { SiLinkedin } from 'react-icons/si';
 import { FaTelegram, FaWhatsapp } from 'react-icons/fa';
-import logger from '../../../logger';
+import logger from 'logger';
 
 interface ContactFormProps {
     config: {

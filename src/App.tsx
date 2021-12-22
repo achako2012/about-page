@@ -16,7 +16,7 @@ const App: React.FC = () => {
 
     const isAuthenticated = !!token;
 
-    const [isModalOpen, setIsOpen] = useState(false);
+    const [isModalOpen, setIsOpen] = React.useState<boolean>(false);
 
     const auth = useMemo(
         () => ({ isAuthenticated, login, logout }),
@@ -25,7 +25,7 @@ const App: React.FC = () => {
 
     return (
         <AuthContext.Provider value={auth}>
-            <LoginModal open={isModalOpen} onClose={() => setIsOpen(false)} />
+            <LoginModal isModalOpen={isModalOpen} onClose={() => setIsOpen(false)} />
             <Router>
                 <div className="app">
                     <Navbar onClickModal={() => setIsOpen(true)} />

@@ -1,12 +1,12 @@
 import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from 'reactstrap';
-import ArticlesService from '../../../../api/services/articles-service';
-import { Spinner } from '../../../spinner/Spinner';
+import ArticlesService from 'api/services/articles-service';
+import { Spinner } from 'app/spinner/Spinner';
 import './ArticlesListPage.css';
-import { Article } from '../../../../types';
-import { ArticleView } from '../../components/ArticleView';
-import { AuthContext } from '../../../../context-provider/AuthContext';
+import { Article } from 'types';
+import { ArticleView } from 'app/articles/components/ArticleView';
+import { AuthContext } from 'context-provider/AuthContext';
 
 export const ArticlesListPage = () => {
     const auth = useContext(AuthContext);

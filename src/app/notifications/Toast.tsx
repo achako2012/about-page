@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 
 import './Toast.css';
-import { ToastI } from '../../../types';
+import { ToastI } from 'types';
 
 interface ToastProps {
     position: string;
@@ -12,8 +12,8 @@ interface ToastProps {
 export const Toast: React.FC<ToastProps> = ({ position, currentToast, autoDelete }) => {
     const [toastList, setToastList] = React.useState<ToastI[]>([]);
 
-    const deleteToast = (id: any) => {
-        const toastListItem = toastList.findIndex((e: { id: any }) => e.id === id);
+    const deleteToast = (id: number) => {
+        const toastListItem = toastList.findIndex((e: { id: number }) => e.id === id);
         toastList.splice(toastListItem, 1);
         setToastList([...toastList]);
     };
@@ -40,7 +40,7 @@ export const Toast: React.FC<ToastProps> = ({ position, currentToast, autoDelete
         deleteTimeout();
     }, [toastList]);
 
-    const renderToasts = (arr: any) =>
+    const renderToasts = (arr: ToastI[]) =>
         arr.map((toast: ToastI) => (
             <div key={toast.id} className={`notification ${toast.type}`}>
                 <div>

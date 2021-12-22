@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import parse from 'html-react-parser';
 import styled from '@emotion/styled';
-import ArticlesService from '../../../../api/services/articles-service';
-import { Spinner } from '../../../spinner/Spinner';
-import { Article } from '../../../../types';
+import ArticlesService from 'api/services/articles-service';
+import { Spinner } from 'app/spinner/Spinner';
+import { Article } from 'types';
 import './OneArticle.css';
 
 interface OneArticleProps {
-    match: any;
+    match: { params: { articleId: string } };
 }
 
 export const OneArticlePage = ({ match }: OneArticleProps) => {

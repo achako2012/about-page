@@ -1,6 +1,6 @@
 import { Progress } from 'reactstrap';
 import React from 'react';
-import { Skill } from '../../../../api/types';
+import { Skill } from 'api/types';
 import './Skills.css';
 
 type SkillsProps = {
@@ -8,7 +8,7 @@ type SkillsProps = {
 };
 
 export const Skills: React.FC<SkillsProps> = ({ skillsList }: SkillsProps) => {
-    const getColor = (value: any) => {
+    const getColor = (value: number) => {
         if (value < 4) return 'danger';
 
         if (value < 7) return 'warning';
@@ -16,8 +16,8 @@ export const Skills: React.FC<SkillsProps> = ({ skillsList }: SkillsProps) => {
         return 'success';
     };
 
-    const renderSkills = (arr: any) =>
-        arr.map((item: any) => {
+    const renderSkills = (arr: Skill[]) =>
+        arr.map((item: Skill) => {
             const { id, ...skills } = item;
             const color = getColor(skills.value);
             return (

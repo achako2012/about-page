@@ -6,8 +6,7 @@ import './NavigationElements.css';
 
 type RightElementsProps = {
     view: string;
-    // eslint-disable-next-line react/require-default-props
-    onClickNavigation?: any;
+    onClickNavigation?(): void;
 };
 
 const NavigationElements: FC<RightElementsProps> = ({ view, onClickNavigation }) => (
