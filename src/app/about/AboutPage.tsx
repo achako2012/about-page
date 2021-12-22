@@ -25,7 +25,6 @@ export const AboutPage: React.FC = () => {
 
         const setProfile = async () => {
             const profileEntity = await profileService.getProfile();
-            console.log(profileEntity);
             updateProfile(profileEntity);
         };
         setProfile();

@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo } from 'react';
 import './index.css';
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
 import { AboutPage } from './app/about/AboutPage';
