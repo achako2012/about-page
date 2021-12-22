@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
+import SkillsService from 'api/services/skills-service';
+import { Profile, Skill } from 'api/types';
+import ProfileService from 'api/services/profile-service';
 import { Skills } from './components/skills/Skills';
-import SkillsService from '../../api/services/skills-service';
 import { Spinner } from '../spinner/Spinner';
-import { Profile, Skill } from '../../api/types';
 import { Title } from './components/title/Title';
 import { About } from './components/about/About';
 import { Services } from './components/services/Services';
-import ProfileService from '../../api/services/profile-service';
 
 export const AboutPage: React.FC = () => {
     const skillsService = SkillsService.create();
@@ -25,7 +25,6 @@ export const AboutPage: React.FC = () => {
 
         const setProfile = async () => {
             const profileEntity = await profileService.getProfile();
-            console.log(profileEntity);
             updateProfile(profileEntity);
         };
         setProfile();

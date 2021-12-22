@@ -3,7 +3,9 @@ import emailjs from 'emailjs-com';
 import { Button, Form, Input } from 'reactstrap';
 import { SiLinkedin } from 'react-icons/si';
 import { FaTelegram, FaWhatsapp } from 'react-icons/fa';
-import logger from '../../../logger';
+import logger from 'logger';
+import { ToastI, ToastPosition, ToastType } from '../../../types';
+import { Toast } from '../../notifications/Toast';
 
 interface ContactFormProps {
     config: {
@@ -37,14 +39,34 @@ export const Social: React.FC = () => (
 export const ContactForm: React.FC<ContactFormProps> = ({
     config: { serviceID, templateID, userID }
 }: ContactFormProps) => {
+    const [currentToast, setCurrentToast] = React.useState<ToastI>();
+
+    // TODO push this function into Toaster component or ContextProvider
+    const showToast = (type: string, message: string) => {
+        // TODO implement faker library
+        const id = Math.floor(Math.random() * 101 + 1);
+        const toastProperties = {
+            id,
+            type,
+            message
+        };
+
+        setCurrentToast(toastProperties);
+    };
+
     const sendEmail = (event: React.ChangeEvent<HTMLFormElement>) => {
         event.preventDefault();
 
         emailjs.sendForm(serviceID, templateID, event.target, userID).then(
             (result) => {
-                logger.log(result.text);
+                if (result.text === 'OK') {
+                    showToast(ToastType.Success, 'Email sent');
+                } else {
+                    showToast(ToastType.Warning, 'Some unexpected response');
+                }
             },
             (error) => {
+                showToast(ToastType.Error, 'Some error occured');
                 logger.log(error.text);
             }
         );
@@ -72,6 +94,13 @@ export const ContactForm: React.FC<ContactFormProps> = ({
                     </Button>
                 </Form>
             </div>
+            {currentToast ? (
+                <Toast
+                    position={ToastPosition.BottomMiddle}
+                    currentToast={currentToast}
+                    autoDelete={2 * 1000}
+                />
+            ) : null}
         </section>
     );
 };

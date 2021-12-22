@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
 import { FiLogIn, FiLogOut } from 'react-icons/fi';
-import { AuthContext } from '../../context-provider/AuthContext';
+import { AuthContext } from 'context-provider/AuthContext';
 import './Navbar.css';
 import { Burger } from './components/burger/Burger';
 import NavigationElements from './components/navigation-elements/NavigationElements';
 
 interface NavbarProps {
-    onClickModal: any;
+    onClickModal(): void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ onClickModal }) => {
