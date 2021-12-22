@@ -1,6 +1,6 @@
 import React from 'react';
+import { EMAIL_CONFIGURATION } from 'fixtures';
 import { ContactForm, Social } from './components/ContactForm';
-import { EMAIL_CONFIGURATION } from '../../fixtures';
 import './components/ContactForm.css';
 
 export const ContactPage: React.FC = () => (

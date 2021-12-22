@@ -2,24 +2,24 @@ import React, { useContext, useState } from 'react';
 import ReactDom from 'react-dom';
 import { Button, Form, Input } from 'reactstrap';
 import axios, { AxiosError } from 'axios';
-import AuthService from '../../api/services/auth-service';
-import { AuthContext } from '../../context-provider/AuthContext';
+import AuthService from 'api/services/auth-service';
+import { AuthContext } from 'context-provider/AuthContext';
 import './LoginModal.css';
 
 interface LoginModalProps {
-    // TODO fix types
-    open: any;
-    onClose: any;
+    isModalOpen: boolean;
+
+    onClose(): void;
 }
 
-export const LoginModal: React.FC<LoginModalProps> = ({ open, onClose }) => {
+export const LoginModal: React.FC<LoginModalProps> = ({ isModalOpen, onClose }) => {
     const articlesService = AuthService.create();
     const auth = useContext(AuthContext);
 
     const [form, setForm] = useState({ email: '', password: '' });
     const [error, setError] = useState('');
 
-    const changeHandler = (event: { target: { name: any; value: any } }) => {
+    const changeHandler = (event: { target: { name: string; value: string } }) => {
         setForm({ ...form, [event.target.name]: event.target.value });
     };
 
@@ -38,59 +38,61 @@ export const LoginModal: React.FC<LoginModalProps> = ({ open, onClose }) => {
         }
     };
 
-    if (!open) return null;
+    if (!isModalOpen) return null;
 
-    return ReactDom.createPortal(
-        <div className="auth-modal-wrapper">
-            <div className="auth-modal-content">
-                <div className="modal-content">
-                    <div className="modal-title">Login into the app</div>
-                    <div className="modal-body">
-                        {error ? <p style={{ color: 'red' }}>{error}</p> : null}
-                        <Form className="login-wrapper">
-                            <Input
-                                type="email"
-                                name="email"
-                                id="emailInput"
-                                placeholder="email"
-                                onChange={changeHandler}
-                            />
-                            <Input
-                                type="password"
-                                name="password"
-                                id="passwordInput"
-                                placeholder="password"
-                                onChange={changeHandler}
-                            />
-                        </Form>
-                    </div>
-                    <div className="modal-footer">
-                        <Button
-                            type="submit"
-                            id="submitButton"
-                            color="secondary"
-                            size="sm"
-                            onClick={() => loginHandler()}
-                        >
-                            Submit
-                        </Button>
-                        <Button
-                            type="button"
-                            id="closeButton"
-                            color="danger"
-                            size="sm"
-                            onClick={onClose}
-                        >
-                            Close modal
-                        </Button>
-                    </div>
-                </div>
-            </div>
-        </div>,
-        // TODO fix
-        // @ts-ignore
-        document.getElementById('loginModal')
-    );
+    const loginModal = document.getElementById('loginModal');
+
+    return loginModal
+        ? ReactDom.createPortal(
+              <div className="auth-modal-wrapper">
+                  <div className="auth-modal-content">
+                      <div className="modal-content">
+                          <div className="modal-title">Login into the app</div>
+                          <div className="modal-body">
+                              {error ? <p style={{ color: 'red' }}>{error}</p> : null}
+                              <Form className="login-wrapper">
+                                  <Input
+                                      type="email"
+                                      name="email"
+                                      id="emailInput"
+                                      placeholder="email"
+                                      onChange={changeHandler}
+                                  />
+                                  <Input
+                                      type="password"
+                                      name="password"
+                                      id="passwordInput"
+                                      placeholder="password"
+                                      onChange={changeHandler}
+                                  />
+                              </Form>
+                          </div>
+                          <div className="modal-footer">
+                              <Button
+                                  type="button"
+                                  id="closeButton"
+                                  color="danger"
+                                  size="sm"
+                                  onClick={onClose}
+                              >
+                                  Close modal
+                              </Button>
+                              <Button
+                                  type="submit"
+                                  id="submitButton"
+                                  color="secondary"
+                                  size="sm"
+                                  onClick={() => loginHandler()}
+                              >
+                                  Submit
+                              </Button>
+                          </div>
+                      </div>
+                  </div>
+              </div>,
+              loginModal
+          )
+        : null;
 };
 
 export default LoginModal;

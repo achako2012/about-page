@@ -1,5 +1,5 @@
+import { Skill } from 'api/types';
 import AboutService from './about-service';
-import { Skill } from '../types';
 
 class SkillsService extends AboutService {
     /** Returns user's skills list */

@@ -2,7 +2,7 @@
  * Returns an instance of Axios HTTP client with intercepted requests
  */
 import axios, { AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios';
-import logger from '../logger';
+import logger from 'logger';
 import { Header } from './confg';
 
 const httpClient = axios.create({

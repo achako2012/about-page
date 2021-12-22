@@ -1,11 +1,13 @@
 import React from 'react';
-import { convertBase64File } from '../../../../utils/utils';
-import logger from '../../../../logger';
+import { convertBase64File } from 'utils/utils';
 
 interface ThumbnailPreviewProps {
     color: string;
     thumbnail: string;
+
+    // TODO fix convertBase64File() method to return string
     onFileChange(value: any): void;
+
     onColorChange(value: string): void;
 }
 
@@ -16,11 +18,9 @@ export const ThumbnailPreview: React.FC<ThumbnailPreviewProps> = ({
     thumbnail
 }: ThumbnailPreviewProps) => {
     async function changeFile(event: React.ChangeEvent<HTMLInputElement>) {
-        if (typeof onFileChange === 'function') {
-            const { files } = event.target;
-            const base64 = files
-                ? await convertBase64File(files[0])
-                : logger.log('something went wrong');
+        const { files } = event.target;
+        if (files) {
+            const base64 = await convertBase64File(files[0]);
             onFileChange(base64);
         }
     }
@@ -44,8 +44,7 @@ export const ThumbnailPreview: React.FC<ThumbnailPreviewProps> = ({
             </span>
             <p>Thumbnail preview:</p>
             <div className="thumbnail-preview" style={style}>
-                {/* eslint-disable-next-line jsx-a11y/alt-text */}
-                <img src={thumbnail} height="50px" />
+                <img src={thumbnail} height="50px" alt="" />
             </div>
         </div>
     );

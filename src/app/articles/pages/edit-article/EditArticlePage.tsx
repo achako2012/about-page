@@ -1,18 +1,23 @@
 import React, { useEffect } from 'react';
+import { Prompt } from 'react-router-dom';
 import { convertFromRaw, convertToRaw, EditorState } from 'draft-js';
 import { Button, Input } from 'reactstrap';
 import { stateToHTML } from 'draft-js-export-html';
-import { MyEditor } from '../../components/editor/Editor';
-import ArticlesService from '../../../../api/services/articles-service';
+import { MyEditor } from 'app/articles/components/editor/Editor';
+import ArticlesService from 'api/services/articles-service';
 import './NewArticle.css';
 import './ThumbnailPreview.css';
-import { ThumbnailPreview } from '../../components/editor/ThumbnailPreview';
-import { Spinner } from '../../../spinner/Spinner';
-import { Article, ToastI, ToastPosition, ToastType } from '../../../../types';
-import { Toast } from '../../../notifications/toast/Toast';
+import { ThumbnailPreview } from 'app/articles/components/editor/ThumbnailPreview';
+import { Spinner } from 'app/spinner/Spinner';
+import { Article, ToastI, ToastPosition, ToastType } from 'types';
+import { Toast } from 'app/notifications/Toast';
 
 interface NewArticlePageProps {
-    match: any;
+    match: {
+        params: {
+            articleId: string;
+        };
+    };
 }
 
 export const EditArticlePage = ({ match }: NewArticlePageProps) => {
@@ -36,6 +41,8 @@ export const EditArticlePage = ({ match }: NewArticlePageProps) => {
     const [editorState, updateEditorState] = React.useState<EditorState>(EditorState.createEmpty());
 
     const [currentToast, setCurrentToast] = React.useState<ToastI>();
+
+    const [isNotSaved, setIsSaved] = React.useState<boolean>(true);
 
     useEffect(() => {
         const setArticle = async () => {
@@ -121,6 +128,7 @@ export const EditArticlePage = ({ match }: NewArticlePageProps) => {
         };
 
         updateArticle(newArticle);
+        setIsSaved(!isNotSaved);
 
         if (articleId) {
             try {
@@ -151,45 +159,51 @@ export const EditArticlePage = ({ match }: NewArticlePageProps) => {
         );
 
     return (
-        <article className="new-article">
-            <div className="new-article-title">
-                <Input
-                    id="title"
-                    className="form-control"
-                    type="text"
-                    placeholder="Title"
-                    value={article.title}
-                    onChange={handleChange}
-                />
-            </div>
-            <div className="new-article-sub-title">
-                <Input
-                    id="subTitle"
-                    className="form-control"
-                    type="textarea"
-                    placeholder="Sub Title"
-                    value={article.subTitle}
-                    onChange={handleChange}
-                />
-            </div>
-            <ThumbnailPreview
-                color={article.color}
-                thumbnail={article.thumbnail}
-                onFileChange={onFileChange}
-                onColorChange={onColorChange}
+        <>
+            <Prompt
+                when={isNotSaved}
+                message="You have unsaved changes, are you sure you want to leave?"
             />
-            <div className="editor-wrapper">{editor}</div>
-            <Button id="save-article-btn" color="primary" onClick={updateArticles}>
-                save the article
-            </Button>
-            {currentToast ? (
-                <Toast
-                    position={ToastPosition.BottomMiddle}
-                    currentToast={currentToast}
-                    autoDelete={2 * 1000}
+            <article className="new-article">
+                <div className="new-article-title">
+                    <Input
+                        id="title"
+                        className="form-control"
+                        type="text"
+                        placeholder="Title"
+                        value={article.title}
+                        onChange={handleChange}
+                    />
+                </div>
+                <div className="new-article-sub-title">
+                    <Input
+                        id="subTitle"
+                        className="form-control"
+                        type="textarea"
+                        placeholder="Sub Title"
+                        value={article.subTitle}
+                        onChange={handleChange}
+                    />
+                </div>
+                <ThumbnailPreview
+                    color={article.color}
+                    thumbnail={article.thumbnail}
+                    onFileChange={onFileChange}
+                    onColorChange={onColorChange}
                 />
-            ) : null}
-        </article>
+                <div className="editor-wrapper">{editor}</div>
+                <Button id="save-article-btn" color="primary" onClick={updateArticles}>
+                    save the article
+                </Button>
+                {currentToast ? (
+                    <Toast
+                        position={ToastPosition.BottomMiddle}
+                        currentToast={currentToast}
+                        autoDelete={2 * 1000}
+                    />
+                ) : null}
+            </article>
+        </>
     );
 };
 

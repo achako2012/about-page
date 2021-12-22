@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import { Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import { Article } from '../../../types';
-import { AuthContext } from '../../../context-provider/AuthContext';
+import { AuthContext } from 'context-provider/AuthContext';
+import { Article } from 'types';
 
 interface ArticleViewProps {
     article: Article;

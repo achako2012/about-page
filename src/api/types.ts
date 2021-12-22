@@ -1,7 +1,7 @@
 export type Skill = {
     id: string;
     title: string;
-    value: string;
+    value: number;
 };
 
 export type Profile = {
