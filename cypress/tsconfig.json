@@ -1,0 +1,13 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "isolatedModules": false,
+    "types": ["cypress"]
+  },
+  "typeRoots": ["./node_modules/@types", "./typings"],
+  "include": [
+    "../node_modules/cypress",
+    "index.d.ts",
+    "./**/*.ts"
+  ]
+}
