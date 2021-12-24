@@ -1,11 +1,10 @@
 import React from 'react';
-import { convertBase64File } from 'utils/utils';
+import { convertBase64File } from 'helpers/utils';
 
 interface ThumbnailPreviewProps {
     color: string;
     thumbnail: string;
 
-    // TODO fix convertBase64File() method to return string
     onFileChange(value: any): void;
 
     onColorChange(value: string): void;

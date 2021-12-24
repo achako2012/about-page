@@ -4,7 +4,8 @@ import { Button, Form, Input } from 'reactstrap';
 import { SiLinkedin } from 'react-icons/si';
 import { FaTelegram, FaWhatsapp } from 'react-icons/fa';
 import logger from 'logger';
-import { ToastI, ToastPosition, ToastType } from '../../../types';
+import { useNotification } from 'hooks/notification.hooks';
+import { ToastPosition, ToastType } from '../../../types';
 import { Toast } from '../../notifications/Toast';
 
 interface ContactFormProps {
@@ -39,20 +40,7 @@ export const Social: React.FC = () => (
 export const ContactForm: React.FC<ContactFormProps> = ({
     config: { serviceID, templateID, userID }
 }: ContactFormProps) => {
-    const [currentToast, setCurrentToast] = React.useState<ToastI>();
-
-    // TODO push this function into Toaster component or ContextProvider
-    const showToast = (type: string, message: string) => {
-        // TODO implement faker library
-        const id = Math.floor(Math.random() * 101 + 1);
-        const toastProperties = {
-            id,
-            type,
-            message
-        };
-
-        setCurrentToast(toastProperties);
-    };
+    const { currentToast, showToast } = useNotification();
 
     const sendEmail = (event: React.ChangeEvent<HTMLFormElement>) => {
         event.preventDefault();
