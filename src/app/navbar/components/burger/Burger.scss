@@ -1,16 +1,34 @@
-.nav-burger {
-    width: 2rem;
-    height: 2rem;
-    display: flex;
-    justify-content: space-around;
-    flex-flow: column nowrap;
+@import "src/global-styles/variables";
 
-    div {
-        width: 2rem;
-        height: 0.25rem;
-        background-color: #fff;
-        border-radius: 10px;
-        transform-origin: 1px;
-        z-index: 20;
-    }
+.nav-burger {
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  justify-content: space-around;
+  flex-flow: column nowrap;
+
+
+  div {
+    width: 2rem;
+    height: 0.25rem;
+    background-color: $backgroundColor;
+    border-radius: 10px;
+    transform-origin: 1px;
+    z-index: 20;
+    transition: 0.7s;
+  }
+
+  .transform_left {
+    transform: rotate(45deg);
+  }
+
+  .transform_right {
+    transform: rotate(-45deg);
+  }
+
+  .transform_translate {
+    transform: translateX(-40px);
+    opacity: 0;
+  }
+
 }

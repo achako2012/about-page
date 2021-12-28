@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Button } from 'reactstrap';
 import ArticlesService from 'api/services/articles-service';
 import { Spinner } from 'app/spinner/Spinner';
-import './ArticlesListPage.css';
+import './ArticlesListPage.scss';
 import { Article } from 'types';
 import { ArticleView } from 'app/articles/components/ArticleView';
 import { AuthContext } from 'context-provider/AuthContext';

@@ -4,7 +4,7 @@ import { Button, Form, Input } from 'reactstrap';
 import axios, { AxiosError } from 'axios';
 import AuthService from 'api/services/auth-service';
 import { AuthContext } from 'context-provider/AuthContext';
-import './LoginModal.css';
+import './LoginModal.scss';
 
 interface LoginModalProps {
     isModalOpen: boolean;
