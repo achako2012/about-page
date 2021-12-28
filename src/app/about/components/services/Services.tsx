@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import { Card, CardText, CardTitle } from 'reactstrap';
 import { IconContext } from 'react-icons';
 import { BsGear, GoBrowser } from 'react-icons/all';
-import './Services.css';
+import './Services.scss';
 
 export const Services: React.FC = () => {
     const reactIconsClass = useMemo(() => ({ className: 'react-icons' }), []);

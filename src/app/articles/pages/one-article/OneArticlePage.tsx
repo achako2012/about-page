@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 import ArticlesService from 'api/services/articles-service';
 import { Spinner } from 'app/spinner/Spinner';
 import { Article } from 'types';
-import './OneArticle.css';
+import './OneArticle.scss';
 
 interface OneArticleProps {
     match: { params: { articleId: string } };
