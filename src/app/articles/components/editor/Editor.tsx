@@ -2,7 +2,7 @@ import React from 'react';
 import { Editor, EditorState, RichUtils } from 'draft-js';
 import { BlockStyleControls } from './BlockStyleControls';
 import { InlineStyleControls } from './InlineStyleControls';
-import './Editor.css';
+import './Editor.scss';
 
 type EditorProps = {
     saveEditorState(editorState: EditorState): void;

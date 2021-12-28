@@ -6,6 +6,7 @@ import { Article } from 'types';
 
 interface ArticleViewProps {
     article: Article;
+
     onDeleteClick(_id: string): Promise<void>;
 }
 
@@ -20,6 +21,9 @@ export const ArticleView: React.FC<ArticleViewProps> = ({ article, onDeleteClick
             <Link to={`/articles/${article._id}/edit`}>
                 <Button outline>Edit</Button>
             </Link>
+            <Link to={`/articles/${article._id}`}>
+                <Button outline>Read more</Button>
+            </Link>
         </>
     );
 
@@ -32,12 +36,7 @@ export const ArticleView: React.FC<ArticleViewProps> = ({ article, onDeleteClick
                 <div className="entry-content">
                     <p id="subTitle">{article.subTitle}</p>
                 </div>
-                <div className="buttons">
-                    {auth.isAuthenticated ? controlArticleButtons : null}
-                    <Link to={`/articles/${article._id}`}>
-                        <Button outline>Read more</Button>
-                    </Link>
-                </div>
+                <div className="buttons">{auth.isAuthenticated ? controlArticleButtons : null}</div>
             </div>
             <div id="thumbnail" style={{ backgroundColor: article.color }}>
                 <img src={article.thumbnail} alt="articleIcon" />

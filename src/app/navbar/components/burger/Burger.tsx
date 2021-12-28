@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import NavigationElements from '../navigation-elements/NavigationElements';
-import './Burger.css';
+import './Burger.scss';
 
 export const Burger = () => {
     const [selected, setSelected] = useState(false);
@@ -24,9 +24,9 @@ export const Burger = () => {
                     clickOnBurger();
                 }}
             >
-                <div />
-                <div />
-                <div />
+                <div className={selected ? 'transform_left' : ''} />
+                <div className={selected ? 'transform_translate' : ''} />
+                <div className={selected ? 'transform_right' : ''} />
             </div>
             {selected ? navigationElements : null}
         </>

@@ -5,12 +5,13 @@ import { Button, Input } from 'reactstrap';
 import { stateToHTML } from 'draft-js-export-html';
 import { MyEditor } from 'app/articles/components/editor/Editor';
 import ArticlesService from 'api/services/articles-service';
-import './NewArticle.css';
-import './ThumbnailPreview.css';
+import './NewArticle.scss';
+import './ThumbnailPreview.scss';
 import { ThumbnailPreview } from 'app/articles/components/editor/ThumbnailPreview';
 import { Spinner } from 'app/spinner/Spinner';
-import { Article, ToastI, ToastPosition, ToastType } from 'types';
+import { Article, ToastPosition, ToastType } from 'types';
 import { Toast } from 'app/notifications/Toast';
+import { useNotification } from 'hooks/notification.hooks';
 
 interface NewArticlePageProps {
     match: {
@@ -22,6 +23,8 @@ interface NewArticlePageProps {
 
 export const EditArticlePage = ({ match }: NewArticlePageProps) => {
     const articlesService = ArticlesService.create();
+
+    const { currentToast, showToast } = useNotification();
 
     const {
         params: { articleId }
@@ -39,8 +42,6 @@ export const EditArticlePage = ({ match }: NewArticlePageProps) => {
     });
 
     const [editorState, updateEditorState] = React.useState<EditorState>(EditorState.createEmpty());
-
-    const [currentToast, setCurrentToast] = React.useState<ToastI>();
 
     const [isNotSaved, setIsSaved] = React.useState<boolean>(true);
 
@@ -86,18 +87,6 @@ export const EditArticlePage = ({ match }: NewArticlePageProps) => {
             ...article,
             color: value
         });
-    };
-
-    const showToast = (type: string, message: string) => {
-        // TODO implement faker library
-        const id = Math.floor(Math.random() * 101 + 1);
-        const toastProperties = {
-            id,
-            type,
-            message
-        };
-
-        setCurrentToast(toastProperties);
     };
 
     const validateArticle = (art: Article, editor: EditorState): boolean => {

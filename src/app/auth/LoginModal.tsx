@@ -4,7 +4,7 @@ import { Button, Form, Input } from 'reactstrap';
 import axios, { AxiosError } from 'axios';
 import AuthService from 'api/services/auth-service';
 import { AuthContext } from 'context-provider/AuthContext';
-import './LoginModal.css';
+import './LoginModal.scss';
 
 interface LoginModalProps {
     isModalOpen: boolean;
@@ -49,13 +49,18 @@ export const LoginModal: React.FC<LoginModalProps> = ({ isModalOpen, onClose }) 
                       <div className="modal-content">
                           <div className="modal-title">Login into the app</div>
                           <div className="modal-body">
-                              {error ? <p style={{ color: 'red' }}>{error}</p> : null}
+                              {error ? (
+                                  <p data-about-id="error-message" style={{ color: 'red' }}>
+                                      {error}
+                                  </p>
+                              ) : null}
                               <Form className="login-wrapper">
                                   <Input
                                       type="email"
                                       name="email"
                                       id="emailInput"
                                       placeholder="email"
+                                      data-about-id="email-input"
                                       onChange={changeHandler}
                                   />
                                   <Input
@@ -63,6 +68,7 @@ export const LoginModal: React.FC<LoginModalProps> = ({ isModalOpen, onClose }) 
                                       name="password"
                                       id="passwordInput"
                                       placeholder="password"
+                                      data-about-id="password-input"
                                       onChange={changeHandler}
                                   />
                               </Form>
@@ -82,6 +88,7 @@ export const LoginModal: React.FC<LoginModalProps> = ({ isModalOpen, onClose }) 
                                   id="submitButton"
                                   color="secondary"
                                   size="sm"
+                                  data-about-id="submit-button"
                                   onClick={() => loginHandler()}
                               >
                                   Submit

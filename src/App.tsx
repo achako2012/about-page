@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import './index.css';
+import './index.scss';
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
 import { AboutPage } from './app/about/AboutPage';
 import { ContactPage } from './app/contact/ContactPage';

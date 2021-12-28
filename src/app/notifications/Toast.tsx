@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-import './Toast.css';
+import './Toast.scss';
 import { ToastI } from 'types';
 
 interface ToastProps {

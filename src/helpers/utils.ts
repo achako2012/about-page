@@ -12,4 +12,4 @@ export const convertBase64File = (file: File) =>
         };
     });
 
-export default convertBase64File;
+export const getRandomDigit = () => Math.floor(Math.random() * 101 + 1);

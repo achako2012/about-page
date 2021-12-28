@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { SiGithub, SiLinkedin } from 'react-icons/si';
 import { FaTelegram, FaWhatsapp } from 'react-icons/fa';
 import React, { FC } from 'react';
-import './NavigationElements.css';
+import './NavigationElements.scss';
 
 type RightElementsProps = {
     view: string;

@@ -1,0 +1,36 @@
+@keyframes ldio-rzhmdbdydd {
+    0% {
+        opacity: 0;
+        backface-visibility: hidden;
+        transform: translateZ(0) scale(1.5, 1.5);
+    }
+    100% {
+        opacity: 1;
+        backface-visibility: hidden;
+        transform: translateZ(0) scale(1, 1);
+    }
+}
+
+@keyframes backInUp {
+    0% {
+        transform: translateY(1200px) scale(0.7);
+        opacity: 0.7;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes backInRight {
+    0% {
+        transform: translateX(2000px) scale(0.7);
+        opacity: 0.7;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}

@@ -1,11 +1,15 @@
+@import 'src/global-styles/variables';
+
 .new-article-btn {
     margin: 40px auto 10px;
+    animation: backInRight 2.4s ease 1;
 }
 
 .article-view {
     margin: 40px auto 10px;
     display: flex;
     align-items: stretch;
+    animation: backInUp 1.5s ease 1;
 
     #content {
         width: 100%;
@@ -55,7 +59,7 @@
         max-width: 60% !important;
     }
     .article-view {
-        max-width: 70% !important;
+        max-width: 60% !important;
         flex-direction: row !important;
 
         #thumbnail {
