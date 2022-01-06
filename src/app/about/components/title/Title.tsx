@@ -11,10 +11,7 @@ export const Title: React.FC<TitleProps> = ({ title, intro }: TitleProps) => (
         <div className="row">
             <div className="main">
                 <div className="title-main">
-                    <h1>
-                        hello, I&apos;m
-                        {intro}
-                    </h1>
+                    <h1>hello, I&apos;m {intro}</h1>
                 </div>
                 <div className="additional-title">
                     <p>{title}</p>
