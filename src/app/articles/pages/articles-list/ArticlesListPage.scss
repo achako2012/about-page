@@ -3,127 +3,127 @@
 .articles-wrapper {
     animation: backInUp 1.5s ease 1;
 
-  .new-article-btn {
-    margin: 40px auto 10px;
-  }
-
-  .article-view {
-    margin: 40px auto 10px;
-    display: flex;
-    align-items: stretch;
-
-    #content {
-      width: 100%;
-      height: 100%;
+    .new-article-btn {
+        margin: 40px auto 10px;
     }
 
-    .title {
-      padding: 25px 50px 0;
-    }
+    .article-view {
+        margin: 40px auto 10px;
+        display: flex;
+        align-items: stretch;
 
-    p.title {
-      font-weight: bold;
-    }
+        #content {
+            width: 100%;
+            height: 100%;
+        }
 
-    .entry-content {
-      padding: 15px 50px 25px;
-    }
+        .title {
+            padding: 25px 50px 0;
+        }
 
-    .buttons {
-      padding: 0px 50px 25px;
-    }
+        p.title {
+            font-weight: bold;
+        }
 
-    .buttons button {
-      margin-right: 1%;
-      font-size: 90%;
-    }
+        .entry-content {
+            padding: 15px 50px 25px;
+        }
 
-    #thumbnail {
-      margin: 0;
-      min-width: 22%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-bottom-right-radius: 4px;
-      border-top-right-radius: 4px;
+        .buttons {
+            padding: 0px 50px 25px;
+        }
 
-      img {
-        max-width: 120px;
-        max-height: 120px;
-      }
+        .buttons button {
+            margin-right: 1%;
+            font-size: 90%;
+        }
+
+        #thumbnail {
+            margin: 0;
+            min-width: 22%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom-right-radius: 4px;
+            border-top-right-radius: 4px;
+
+            img {
+                max-width: 120px;
+                max-height: 120px;
+            }
+        }
     }
-  }
 }
 
 /*1280px ----->*/
 @media (min-width: 1280px) {
-  .new-article-btn {
-    max-width: 60% !important;
-  }
-  .article-view {
-    max-width: 60% !important;
-    flex-direction: row !important;
-
-    #thumbnail {
-      border-top-right-radius: 4px !important;
-      border-bottom-right-radius: 4px !important;
+    .new-article-btn {
+        max-width: 60% !important;
     }
+    .article-view {
+        max-width: 60% !important;
+        flex-direction: row !important;
 
-    #content {
-      border-top-left-radius: 4px !important;
-      border-bottom-left-radius: 4px !important;
+        #thumbnail {
+            border-top-right-radius: 4px !important;
+            border-bottom-right-radius: 4px !important;
+        }
+
+        #content {
+            border-top-left-radius: 4px !important;
+            border-bottom-left-radius: 4px !important;
+        }
     }
-  }
 }
 
 /*900px <-----> 1279px*/
 @media (min-width: 900px) and (max-width: 1279px) {
-  .new-article-btn {
-    max-width: 80% !important;
-  }
+    .new-article-btn {
+        max-width: 80% !important;
+    }
 
-  .article-view {
-    max-width: 80% !important;
-    flex-direction: row !important;
-  }
+    .article-view {
+        max-width: 80% !important;
+        flex-direction: row !important;
+    }
 
-  #thumbnail {
-    border-top-right-radius: 4px !important;
-    border-bottom-right-radius: 4px !important;
-  }
+    #thumbnail {
+        border-top-right-radius: 4px !important;
+        border-bottom-right-radius: 4px !important;
+    }
 
-  #content {
-    border-top-left-radius: 4px !important;
-    border-bottom-left-radius: 4px !important;
-  }
+    #content {
+        border-top-left-radius: 4px !important;
+        border-bottom-left-radius: 4px !important;
+    }
 }
 
 /*-----> 899px*/
 @media (max-width: 899px) {
-  .new-article-btn {
-    max-width: 90% !important;
-  }
-
-  .article-view {
-    max-width: 90% !important;
-    flex-direction: column !important;
-
-    #thumbnail {
-      order: 1;
-      min-width: 100% !important;
-      min-height: 40% !important;
-      border-top-left-radius: 4px !important;
-      border-top-right-radius: 4px !important;
-
-      img {
-        margin: 5% !important;
-      }
+    .new-article-btn {
+        max-width: 90% !important;
     }
 
-    #content {
-      order: 2;
-      border-bottom-left-radius: 4px !important;
-      border-bottom-right-radius: 4px !important;
+    .article-view {
+        max-width: 90% !important;
+        flex-direction: column !important;
+
+        #thumbnail {
+            order: 1;
+            min-width: 100% !important;
+            min-height: 40% !important;
+            border-top-left-radius: 4px !important;
+            border-top-right-radius: 4px !important;
+
+            img {
+                margin: 5% !important;
+            }
+        }
+
+        #content {
+            order: 2;
+            border-bottom-left-radius: 4px !important;
+            border-bottom-right-radius: 4px !important;
+        }
     }
-  }
 }
