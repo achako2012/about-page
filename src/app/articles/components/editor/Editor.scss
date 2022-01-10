@@ -3,6 +3,9 @@
 .editor-operations {
     display: flex;
     flex-direction: column;
+    position: sticky;
+    top: 0;
+    background: $backgroundColor;
 
     * {
         margin: 1px 1px;
