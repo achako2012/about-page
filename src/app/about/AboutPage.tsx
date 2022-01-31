@@ -35,11 +35,7 @@ export const AboutPage: React.FC = () => {
     const about = aboutProfile ? (
         <>
             <Title title={aboutProfile[0].title} intro={aboutProfile[0].intro} />
-            <About
-                name={aboutProfile[0].name}
-                position={aboutProfile[0].position}
-                article={aboutProfile[0].article}
-            />
+            <About article={aboutProfile[0].article} />
         </>
     ) : (
         <Spinner />
