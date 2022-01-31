@@ -8,7 +8,7 @@ type AboutProps = {
     article: string;
 };
 
-export const About: React.FC<AboutProps> = ({ name, position, article }: AboutProps) => (
+export const About: React.FC<AboutProps> = ({ article }: AboutProps) => (
     <section className="about-section">
         <div className="row">
             <div className="about">
@@ -17,10 +17,7 @@ export const About: React.FC<AboutProps> = ({ name, position, article }: AboutPr
                 </div>
                 <div className="about-info">
                     <h1 className="info-header">facts about me</h1>
-                    <p className="info-title">{position}</p>
-                    <p className="info-article">
-                        I&apos;m <span>{name}</span> {article}
-                    </p>
+                    <p className="info-article">{article}</p>
                     <a href={`${process.env.PUBLIC_URL}/Alexander_Chako_CV.pdf`} download>
                         <Button color="primary" size="lg">
                             DOWNLOAD RESUME
