@@ -3,8 +3,6 @@ import { Button } from 'reactstrap';
 import './About.scss';
 
 type AboutProps = {
-    name: string;
-    position: string;
     article: string;
 };
 
