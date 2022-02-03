@@ -1,13 +1,13 @@
 import React, { useMemo } from 'react';
 import './index.scss';
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
-import { AboutPage } from './app/about/AboutPage';
-import { ContactPage } from './app/contact/ContactPage';
-import { Navbar } from './app/navbar/Navbar';
-import { ArticlesListPage } from './app/articles/pages/articles-list/ArticlesListPage';
-import { EditArticlePage } from './app/articles/pages/edit-article/EditArticlePage';
-import { OneArticlePage } from './app/articles/pages/one-article/OneArticlePage';
-import { LoginModal } from './app/auth/LoginModal';
+import { AboutPage } from './pages/about/AboutPage';
+import { ContactPage } from './pages/contact/ContactPage';
+import { Navbar } from './pages/navbar/Navbar';
+import { ArticlesListPage } from './pages/articles/pages/articles-list/ArticlesListPage';
+import { EditArticlePage } from './pages/articles/pages/edit-article/EditArticlePage';
+import { OneArticlePage } from './pages/articles/pages/one-article/OneArticlePage';
+import { LoginModal } from './pages/auth/LoginModal';
 import { useAuth } from './hooks/auth.hooks';
 import { AuthContext } from './context-provider/AuthContext';
 

@@ -10,12 +10,11 @@
 
 .skills-container {
     padding: 0 50px;
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 15px 50px;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    text-align: left;
+    width:80%;
+    margin:0 auto;
 }
 
 .skills-item {

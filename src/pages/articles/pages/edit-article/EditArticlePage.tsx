@@ -3,14 +3,14 @@ import { Prompt } from 'react-router-dom';
 import { convertFromRaw, convertToRaw, EditorState } from 'draft-js';
 import { Button, Input } from 'reactstrap';
 import { stateToHTML } from 'draft-js-export-html';
-import { MyEditor } from 'app/articles/components/editor/Editor';
+import { MyEditor } from 'pages/articles/components/editor/Editor';
 import ArticlesService from 'api/services/articles-service';
 import './NewArticle.scss';
 import './ThumbnailPreview.scss';
-import { ThumbnailPreview } from 'app/articles/components/editor/ThumbnailPreview';
-import { Spinner } from 'app/spinner/Spinner';
+import { ThumbnailPreview } from 'pages/articles/components/editor/ThumbnailPreview';
+import { Spinner } from 'pages/spinner/Spinner';
 import { Article, ToastPosition, ToastType } from 'types';
-import { Toast } from 'app/notifications/Toast';
+import { Toast } from 'pages/notifications/Toast';
 import { useNotification } from 'hooks/notification.hooks';
 
 interface NewArticlePageProps {

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import parse from 'html-react-parser';
 import styled from '@emotion/styled';
 import ArticlesService from 'api/services/articles-service';
-import { Spinner } from 'app/spinner/Spinner';
+import { Spinner } from 'pages/spinner/Spinner';
 import { Article } from 'types';
 import './OneArticle.scss';
 
