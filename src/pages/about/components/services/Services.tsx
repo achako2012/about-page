@@ -3,9 +3,26 @@ import { Card, CardText, CardTitle } from 'reactstrap';
 import { IconContext } from 'react-icons';
 import { BsGear, GoBrowser } from 'react-icons/all';
 import './Services.scss';
+import { Experience } from 'api/types';
 
-export const Services: React.FC = () => {
+type ServicesProps = {
+    experience: Experience[];
+};
+
+export const Services: React.FC<ServicesProps> = ({ experience }: ServicesProps) => {
     const reactIconsClass = useMemo(() => ({ className: 'react-icons' }), []);
+    const icons = [<BsGear />, <GoBrowser />];
+
+    const renderExperienceCards = (arr: Experience[]) =>
+        arr.map((elem, index) => (
+            <Card body key={elem.id}>
+                <IconContext.Provider value={reactIconsClass}>
+                    <div>{icons[index]}</div>
+                </IconContext.Provider>
+                <CardTitle tag="h5">{elem.title}</CardTitle>
+                <CardText>{elem.article}</CardText>
+            </Card>
+        ));
 
     return (
         <section className="services-section">
@@ -15,33 +32,7 @@ export const Services: React.FC = () => {
                         <h1>Things I&apos;m doing...</h1>
                     </div>
                     <div className="services-cards-wrapper">
-                        <Card body>
-                            <IconContext.Provider value={reactIconsClass}>
-                                <div>
-                                    <BsGear />
-                                </div>
-                            </IconContext.Provider>
-                            <CardTitle tag="h5">Testing</CardTitle>
-                            <CardText>
-                                Huge experience with different testing frames and libraries. Good
-                                experience with stack around - CI/CD systems. Writing test cases,
-                                determining priority of bugs, using different test approaches and
-                                many other.
-                            </CardText>
-                        </Card>
-                        <Card body>
-                            <IconContext.Provider value={reactIconsClass}>
-                                <div>
-                                    <GoBrowser />
-                                </div>
-                            </IconContext.Provider>
-                            <CardTitle tag="h5">Web Development</CardTitle>
-                            <CardText>
-                                Experience with React. Knowledge of SQL DB, NodeJS, NPM and many
-                                others. Experience with building services with Express and MongoDB
-                                tools.
-                            </CardText>
-                        </Card>
+                        {renderExperienceCards(experience)}
                     </div>
                 </div>
             </div>

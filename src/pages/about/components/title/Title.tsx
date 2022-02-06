@@ -1,20 +1,20 @@
 import React from 'react';
 import './Title.scss';
+import { Profile } from 'api/types';
 
 type TitleProps = {
-    intro: string;
-    title: string;
+    aboutProfile: Profile;
 };
 
-export const Title: React.FC<TitleProps> = ({ title, intro }: TitleProps) => (
+export const Title: React.FC<TitleProps> = ({ aboutProfile }: TitleProps) => (
     <section className="title-section">
         <div className="row">
             <div className="main">
                 <div className="title-main">
-                    <h1>hello, I&apos;m {intro}</h1>
+                    <h1>hello, I&apos;m {aboutProfile.intro}</h1>
                 </div>
                 <div className="additional-title">
-                    <p>{title}</p>
+                    <p>{aboutProfile.title}</p>
                 </div>
             </div>
         </div>

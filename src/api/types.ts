@@ -1,10 +1,10 @@
-export type Skill = {
+export interface Skill {
     id: string;
     title: string;
     value: number;
-};
+}
 
-export type Profile = {
+export interface Profile {
     id: string;
     name: string;
     intro: string;
@@ -14,4 +14,10 @@ export type Profile = {
         year: string;
         event: string;
     }[];
-};
+}
+
+export interface Experience {
+    id: string;
+    title: string;
+    article: string;
+}

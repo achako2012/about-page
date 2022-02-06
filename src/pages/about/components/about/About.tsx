@@ -1,15 +1,13 @@
 import React from 'react';
 import { Button } from 'reactstrap';
 import './About.scss';
+import { Profile } from "api/types";
 
 type AboutProps = {
-    article: {
-        year: string;
-        event: string;
-    }[];
+    aboutProfile: Profile;
 };
 
-export const About: React.FC<AboutProps> = ({ article }: AboutProps) => {
+export const About: React.FC<AboutProps> = ({ aboutProfile }: AboutProps) => {
     const renderBio = (arr: { year: string; event: string }[]) =>
         arr.map((elem) => (
             <div className="bio-element">
@@ -17,7 +15,7 @@ export const About: React.FC<AboutProps> = ({ article }: AboutProps) => {
                 {elem.event}
             </div>
         ));
-    const bio = renderBio(article);
+    const bio = renderBio(aboutProfile.article);
 
     return (
         <section className="about-section">

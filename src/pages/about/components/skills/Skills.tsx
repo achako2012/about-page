@@ -28,8 +28,6 @@ export const Skills: React.FC<SkillsProps> = ({ skillsList }: SkillsProps) => {
             );
         });
 
-    const skills = renderSkills(skillsList);
-
     return (
         <section className="skills-section">
             <div className="row">
@@ -37,7 +35,7 @@ export const Skills: React.FC<SkillsProps> = ({ skillsList }: SkillsProps) => {
                     <div className="skills-title">
                         <h1>My skills</h1>
                     </div>
-                    <div className="skills-container">{skills}</div>
+                    <div className="skills-container">{renderSkills(skillsList)}</div>
                 </div>
             </div>
         </section>

@@ -18,9 +18,9 @@ const NavigationElements: FC<RightElementsProps> = ({ view, onClickNavigation })
             <Link to="/articles" onClick={onClickNavigation}>
                 notes
             </Link>
-            <Link to="/works" onClick={onClickNavigation}>
-                works
-            </Link>
+            {/* <Link to="/works" onClick={onClickNavigation}> */}
+            {/*    works */}
+            {/* </Link> */}
             <Link to="/contact" onClick={onClickNavigation}>
                 contact
             </Link>
