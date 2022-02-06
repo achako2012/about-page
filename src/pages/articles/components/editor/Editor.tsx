@@ -1,8 +1,17 @@
 import React from 'react';
-import { Editor, EditorState, RichUtils } from 'draft-js';
+import { convertToRaw, EditorState, RichUtils, AtomicBlockUtils } from 'draft-js';
 import { BlockStyleControls } from './BlockStyleControls';
 import { InlineStyleControls } from './InlineStyleControls';
 import './Editor.scss';
+// eslint-disable-next-line import/order
+import Editor from '@draft-js-plugins/editor';
+// eslint-disable-next-line import/order
+import createImagePlugin from '@draft-js-plugins/image';
+import { Button, Input } from 'reactstrap';
+import { convertBase64File } from "../../../../helpers/utils";
+
+const imagePlugin = createImagePlugin();
+const plugins = [imagePlugin];
 
 type EditorProps = {
     saveEditorState(editorState: EditorState): void;
@@ -36,13 +45,41 @@ export const MyEditor = ({ editorState, saveEditorState }: EditorProps) => {
         saveEditorState(newState);
     };
 
+    const insertImage = (eS: any, base64: any) => {
+        const contentState = eS.getCurrentContent();
+        const contentStateWithEntity = contentState.createEntity('image', 'IMMUTABLE', {
+            src: base64
+        });
+        const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
+        const newEditorState = EditorState.set(eS, {
+            currentContent: contentStateWithEntity
+        });
+        return AtomicBlockUtils.insertAtomicBlock(newEditorState, entityKey, ' ');
+    };
+
+    const handleClick = async (event: React.ChangeEvent<HTMLInputElement>) => {
+        const { files } = event.target;
+        if (files) {
+            const base64 = await convertBase64File(files[0]);
+            const newEditorState = insertImage(editorState, base64);
+            onChange(newEditorState);
+        }
+    };
+
     return (
         <div className="form-control" id="rich-editor">
             <div className="editor-operations">
                 <BlockStyleControls editorState={editorState} onClick={onBlockStyleClick} />
                 <InlineStyleControls editorState={editorState} onClick={onInlineStyleClick} />
             </div>
-            <Editor editorState={editorState} onChange={onChange} customStyleMap={styleMap} />
+            <Editor
+                editorState={editorState}
+                onChange={onChange}
+                plugins={plugins}
+                customStyleMap={styleMap}
+            />
+            {/* eslint-disable-next-line react/button-has-type */}
+            <input type="file" onChange={handleClick} />
         </div>
     );
 };
