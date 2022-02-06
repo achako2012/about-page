@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from 'reactstrap';
 import './About.scss';
-import { Profile } from "api/types";
+import { Profile } from 'api/types';
 
 type AboutProps = {
     aboutProfile: Profile;

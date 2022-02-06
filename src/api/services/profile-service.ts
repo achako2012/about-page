@@ -1,4 +1,4 @@
-import { Experience, Profile, Skill } from "api/types";
+import { Experience, Profile, Skill } from 'api/types';
 import AboutService from './about-service';
 
 class ProfileService extends AboutService {

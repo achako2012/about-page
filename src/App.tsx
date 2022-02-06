@@ -10,7 +10,7 @@ import { OneArticlePage } from './pages/articles/pages/one-article/OneArticlePag
 import { LoginModal } from './pages/auth/LoginModal';
 import { useAuth } from './hooks/auth.hooks';
 import { AuthContext } from './context-provider/AuthContext';
-import { WorksPage } from "./pages/works/WorksPage";
+import { WorksPage } from './pages/works/WorksPage';
 
 const App: React.FC = () => {
     const { token, login, logout } = useAuth();

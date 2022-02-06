@@ -1,14 +1,11 @@
 import React from 'react';
-import { convertToRaw, EditorState, RichUtils, AtomicBlockUtils } from 'draft-js';
+import { EditorState, RichUtils, AtomicBlockUtils } from 'draft-js';
+import './Editor.scss';
+import Editor from '@draft-js-plugins/editor';
+import createImagePlugin from '@draft-js-plugins/image';
+import { convertBase64File } from 'helpers/utils';
 import { BlockStyleControls } from './BlockStyleControls';
 import { InlineStyleControls } from './InlineStyleControls';
-import './Editor.scss';
-// eslint-disable-next-line import/order
-import Editor from '@draft-js-plugins/editor';
-// eslint-disable-next-line import/order
-import createImagePlugin from '@draft-js-plugins/image';
-import { Button, Input } from 'reactstrap';
-import { convertBase64File } from "../../../../helpers/utils";
 
 const imagePlugin = createImagePlugin();
 const plugins = [imagePlugin];
