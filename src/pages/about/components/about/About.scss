@@ -17,17 +17,28 @@
         }
 
         .about-info {
-            max-width: 60%;
+            width: 45%;
+
         }
 
         .info-title {
             font-weight: bold;
         }
 
-        .info-article {
+        .bio-info {
+            padding-left: 3.4em;
+            text-indent: -3.4em;
+            margin: 1em 0;
+            font-size: 1.1em;
+
             span {
-                text-decoration: underline;
+                font-weight: bold;
+                margin-right: 1.5em;
             }
+        }
+
+        p{
+            font-size: 1.1em;
         }
     }
 }

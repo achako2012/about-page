@@ -9,16 +9,11 @@
 }
 
 .skills-container {
-    padding: 0 50px;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 15px 50px;
+    gap: 20px 70px;
     width:80%;
     margin:0 auto;
-}
-
-.skills-item {
-    flex: 1 1 320px;
 }
 
 // 1280px ----->

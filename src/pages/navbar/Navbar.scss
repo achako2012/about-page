@@ -42,7 +42,7 @@ header {
 // 1280px ----->
 @media (min-width: 1280px) {
     .nav-wrapper {
-        max-width: 65% !important;
+        max-width: 55% !important;
     }
     .authenticate-icon-login,
     .authenticate-icon-logout,
@@ -54,7 +54,7 @@ header {
 // 1000px <-----> 1279px
 @media (min-width: 1000px) and (max-width: 1279px) {
     .nav-wrapper {
-        max-width: 75% !important;
+        max-width: 70% !important;
     }
     .authenticate-icon-login,
     .authenticate-icon-logout,

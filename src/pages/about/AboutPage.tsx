@@ -1,19 +1,19 @@
 import React, { useEffect } from 'react';
 import SkillsService from 'api/services/skills-service';
-import { Profile, Skill } from 'api/types';
 import ProfileService from 'api/services/profile-service';
 import { Skills } from './components/skills/Skills';
 import { Spinner } from '../spinner/Spinner';
 import { Title } from './components/title/Title';
 import { About } from './components/about/About';
 import { Services } from './components/services/Services';
+import { Profile, Skill } from '../../api/types';
 
 export const AboutPage: React.FC = () => {
     const skillsService = SkillsService.create();
     const profileService = ProfileService.create();
 
     const [skillsList, updateSkillsList] = React.useState<Skill[]>();
-    const [aboutProfile, updateProfile] = React.useState<Profile[]>();
+    const [aboutProfile, updateProfile] = React.useState<Profile>();
 
     useEffect(() => {
         const setSkills = async () => {
@@ -25,7 +25,8 @@ export const AboutPage: React.FC = () => {
 
         const setProfile = async () => {
             const profileEntity = await profileService.getProfile();
-            updateProfile(profileEntity);
+            console.log(profileEntity[0].article);
+            updateProfile(profileEntity[0]);
         };
         setProfile();
     }, []);
@@ -34,8 +35,8 @@ export const AboutPage: React.FC = () => {
 
     const about = aboutProfile ? (
         <>
-            <Title title={aboutProfile[0].title} intro={aboutProfile[0].intro} />
-            <About article={aboutProfile[0].article} />
+            <Title title={aboutProfile.title} intro={aboutProfile.intro} />
+            <About article={aboutProfile.article} />
         </>
     ) : (
         <Spinner />

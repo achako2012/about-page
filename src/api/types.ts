@@ -10,5 +10,8 @@ export type Profile = {
     intro: string;
     position: string;
     title: string;
-    article: string;
+    article: {
+        year: string;
+        event: string;
+    }[];
 };
