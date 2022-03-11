@@ -1,5 +1,4 @@
 import React, { useMemo } from 'react';
-import './index.scss';
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
 import { AboutPage } from './pages/about/AboutPage';
 import { ContactPage } from './pages/contact/ContactPage';
@@ -11,6 +10,8 @@ import { LoginModal } from './pages/auth/LoginModal';
 import { useAuth } from './hooks/auth.hooks';
 import { AuthContext } from './context-provider/AuthContext';
 import { WorksPage } from './pages/works/WorksPage';
+
+import './index.scss';
 
 const App: React.FC = () => {
     const { token, login, logout } = useAuth();

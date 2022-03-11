@@ -30,7 +30,7 @@ export const Skills: React.FC<SkillsProps> = ({ skillsList }: SkillsProps) => {
 
     return (
         <section className="skills-section">
-            <div className="row">
+            <div className="container">
                 <div className="skills">
                     <div className="skills-title">
                         <h1>My skills</h1>

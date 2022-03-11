@@ -5,7 +5,7 @@
     flex-direction: column;
     position: sticky;
     top: 0;
-    background: $backgroundColor;
+    background: #ffffff;
 
     * {
         margin: 1px 1px;
@@ -13,5 +13,5 @@
 }
 
 #rich-editor {
-    @include editor;
+    //@include editor;
 }

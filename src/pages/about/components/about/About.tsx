@@ -19,7 +19,7 @@ export const About: React.FC<AboutProps> = ({ aboutProfile }: AboutProps) => {
 
     return (
         <section className="about-section">
-            <div className="row">
+            <div className="container">
                 <div className="about">
                     <div className="about-photo">
                         <img src={`${process.env.PUBLIC_URL}/img/photo.jpg`} alt="myPhotoAbout" />

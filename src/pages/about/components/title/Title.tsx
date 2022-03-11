@@ -8,7 +8,7 @@ type TitleProps = {
 
 export const Title: React.FC<TitleProps> = ({ aboutProfile }: TitleProps) => (
     <section className="title-section">
-        <div className="row">
+        <div className="container">
             <div className="main">
                 <div className="title-main">
                     <h1>hello, I&apos;m {aboutProfile.intro}</h1>

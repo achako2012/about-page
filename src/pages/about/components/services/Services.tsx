@@ -26,7 +26,7 @@ export const Services: React.FC<ServicesProps> = ({ experience }: ServicesProps)
 
     return (
         <section className="services-section">
-            <div className="row">
+            <div className="container">
                 <div className="services">
                     <div className="services-title">
                         <h1>Things I&apos;m doing...</h1>
