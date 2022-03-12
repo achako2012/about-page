@@ -1,48 +1,35 @@
+@import 'src/global-styles/_variables.scss';
+
 .skills {
-    width:100%;
-    padding: 2em 7em 4em 7em;
+  width: 100%;
+  padding: 2em 7em 4em 7em;
+
+  @media (max-width: $breakpoint992) {
+    padding: 2em 3em 4em 3em;
+  }
 }
 
 .skills-title {
-    text-align: center;
-    padding-top: 15px;
-    padding-bottom: 10px;
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 10px;
 }
 
 .skills-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px 70px;
-    width:100%;
-    margin:0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 70px;
+  width: 100%;
+  margin: 0 auto;
 
-.skills-item{
-    .text-center{
-        margin-bottom:4px;
-    }
-}
-}
+  @media (max-width: $breakpoint768) {
+    display: flex;
+    flex-direction: column;
+  }
 
-// 1280px ----->
-@media (min-width: 1280px) {
-}
-
-// 900px <-----> 1279px
-@media (min-width: 900px) and (max-width: 1279px) {
-    .skills {
-        padding: 30px 0 !important;
+  .skills-item {
+    .text-center {
+      margin-bottom: 4px;
     }
-    .skills-container {
-        padding: 0 20px !important;
-    }
-}
-
-// -----> 899px
-@media (max-width: 899px) {
-    .skills {
-        padding: 30px 0 !important;
-    }
-    .skills-container {
-        padding: 0 20px !important;
-    }
+  }
 }
