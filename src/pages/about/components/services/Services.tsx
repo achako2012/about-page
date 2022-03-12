@@ -2,8 +2,9 @@ import React, { useMemo } from 'react';
 import { Card, CardText, CardTitle } from 'reactstrap';
 import { IconContext } from 'react-icons';
 import { BsGear, GoBrowser } from 'react-icons/all';
-import './Services.scss';
 import { Experience } from 'api/types';
+
+import './Services.scss';
 
 type ServicesProps = {
     experience: Experience[];

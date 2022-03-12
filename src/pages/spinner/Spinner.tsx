@@ -3,7 +3,7 @@ import './Spinner.scss';
 
 export const Spinner: React.FC = () => (
     <section className="spinner">
-        <div className="row">
+        <div className="container">
             <div className="spinner-title">
                 <h1>data loading...</h1>
             </div>

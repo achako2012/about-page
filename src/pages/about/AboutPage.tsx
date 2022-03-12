@@ -28,21 +28,15 @@ export const AboutPage: React.FC = () => {
         setUpEntities();
     }, []);
 
-    const skills = skillsList ? <Skills skillsList={skillsList} /> : <Spinner />;
-
-    const about = aboutProfile ? (
-        <>
-            <Title aboutProfile={aboutProfile} />
-            <About aboutProfile={aboutProfile} />
-        </>
-    ) : (
-        <Spinner />
-    );
+    const about = aboutProfile ? <About aboutProfile={aboutProfile} /> : <Spinner />;
 
     const experienceCards = experience ? <Services experience={experience} /> : <Spinner />;
 
+    const skills = skillsList ? <Skills skillsList={skillsList} /> : <Spinner />;
+
     return (
         <>
+            <Title />
             {about}
             {experienceCards}
             {skills}

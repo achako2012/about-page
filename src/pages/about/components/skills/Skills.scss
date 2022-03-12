@@ -1,5 +1,6 @@
 .skills {
-    padding: 30px 30px;
+    width:100%;
+    padding: 2em 7em 4em 7em;
 }
 
 .skills-title {
@@ -12,8 +13,14 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px 70px;
-    width:80%;
+    width:100%;
     margin:0 auto;
+
+.skills-item{
+    .text-center{
+        margin-bottom:4px;
+    }
+}
 }
 
 // 1280px ----->
