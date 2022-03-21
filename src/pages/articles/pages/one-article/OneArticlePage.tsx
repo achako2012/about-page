@@ -58,10 +58,12 @@ export const OneArticlePage = ({ match }: OneArticleProps) => {
     const articleContent = renderContent(article);
 
     return (
-        <article key={article._id} id={article._id} className="single-article">
-            {articleTitle}
-            {articleContent}
-        </article>
+        <div className="container">
+            <article key={article._id} id={article._id} className="single-article">
+                {articleTitle}
+                {articleContent}
+            </article>
+        </div>
     );
 };
 

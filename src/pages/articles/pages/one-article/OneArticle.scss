@@ -1,4 +1,5 @@
-@import '../../../../global-styles/variables';
+@import 'src/global-styles/variables.scss';
+@import 'src/global-styles/editor.scss';
 
 .single-article {
     margin: 40px auto 0;
@@ -32,7 +33,7 @@
             margin: 0 auto;
         }
 
-        //@include editor;
+        @include editor;
     }
 }
 
