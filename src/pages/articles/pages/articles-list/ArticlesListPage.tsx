@@ -48,10 +48,12 @@ export const ArticlesListPage = () => {
     );
 
     return (
-        <div className="articles-wrapper">
-            {articles}
-            <div className="new-article-btn">
-                {auth.isAuthenticated ? createArticleElement : null}
+        <div className="container">
+            <div className="articles-wrapper">
+                {articles}
+                <div className="new-article-btn">
+                    {auth.isAuthenticated ? createArticleElement : null}
+                </div>
             </div>
         </div>
     );
