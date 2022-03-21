@@ -1,7 +1,7 @@
 import React from 'react';
 import { EMAIL_CONFIGURATION } from 'fixtures';
-import { ContactForm, Social } from './components/ContactForm';
-import './components/ContactForm.scss';
+import Social from './components/social/Social';
+import ContactForm from './components/contactForm/ContactForm';
 
 export const ContactPage: React.FC = () => (
     <>
@@ -9,4 +9,5 @@ export const ContactPage: React.FC = () => (
         <ContactForm config={EMAIL_CONFIGURATION} />
     </>
 );
+
 export default ContactPage;

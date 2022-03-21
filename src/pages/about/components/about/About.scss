@@ -1,58 +1,57 @@
 @import 'src/global-styles/_variables.scss';
 
-.about-section {
-  .about {
-    padding: 60px 0;
+.about {
+  padding: 60px 0;
+  display: flex;
+  justify-content: space-evenly;
+
+  @media (max-width: $breakpoint768) {
     display: flex;
-    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    flex-direction: column;
+  }
 
-    @media (max-width: $breakpoint768) {
-      display: flex;
-      align-items: center;
-      width: 100%;
-      flex-direction: column;
-    }
+  .about-photo {
+    display: flex;
+    align-items: center;
+    max-width: 20%;
 
-    .about-photo {
-      display: flex;
-      align-items: center;
-      max-width: 20%;
-
-      img {
-        border-radius: 50%;
-        border: 2px solid;
-        max-width: 100%;
-      }
-    }
-
-    .about-info {
-      display: flex;
-      flex-direction: column;
-
-      @media (max-width: $breakpoint768) {
-        align-items: center;
-      }
-
-    }
-
-    .info-title {
-      font-weight: bold;
-    }
-
-    .bio-info {
-      padding-left: 3.4em;
-      text-indent: -3.4em;
-      margin: 1em 0;
-      font-size: 1.1em;
-
-      span {
-        font-weight: bold;
-        margin-right: 1.5em;
-      }
-    }
-
-    p {
-      font-size: 1.1em;
+    img {
+      border-radius: 50%;
+      border: 2px solid;
+      max-width: 100%;
     }
   }
+
+  .about-info {
+    display: flex;
+    flex-direction: column;
+
+    @media (max-width: $breakpoint768) {
+      align-items: center;
+    }
+
+  }
+
+  .info-title {
+    font-weight: bold;
+  }
+
+  .bio-info {
+    padding-left: 3.4em;
+    text-indent: -3.4em;
+    margin: 1em 0;
+    font-size: 1.1em;
+
+    span {
+      font-weight: bold;
+      margin-right: 1.5em;
+    }
+  }
+
+  p {
+    font-size: 1.1em;
+  }
 }
+

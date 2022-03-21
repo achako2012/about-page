@@ -1,45 +1,44 @@
 @import 'src/global-styles/_variables.scss';
 
-.services-section {
-    .services {
-        padding: 30px 0;
+.services {
+  padding: 30px 0;
 
-        .services-title {
-            text-align: center;
-            padding-top: 15px;
-            padding-bottom: 25px;
+  .services-title {
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 25px;
 
-            h1 {
-                margin: 0 auto;
-            }
-        }
-
-        .services-cards-wrapper {
-            display: flex;
-            flex-wrap: nowrap;
-            justify-content: space-evenly;
-            align-items: stretch;
-
-
-            @media (max-width: $breakpoint768) {
-                flex-direction: column;
-            }
-
-            .card-body {
-                display: flex;
-                align-items: center;
-                margin:0 2em;
-
-                @media (max-width: $breakpoint768) {
-                    margin-bottom:1em;
-                }
-            }
-
-            .react-icons {
-                margin: 0 auto 0.5rem;
-                height: 4em;
-                width: 4em;
-            }
-        }
+    h1 {
+      margin: 0 auto;
     }
+  }
+
+  .services-cards-wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    align-items: stretch;
+
+
+    @media (max-width: $breakpoint768) {
+      flex-direction: column;
+    }
+
+    .card-body {
+      display: flex;
+      align-items: center;
+      margin: 0 2em;
+
+      @media (max-width: $breakpoint768) {
+        margin-bottom: 1em;
+      }
+    }
+
+    .react-icons {
+      margin: 0 auto 0.5rem;
+      height: 4em;
+      width: 4em;
+    }
+  }
 }
+

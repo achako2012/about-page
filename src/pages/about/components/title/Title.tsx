@@ -2,9 +2,9 @@ import React from 'react';
 import './Title.scss';
 
 export const Title: React.FC = () => (
-    <section className="title-section">
+    <section className="section__title">
         <div className="container">
-            <div className="main">
+            <div className="title">
                 <div className="title-main">
                     <h1>hello, I&apos;m full-stack developer</h1>
                 </div>

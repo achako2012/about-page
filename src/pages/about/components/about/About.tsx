@@ -18,7 +18,7 @@ export const About: React.FC<AboutProps> = ({ aboutProfile }: AboutProps) => {
     const bio = renderBio(aboutProfile.article);
 
     return (
-        <section className="about-section">
+        <section className="section__about">
             <div className="container">
                 <div className="about">
                     <div className="about-photo">
