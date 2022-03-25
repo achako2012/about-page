@@ -1,4 +1,13 @@
+@font-face {
+    font-family: 'Lato';
+    src: url('https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Syne+Tactile&display=swap');
+}
+
 @mixin editor {
+    p{
+        font-family: 'Lato', sans-serif;
+    }
+
     em {
         font-style: italic;
     }
@@ -98,7 +107,7 @@
     }
 
     pre {
-        margin: 5px 50px 5px 5px;
+        margin: 10px 0 10px 5px;
         border-radius: 5px;
         background-color: rgb(8, 9, 10);
         color: rgb(248, 248, 242);
